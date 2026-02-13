@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kava The Caffeine House | Menu</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+    color: #e8e8e8;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+header {
+    text-align: center;
+    padding: 50px 20px 20px;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    border-bottom: 2px solid #d4af37;
+}
+
+header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: #d4af37;
+    margin-bottom: 8px;
+}
+
+header p {
+    color: #c0c0c0;
+    font-size: 15px;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+.nav-container {
+    background: rgba(20, 20, 20, 0.95);
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.nav-tabs {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #d4af37 transparent;
+}
+
+.nav-tabs::-webkit-scrollbar {
+    height: 3px;
+}
+
+.nav-tabs::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.nav-tabs::-webkit-scrollbar-thumb {
+    background: #d4af37;
+}
+
+.tab-button {
+    flex: 1;
+    min-width: 140px;
+    padding: 18px 20px;
+    background: transparent;
+    border: none;
+    color: #999;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-bottom: 3px solid transparent;
+    white-space: nowrap;
+}
+
+.tab-button:hover {
+    color: #d4af37;
+    background: rgba(212, 175, 55, 0.05);
+}
+
+.tab-button.active {
+    color: #d4af37;
+    border-bottom-color: #d4af37;
+    background: rgba(212, 175, 55, 0.1);
+}
+
+.menu-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 20px 60px;
+}
+
+.menu-section {
+    display: none;
+    animation: fadeIn 0.4s ease-in;
+}
+
+.menu-section.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.section-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 600;
+    color: #d4af37;
+    margin-bottom: 10px;
+}
+
+.section-header p {
+    color: #999;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.menu-grid {
+    display: grid;
+    gap: 20px;
+}
+
+.menu-item {
+    background: rgba(30, 30, 30, 0.6);
+    padding: 20px 24px;
+    border-radius: 8px;
+    border-left: 3px solid transparent;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.menu-item:hover {
+    background: rgba(40, 40, 40, 0.8);
+    border-left-color: #d4af37;
+    transform: translateX(5px);
+}
+
+.item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 8px;
+}
+
+.item-name {
+    font-size: 16px;
+    font-weight: 500;
+    color: #f5f5f5;
+    letter-spacing: 0.5px;
+}
+
+.item-price {
+    font-size: 17px;
+    font-weight: 600;
+    color: #d4af37;
+    margin-left: 15px;
+}
+
+.item-description {
+    font-size: 13px;
+    color: #aaa;
+    line-height: 1.5;
+    font-weight: 300;
+}
+
+footer {
+    text-align: center;
+    padding: 30px 20px;
+    background: rgba(0, 0, 0, 0.5);
+    border-top: 1px solid #333;
+    font-size: 13px;
+    color: #888;
+    font-weight: 300;
+}
+
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 32px;
+    }
+    
+    .tab-button {
+        min-width: 120px;
+        padding: 16px 15px;
+        font-size: 12px;
+    }
+    
+    .section-header h2 {
+        font-size: 26px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>KAVA THE CAFFEINE HOUSE</h1>
+    <p>Premium Vegetarian Cuisine • Crafted with Passion</p>
+</header>
+
+<div class="nav-container">
+    <nav class="nav-tabs">
+        <button class="tab-button active" onclick="showSection('starters')">Starters</button>
+        <button class="tab-button" onclick="showSection('soups')">Soups & Broths</button>
+        <button class="tab-button" onclick="showSection('salads')">Fresh Salads</button>
+        <button class="tab-button" onclick="showSection('bowls')">Signature Bowls</button>
+        <button class="tab-button" onclick="showSection('pasta')">Artisan Pasta</button>
+    </nav>
+</div>
+
+<div class="menu-container">
+    
+    <section id="starters" class="menu-section active">
+        <div class="section-header">
+            <h2>Starters & Small Plates</h2>
+            <p>Perfect beginnings to your culinary journey</p>
+        </div>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <div class="item-header">
+                    <span class="item-name">Mushroom Pâté Tart</span>
+                    <span class="item-price">₹239</span>
+                </div>
+                <p class="item-description">Rich mushroom pâté on flaky pastry with herb garnish</p>
+            </div>
+            
+            <div class="menu-item">
+                <div class="item-header">
+                    <span class="item-name">Seasonal Vegetable Tart</span>
+                    <span class="item-price">₹299</span>
+                </div>
+                <p class="item-description">Garden fresh vegetables in buttery tart shell</p>
+            </div>
+            
+            <div class="menu-item">
+                <div class="item-header">
+                    <span class="item-name">Classic Tomato Bruschetta</span>
+                    <span class="item-price">₹325</span>
+                </div>
+                <p class="item-description">Vine-ripened tomatoes, basil pesto on toasted ciabatta</p>
+            </div>
+            
+            <div class="menu-item">
+                <div class="item-header">
+                    <span class="item-name">Peach & Cream Cheese Bruschetta</span>
+                    <span class="item-price">₹359</span>
+                </div>
+                <p class="item-description">Sweet peaches with whipped cream cheese on grilled bread</p>
+            </div>
+            
+            <div class="menu-item">
+                <div class="item-header">
+                    <span class="item-name">Peri Peri Cottage Cheese</span>
+                    <span class="item-price">₹329</span>
+                </div>
+                <p class="item-description">Spiced cottage cheese cubes with African peri peri marinade</p>
+            </div>
+            
+            <div class="menu-item">
+                <div class="item-header">
+                    <span class="item-name">Classic Hummus Platter</span>
+                    <span class="item-price">₹249</span>
+                </div>
+                <p class="item-description">Creamy chickpea hummus served with warm pita bread</p>
+            </div>
+            
+            <div class="menu-item">
+                <div class="item-header">
+                    <span class="item-name">Vegetable Masa Harina Tacos</span>
+                    <span class="item-price">₹429</span>
+                </div>
+                <p class="item-description">Authentic Mexican-style tacos with seasoned vegetables</p>
+            </div>
+            
+            <div class="menu-item">
+                <div class="item-header">
+                    <span class="item-name">Vietnamese Rice Paper Rolls</span>
+                    <span class="item-price">₹399</span>
+                </div>
+                <p class="item-description">Fresh vegetables wrapped in delicate rice paper with dipping sauce</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="soups" class="menu-section">
+        <div class="section-header">
+            <h2>Soups & Broths</h2>
+            <p>Warm, comforting, and nourishing</p>
+        </div>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <div class="item-header">
+                    <span class="item-name">Creamy Broccoli Soup</span>
+                    <span class="item-price">₹229</span>
+                </div>
+                <p class="item-description">Velvety broccoli soup with a hint of cream and herbs</p>
+            </div>
+            
+            <div class="menu-item">
+                <div class="item-header">
+                    <span class="item-name">Potato & Leek Soup</span>
+                    <span class="item-price">₹199</span>
+                </div>
+                <p class="item-description">Classic French-inspired soup with tender potatoes and leeks</p>
+            </div>
+            
+            <div class="menu-item">
+                <div class="item-header">
+                    <span class="item-name">Mushroom Cappuccino</span>
+                    <span class="item-price">₹199</span>
+                </div>
+                <p class="item-description">Frothy mushroom essence topped with micro herbs</p>
+            </div>
+            
+            <div class="menu-item">
+                <div class="item-header">
+                    <span class="item-name">Roasted Pumpkin Soup</span>
+                    <span class="item-price">₹199</span>
+                </div>
+                <p class="item-description">Autumn-inspired roasted pumpkin with aromatic spices</p>
+            </div>
+            
+            <div class="menu-item">
+                <div class="item-header">
+                    <span class="item-name">Sweet Corn Velouté</span>
+                    <span class="item-price">₹199</span>
+                </div>
+                <p class="item-description">Silky sweet corn soup with a touch of butter</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="salads" class="menu-section">
+        <div class="section-header">
+            <h2>Fresh Salads</h2>
+            <p>Crisp, vibrant, and wholesome</p>
+        </div>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <div class="item-header">
+                    <span class="item-name">Mandarin Iceberg Salad</span>
+                    <span class="item-price">₹339</span>
+                </div>
+                <p class="item-description">Crisp iceberg lettuce with mandarin segments and citrus dressing</p>
+            </div>
+            
+            <div class="menu-item">
+                <div class="item-header">
+                    <span class="item-name">Caprese Cottage Salad</span>
+                    <span class="item-price">₹339</span>
+                </div>
+                <p class="item-description">Italian-style cottage cheese with tomatoes, basil, and balsamic</p>
+            </div>
+            
+            <div class="menu-item">
+                <div class="item-header">
+                    <span class="item-name">Som Tam (Thai Papaya Salad)</span>
+                    <span class="item-price">₹249</span>
+                </div>
+                <p class="item-description">Shredded green papaya with Thai herbs and tangy lime dressing</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="bowls" class="menu-section">
+        <div class="section-header">
+            <h2>Signature Bowls</h2>
+            <p>Global flavors in a bowl</p>
+        </div>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <div class="item-header">
+                    <span class="item-name">Italian Herb Rice Bowl</span>
+                    <span class="item-price">₹525</span>
+                </div>
+                <p class="item-description">Herb-infused rice with romesco sauce and Mediterranean vegetables</p>
+            </div>
+            
+            <div class="menu-item">
+                <div class="item-header">
+                    <span class="item-name">Mexican Fiesta Bowl</span>
+                    <span class="item-price">₹549</span>
+                </div>
+                <p class="item-description">Spiced kidney beans, rice, salsa, and Mexican condiments</p>
+            </div>
+            
+            <div class="menu-item">
+                <div class="item-header">
+                    <span class="item-name">Bangkok Red Curry Bowl</span>
+                    <span class="item-price">₹449</span>
+                </div>
+                <p class="item-description">Aromatic Thai red curry with jasmine rice and vegetables</p>
+            </div>
+            
+            <div class="menu-item">
+                <div class="item-header">
+                    <span class="item-name">Thai Green Curry Bowl</span>
+                    <span class="item-price">₹449</span>
+                </div>
+                <p class="item-description">Fragrant green curry with coconut milk, bamboo shoots, and basil</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="pasta" class="menu-section">
+        <div class="section-header">
+            <h2>Artisan Pasta</h2>
+            <p>Handcrafted Italian classics</p>
+        </div>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <div class="item-header">
+                    <span class="item-name">Aglio Olio Classic</span>
+                    <span class="item-price">₹359</span>
+                </div>
+                <p class="item-description">Traditional garlic and olive oil pasta with red chili flakes</p>
+            </div>
+            
+            <div class="menu-item">
+                <div class="item-header">
+                    <span class="item-name">Caramelised Onion Cream Pasta</span>
+                    <span class="item-price">₹379</span>
+                </div>
+                <p class="item-description">Sweet caramelised onions in a silky cream sauce</p>
+            </div>
+            
+            <div class="menu-item">
+                <div class="item-header">
+                    <span class="item-name">Three Cheese Comfort Pasta</span>
+                    <span class="item-price">₹449</span>
+                </div>
+                <p class="item-description">Indulgent blend of three premium cheeses in creamy sauce</p>
+            </div>
+            
+            <div class="menu-item">
+                <div class="item-header">
+                    <span class="item-name">Pesto Verde Italiano</span>
+                    <span class="item-price">₹499</span>
+                </div>
+                <p class="item-description">Fresh basil pesto with pine nuts and parmesan</p>
+            </div>
+            
+            <div class="menu-item">
+                <div class="item-header">
+                    <span class="item-name">Arrabbiata Rosso</span>
+                    <span class="item-price">₹489</span>
+                </div>
+                <p class="item-description">Spicy tomato sauce with garlic and red chilies</p>
+            </div>
+            
+            <div class="menu-item">
+                <div class="item-header">
+                    <span class="item-name">Béchamel Mornay Pasta</span>
+                    <span class="item-price">₹539</span>
+                </div>
+                <p class="item-description">Classic French white sauce with gruyere cheese</p>
+            </div>
+            
+            <div class="menu-item">
+                <div class="item-header">
+                    <span class="item-name">Fresh Ravioli – Chef's Signature</span>
+                    <span class="item-price">₹599</span>
+                </div>
+                <p class="item-description">House-made ravioli with seasonal fillings and signature sauce</p>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<footer>
+    © 2026 Kava The Caffeine House • All Prices Inclusive of Taxes
+</footer>
+
+<script>
+function showSection(sectionId) {
+    const sections = document.querySelectorAll('.menu-section');
+    sections.forEach(section => {
+        section.classList.remove('active');
+    });
+    
+    const tabs = document.querySelectorAll('.tab-button');
+    tabs.forEach(tab => {
+        tab.classList.remove('active');
+    });
+    
+    document.getElementById(sectionId).classList.add('active');
+    
+    event.target.classList.add('active');
+    
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+
+</body>
+</html>

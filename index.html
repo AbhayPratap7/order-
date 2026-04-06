@@ -1,421 +1,523 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
 <title>Kava The Caffeine House | Menu</title>
-    
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-body { font-family: 'Montserrat', sans-serif; background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%); color: #e8e8e8; line-height: 1.6; min-height: 100vh; overflow-x: hidden; }
-header { text-align: center; padding: 50px 20px 20px; background: rgba(0, 0, 0, 0.3); backdrop-filter: blur(10px); border-bottom: 2px solid #d4af37; }
-header h1 { font-family: 'Playfair Display', serif; font-size: 42px; font-weight: 700; letter-spacing: 3px; color: #d4af37; margin-bottom: 8px; }
-header p { color: #c0c0c0; font-size: 15px; font-weight: 300; letter-spacing: 1px; }
-.nav-container { background: rgba(20, 20, 20, 0.95); padding: 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); }
-.nav-tabs { max-width: 1400px; margin: 0 auto; display: flex; overflow-x: auto; scrollbar-width: thin; scrollbar-color: #d4af37 transparent; }
-.nav-tabs::-webkit-scrollbar { height: 3px; }
-.nav-tabs::-webkit-scrollbar-track { background: transparent; }
-.nav-tabs::-webkit-scrollbar-thumb { background: #d4af37; }
-.tab-button { flex: 1; min-width: 110px; padding: 18px 14px; background: transparent; border: none; color: #999; font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.8px; text-transform: uppercase; cursor: pointer; transition: all 0.3s ease; border-bottom: 3px solid transparent; white-space: nowrap; -webkit-tap-highlight-color: rgba(212, 175, 55, 0.2); touch-action: manipulation; }
-.tab-button:hover { color: #d4af37; background: rgba(212, 175, 55, 0.05); }
-.tab-button.active { color: #d4af37; border-bottom-color: #d4af37; background: rgba(212, 175, 55, 0.1); }
-.menu-container { max-width: 1000px; margin: 0 auto; padding: 40px 20px 60px; }
-.menu-section { display: none; animation: fadeIn 0.4s ease-in; }
-.menu-section.active { display: block; }
-@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-.section-header { text-align: center; margin-bottom: 40px; }
-.section-header h2 { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 600; color: #d4af37; margin-bottom: 10px; }
-.section-header p { color: #999; font-size: 14px; font-weight: 300; }
-.subsection { margin-bottom: 50px; }
-.subsection:last-child { margin-bottom: 0; }
-.subsection-title { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 600; color: #d4af37; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid rgba(212, 175, 55, 0.3); }
-.menu-grid { display: grid; gap: 20px; }
-.menu-item { background: rgba(30, 30, 30, 0.6); padding: 20px 24px; border-radius: 8px; border-left: 3px solid transparent; transition: all 0.3s ease; -webkit-tap-highlight-color: rgba(212, 175, 55, 0.1); }
-.menu-item:hover, .menu-item:active { background: rgba(40, 40, 40, 0.8); border-left-color: #d4af37; transform: translateX(5px); }
-.item-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
-.item-name { font-size: 16px; font-weight: 500; color: #f5f5f5; letter-spacing: 0.5px; display: flex; align-items: center; gap: 8px; }
-.item-price { font-size: 17px; font-weight: 600; color: #d4af37; margin-left: 15px; white-space: nowrap; }
-.item-description { font-size: 13px; color: #aaa; line-height: 1.5; font-weight: 300; }
-.veg-dot { display: inline-block; width: 13px; height: 13px; border: 1.5px solid #2ecc71; border-radius: 2px; position: relative; flex-shrink: 0; }
-.veg-dot::after { content: ''; position: absolute; top: 2px; left: 2px; width: 5px; height: 5px; background: #2ecc71; border-radius: 50%; }
-.nonveg-dot { display: inline-block; width: 13px; height: 13px; border: 1.5px solid #e74c3c; border-radius: 2px; position: relative; flex-shrink: 0; }
-.nonveg-dot::after { content: ''; position: absolute; top: 2px; left: 2px; width: 5px; height: 5px; background: #e74c3c; border-radius: 50%; }
-.addon-note { font-size: 12px; color: #d4af37; font-weight: 500; font-style: italic; margin-top: 6px; }
-footer { text-align: center; padding: 30px 20px; background: rgba(0, 0, 0, 0.5); border-top: 1px solid #333; font-size: 13px; color: #888; font-weight: 300; }
-@media (max-width: 768px) {
-    header { padding: 30px 15px 15px; }
-    header h1 { font-size: 28px; letter-spacing: 1.5px; }
-    header p { font-size: 13px; letter-spacing: 0.5px; }
-    .tab-button { min-width: 95px; padding: 14px 8px; font-size: 9px; letter-spacing: 0.3px; }
-    .menu-container { padding: 25px 15px 40px; }
-    .section-header h2 { font-size: 24px; }
-    .subsection { margin-bottom: 40px; }
-    .subsection-title { font-size: 18px; margin-bottom: 16px; }
-    .menu-grid { gap: 15px; }
-    .menu-item { padding: 16px 18px; }
-    .item-header { flex-direction: column; align-items: flex-start; gap: 6px; }
-    .item-name { font-size: 15px; }
-    .item-price { font-size: 16px; margin-left: 0; }
-    .item-description { font-size: 12px; }
+:root {
+  --brown:       #6b4226;
+  --brown-mid:   #8a5a38;
+  --brown-light: #b8835a;
+  --brown-pale:  #d4a97a;
+  --brown-dim:   rgba(107,66,38,0.08);
+  --brown-border:rgba(107,66,38,0.18);
+  --brown-border2:rgba(107,66,38,0.35);
+  --bg-page:     #faf7f4;
+  --bg2:         #ffffff;
+  --surface:     #f5f0eb;
+  --surface2:    #ede5da;
+  --surface3:    #e3d5c5;
+  --text:        #2a1f16;
+  --text2:       #6b5a4a;
+  --text3:       #a8937e;
+  --border:      rgba(107,66,38,0.13);
+  --border2:     rgba(107,66,38,0.28);
+  --green:       #4a8c5c;
+  --radius:      12px;
+  --radius-sm:   9px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg-page);color:var(--text);min-height:100vh;overflow-x:hidden;}
+
+/* ── HEADER ── */
+.header{
+  background:var(--brown);
+  padding:34px 20px 24px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.header::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 80% 60% at 50% 100%, rgba(255,255,255,0.06) 0%, transparent 70%);
+  pointer-events:none;
+}
+.header h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(20px,5vw,34px);
+  font-weight:600;color:#fff;
+  letter-spacing:3px;margin-bottom:6px;
+}
+.header-sub{font-size:11px;color:rgba(255,255,255,0.55);letter-spacing:2px;text-transform:uppercase;font-weight:400;}
+.header-line{width:36px;height:1.5px;background:rgba(255,255,255,0.3);margin:12px auto 0;border-radius:2px;}
+
+/* ── STICKY TOP ── */
+.sticky-top{position:sticky;top:0;z-index:200;background:#fff;border-bottom:1px solid var(--border);box-shadow:0 1px 12px rgba(107,66,38,0.07);}
+
+/* ── SEARCH ── */
+.search-wrap{padding:12px 16px;position:relative;}
+.search-icon{position:absolute;left:28px;top:50%;transform:translateY(-50%);color:var(--text3);font-size:15px;pointer-events:none;}
+.search-box{
+  width:100%;background:var(--surface);
+  border:1.5px solid var(--border);border-radius:24px;
+  padding:10px 36px 10px 40px;
+  color:var(--text);font-size:13px;
+  font-family:'DM Sans',sans-serif;outline:none;
+  transition:border 0.2s,background 0.2s;
+}
+.search-box::placeholder{color:var(--text3);}
+.search-box:focus{border-color:var(--brown-mid);background:#fff;}
+.search-clear{
+  position:absolute;right:28px;top:50%;transform:translateY(-50%);
+  background:var(--surface3);border:none;color:var(--text2);
+  width:20px;height:20px;border-radius:50%;font-size:11px;
+  cursor:pointer;display:none;align-items:center;justify-content:center;
+}
+
+/* ── NAV ── */
+.nav-scroll{display:flex;gap:6px;padding:0 16px 12px;overflow-x:auto;scrollbar-width:none;}
+.nav-scroll::-webkit-scrollbar{display:none;}
+.nav-btn{
+  flex-shrink:0;padding:7px 15px;
+  border-radius:20px;border:1.5px solid var(--border);
+  background:transparent;color:var(--text2);
+  font-size:11px;font-weight:500;letter-spacing:0.5px;
+  text-transform:uppercase;cursor:pointer;
+  transition:all 0.2s;font-family:'DM Sans',sans-serif;
+  white-space:nowrap;display:flex;align-items:center;gap:5px;
+  -webkit-tap-highlight-color:transparent;
+}
+.nav-btn:hover{border-color:var(--brown-mid);color:var(--brown);}
+.nav-btn.active{background:var(--brown);border-color:var(--brown);color:#fff;font-weight:600;}
+.nav-btn .n-emoji{font-size:13px;line-height:1;}
+
+/* ── CONTENT ── */
+.content{padding:0 0 60px;}
+
+/* ── SECTION HEAD ── */
+.section-head{padding:22px 18px 4px;display:flex;align-items:baseline;gap:10px;}
+.section-head h2{font-family:'Playfair Display',serif;font-size:22px;font-weight:600;color:var(--brown);}
+.section-head .item-count{font-size:11px;color:var(--text3);letter-spacing:0.5px;}
+
+/* ── SUBSECTION LABEL ── */
+.subsec-label{
+  font-size:9.5px;font-weight:500;letter-spacing:1.8px;
+  text-transform:uppercase;color:var(--text3);
+  padding:14px 18px 8px;
+  display:flex;align-items:center;gap:10px;
+}
+.subsec-label::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* ── ITEMS ── */
+.items-list{padding:0 12px;display:flex;flex-direction:column;gap:3px;}
+.item-card{
+  background:#fff;border:1.5px solid var(--border);
+  border-radius:var(--radius-sm);padding:13px 15px;
+  cursor:pointer;transition:all 0.15s;
+  position:relative;overflow:hidden;
+  -webkit-tap-highlight-color:transparent;
+  user-select:none;
+}
+.item-card::after{
+  content:'';position:absolute;
+  left:0;top:12%;bottom:12%;width:3px;
+  background:transparent;border-radius:0 2px 2px 0;
+  transition:background 0.15s;
+}
+.item-card:hover{border-color:var(--border2);background:var(--surface);}
+.item-card.expanded{border-color:var(--brown-border2);background:var(--surface);}
+.item-card.expanded::after{background:var(--brown);}
+.item-row{display:flex;justify-content:space-between;align-items:center;gap:12px;}
+.item-left{display:flex;align-items:center;gap:9px;flex:1;min-width:0;}
+.veg-dot{width:11px;height:11px;flex-shrink:0;border:1.5px solid var(--green);border-radius:2px;position:relative;}
+.veg-dot::after{content:'';position:absolute;top:1.5px;left:1.5px;width:5px;height:5px;background:var(--green);border-radius:50%;}
+.item-name{font-size:13.5px;font-weight:400;color:var(--text);line-height:1.3;}
+.item-right{display:flex;align-items:center;gap:9px;flex-shrink:0;}
+.item-price{font-size:14px;font-weight:600;color:var(--brown);}
+.chevron{color:var(--text3);font-size:9px;transition:transform 0.25s;display:inline-block;}
+.item-card.expanded .chevron{transform:rotate(180deg);}
+.item-desc{
+  font-size:12.5px;color:var(--text2);line-height:1.65;
+  margin-top:10px;padding-top:10px;
+  border-top:1px solid var(--border);
+  display:none;animation:fd 0.2s ease;
+}
+.item-card.expanded .item-desc{display:block;}
+@keyframes fd{from{opacity:0;transform:translateY(-4px);}to{opacity:1;transform:translateY(0);}}
+.addon-pill{
+  display:inline-flex;align-items:center;gap:4px;
+  margin-top:8px;font-size:11px;color:var(--brown);
+  background:var(--brown-dim);border:1px solid var(--brown-border);
+  border-radius:20px;padding:3px 10px;font-weight:500;
+}
+
+/* ── SEARCH RESULTS ── */
+.search-result-header{padding:14px 18px 4px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text3);font-weight:500;}
+.search-result-category{font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:var(--brown);opacity:0.8;padding:12px 18px 6px;}
+.no-results{padding:50px 20px;text-align:center;color:var(--text3);font-size:13px;line-height:1.8;}
+.no-results span{font-size:28px;display:block;margin-bottom:10px;}
+mark{background:rgba(107,66,38,0.12);color:var(--brown);border-radius:3px;padding:0 2px;}
+
+/* ── GAPS ── */
+.gap{height:14px;}
+.gap-lg{height:20px;}
+
+/* ── FOOTER ── */
+footer{
+  text-align:center;padding:28px 20px;
+  border-top:1px solid var(--border);
+  font-size:12px;color:var(--text3);font-weight:300;
+  background:#fff;
+}
+footer strong{color:var(--brown);font-weight:500;}
+
+/* ── MOBILE ── */
+.swipe-hint{
+  font-size:11px;font-weight:500;letter-spacing:0.4px;
+  text-align:center;padding:6px 16px 4px;display:none;
+  color:var(--brown);
+  background:linear-gradient(90deg,transparent,rgba(107,66,38,0.07),transparent);
+  border-top:1px solid var(--border);
+  animation:swipePulse 2.5s ease-in-out infinite;
+}
+.swipe-hint::before{content:'⟵ ';}
+.swipe-hint::after{content:' ⟶';}
+@keyframes swipePulse{
+  0%,100%{opacity:0.6;}
+  50%{opacity:1;}
+}
+@media(max-width:600px){
+  .swipe-hint{display:block;}
+  .item-name{font-size:13px;}
+}
+@media(max-width:400px){
+  .header h1{letter-spacing:1px;}
+  .items-list{padding:0 8px;}
+  .item-card{padding:12px 12px;}
 }
 </style>
 </head>
-    
 <body>
 
-<header>
-<h1>KAVA THE CAFFEINE HOUSE</h1>
-<p>Premium Vegetarian Cuisine • Crafted with Passion</p>
+<header class="header">
+  <h1>KAVA THE CAFFEINE HOUSE</h1>
+  
+  <div class="header-line"></div>
 </header>
 
-<div class="nav-container">
-<nav class="nav-tabs">
-<button class="tab-button active" onclick="showSection('coffee', this)">Coffee</button>
-<button class="tab-button" onclick="showSection('coldbrew', this)">Cold Brew</button>
-<button class="tab-button" onclick="showSection('matcha', this)">Matcha</button>
-<button class="tab-button" onclick="showSection('shakes', this)">Shakes</button>
-<button class="tab-button" onclick="showSection('refreshers', this)">Refreshers</button>
-<button class="tab-button" onclick="showSection('hotchoc', this)">Hot Choc</button>
-<button class="tab-button" onclick="showSection('starters', this)">Starters</button>
-<button class="tab-button" onclick="showSection('soups', this)">Soups</button>
-<button class="tab-button" onclick="showSection('salads', this)">Salads</button>
-<button class="tab-button" onclick="showSection('bowls', this)">Bowls</button>
-<button class="tab-button" onclick="showSection('pasta', this)">Pasta</button>
-<button class="tab-button" onclick="showSection('pizza', this)">Pizza</button>
-<button class="tab-button" onclick="showSection('sandwich', this)">Sandwich</button>
-<button class="tab-button" onclick="showSection('asian', this)">Asian</button>
-</nav>
+<div class="sticky-top">
+  <div class="search-wrap">
+    <span class="search-icon">&#9906;</span>
+    <input class="search-box" id="searchInput" placeholder="Search anything on the menu…" oninput="handleSearch(this.value)" />
+    <button class="search-clear" id="clearBtn" onclick="clearSearch()">&#10005;</button>
+  </div>
+  <p class="swipe-hint">Swipe to explore categories ›</p>
+  <div class="nav-scroll" id="navScroll"></div>
 </div>
 
-<div class="menu-container">
+<div class="content" id="content"></div>
 
-<!-- ===== COFFEE ===== -->
-<section id="coffee" class="menu-section active">
-<div class="section-header">
-<h2>Coffee Bar</h2>
-<p>Expertly crafted coffee experiences</p>
-</div>
-
-<div class="subsection">
-<h3 class="subsection-title">Brewed &amp; Black</h3>
-<div class="menu-grid">
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Espresso</span><span class="item-price">₹149</span></div><p class="item-description">Pure, concentrated coffee excellence</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Americano</span><span class="item-price">₹169</span></div><p class="item-description">Espresso with hot water for a smooth finish</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Iced Espresso</span><span class="item-price">₹169</span></div><p class="item-description">Chilled espresso shot over ice</p></div>
-</div>
-</div>
-
-<div class="subsection">
-<h3 class="subsection-title">Slow Bar</h3>
-<div class="menu-grid">
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>V60 Pourover (Hot / Iced)</span><span class="item-price">₹279</span></div><p class="item-description">Precision brewed pour over coffee</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Aeropress (Hot / Iced)</span><span class="item-price">₹279</span></div><p class="item-description">Smooth, rich aeropress brew</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>French Press</span><span class="item-price">₹279</span></div><p class="item-description">Full-bodied traditional French press</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Vietnamese Filter</span><span class="item-price">₹239</span></div><p class="item-description">Traditional Vietnamese drip coffee</p></div>
-</div>
-</div>
-
-<div class="subsection">
-<h3 class="subsection-title">Hot White Rituals</h3>
-<div class="menu-grid">
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Cortado</span><span class="item-price">₹219</span></div><p class="item-description">Espresso balanced with warm milk</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Flat White</span><span class="item-price">₹219</span></div><p class="item-description">Velvety microfoam with rich espresso</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Cappuccino</span><span class="item-price">₹229</span></div><p class="item-description">Classic Italian coffee with foam</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Latte</span><span class="item-price">₹229</span></div><p class="item-description">Smooth espresso with steamed milk</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Mocardo</span><span class="item-price">₹239</span></div><p class="item-description">Espresso with a hint of chocolate</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Mocha</span><span class="item-price">₹239</span></div><p class="item-description">Rich chocolate with espresso and milk</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Mint Mocha</span><span class="item-price">₹319</span></div><p class="item-description">Refreshing mint with rich chocolate espresso</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Sea Salt Mocha</span><span class="item-price">₹329</span></div><p class="item-description">Chocolate espresso with a delicate sea salt finish</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>French Vanilla Latte</span><span class="item-price">₹259</span></div><p class="item-description">Smooth vanilla infused latte</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Sea Salt Latte</span><span class="item-price">₹259</span></div><p class="item-description">Smooth latte with a delicate sea salt finish</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Honey Spiced Latte</span><span class="item-price">₹329</span></div><p class="item-description">Aromatic spices with natural honey sweetness</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Salted Caramel Latte</span><span class="item-price">₹299</span></div><p class="item-description">Sweet caramel latte with a pinch of sea salt</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Biscoff Latte</span><span class="item-price">₹319</span></div><p class="item-description">Cookie butter blended into a warming latte</p></div>
-</div>
-</div>
-
-<div class="subsection">
-<h3 class="subsection-title">Froth on Ice</h3>
-<div class="menu-grid">
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Iced Americano</span><span class="item-price">₹179</span></div><p class="item-description">Cold espresso with water over ice</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Iced Cortado</span><span class="item-price">₹229</span></div><p class="item-description">Cold espresso with perfect milk balance</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Iced Latte</span><span class="item-price">₹259</span></div><p class="item-description">Smooth espresso with cold milk over ice</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Iced Caramel Latte</span><span class="item-price">₹299</span></div><p class="item-description">Sweet caramel with espresso and cold milk</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Iced Mocha</span><span class="item-price">₹289</span></div><p class="item-description">Chocolate and espresso chilled to perfection</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Iced Caramelized Jaggery Latte</span><span class="item-price">₹299</span></div><p class="item-description">Traditional jaggery sweetness meets modern cold brew</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Iced Kava Special</span><span class="item-price">₹239</span></div><p class="item-description">Our signature iced coffee creation</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Espresso Tonic</span><span class="item-price">₹299</span></div><p class="item-description">Bold espresso over sparkling tonic water</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Espresso Ginger Ale</span><span class="item-price">₹299</span></div><p class="item-description">Espresso with spicy ginger ale sparkle</p></div>
-</div>
-</div>
-
-<div class="subsection">
-<h3 class="subsection-title">The Barista's Canvas</h3>
-<div class="menu-grid">
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Passion Legacy</span><span class="item-price">₹319</span></div><p class="item-description">Our signature passionfruit creation</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Coolberg Caffeinated</span><span class="item-price">₹319</span></div><p class="item-description">Non-alcoholic craft beer with a coffee twist</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Lime-Lite</span><span class="item-price">₹299</span></div><p class="item-description">Sparkling lime refreshment</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Modern Mojo</span><span class="item-price">₹379</span></div><p class="item-description">Contemporary twist on classic flavors</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Salted Caramel Paloma</span><span class="item-price">₹339</span></div><p class="item-description">Sweet and salty citrus delight</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Salted Cheese Vietnamese</span><span class="item-price">₹299</span></div><p class="item-description">Salted cheese foam on Vietnamese-style cold coffee</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Salted Coconut Vietnamese</span><span class="item-price">₹299</span></div><p class="item-description">Salted coconut cream on Vietnamese-style cold coffee</p></div>
-</div>
-</div>
-</section>
-
-<!-- ===== COLD BREW SIGNATURES ===== -->
-<section id="coldbrew" class="menu-section">
-<div class="section-header">
-<h2>Cold Brew Signatures</h2>
-<p>Slow-steeped, smooth, and crafted to perfection</p>
-</div>
-<div class="menu-grid">
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Classic Cold Brew Melody</span><span class="item-price">₹260</span></div><p class="item-description">Our signature slow-steeped cold brew, smooth and rich {Flavour profile - dark chocolate, nuts, caramel}</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Classic Cold Brew Whiskey Barrel</span><span class="item-price">₹299</span></div><p class="item-description">Cold brew aged with whiskey barrel notes for a bold, smoky finish</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Cold Brew Tonic</span><span class="item-price">₹299</span></div><p class="item-description">Smooth cold brew over sparkling tonic water</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Cold Brew Ginger Ale</span><span class="item-price">₹299</span></div><p class="item-description">Cold brew with a spicy ginger ale sparkle</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Pankaj's Citrus Fire</span><span class="item-price">₹299</span></div><p class="item-description">A fiery citrus-forward cold brew creation by our barista</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Cold Brew Mojito</span><span class="item-price">₹319</span></div><p class="item-description">Cold brew with fresh mint, lime, and a sparkling twist</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Berry Eclipse</span><span class="item-price">₹310</span></div><p class="item-description">Cold brew with a luscious mixed berry blend</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Cold Brew with Orange Juice</span><span class="item-price">₹299</span></div><p class="item-description">A zesty splash of orange layered over chilled cold brew and tonic fizz. Light, crisp, and energizing.</p></div>
-</div>
-<div style="margin-top: 24px; padding: 16px 20px; background: rgba(212,175,55,0.07); border-left: 3px solid #d4af37; border-radius: 6px;">
-<p style="font-size: 13px; color: #d4af37; font-weight: 500; letter-spacing: 0.5px;">✦ Add-On: Whiskey Barrel &nbsp;+₹55</p>
-</div>
-</section>
-
-<!-- ===== MATCHA ===== -->
-<section id="matcha" class="menu-section">
-<div class="section-header">
-<h2>The Green Chalice</h2>
-<p>Premium ceremonial grade matcha creations</p>
-</div>
-<div class="menu-grid">
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Matcha Latte</span><span class="item-price">₹349</span></div><p class="item-description">Ceremonial grade Japanese matcha with steamed milk</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Iced Matcha Latte</span><span class="item-price">₹369</span></div><p class="item-description">Chilled ceremonial matcha perfection</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Coconut Cloud Matcha</span><span class="item-price">₹389</span></div><p class="item-description">Matcha with creamy coconut milk foam</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Blueberry Coconut Matcha</span><span class="item-price">₹389</span></div><p class="item-description">Berry sweetness meets tropical matcha</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Orange Matcha Tonic</span><span class="item-price">₹379</span></div><p class="item-description">Refreshing citrus with sparkling matcha</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Strawberry Matcha Latte</span><span class="item-price">₹379</span></div><p class="item-description">Sweet strawberries with earthy matcha</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Lemonade Iced Matcha</span><span class="item-price">₹369</span></div><p class="item-description">Zesty lemon meets vibrant green tea</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Passionfruit Matcha Spritzer</span><span class="item-price">₹389</span></div><p class="item-description">Tropical passionfruit with sparkling matcha</p></div>
-</div>
-</section>
-
-<!-- ===== SHAKES ===== -->
-<section id="shakes" class="menu-section">
-<div class="section-header">
-<h2>Shakes &amp; Frappes</h2>
-<p>Indulgent blended creations</p>
-</div>
-
-<div class="subsection">
-<h3 class="subsection-title">The Frappe Bar</h3>
-<div class="menu-grid">
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Classic Frappe</span><span class="item-price">₹249</span></div><p class="item-description">Traditional iced coffee frappe</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Caramelized Frappe</span><span class="item-price">₹279</span></div><p class="item-description">Rich caramel blended with coffee</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Hazelnut Frappe</span><span class="item-price">₹289</span></div><p class="item-description">Nutty hazelnut meets iced coffee</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Espresso Brownie Frappe</span><span class="item-price">₹390</span></div><p class="item-description">Decadent brownie blended with espresso</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Spiced Frappe</span><span class="item-price">₹269</span></div><p class="item-description">Warm spices in chilled coffee</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Mocha Frappe</span><span class="item-price">₹299</span></div><p class="item-description">Chocolate and coffee blended over ice</p></div>
-</div>
-</div>
-
-<div class="subsection">
-<h3 class="subsection-title">The Creamy Canvas</h3>
-<div class="menu-grid">
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Biscoff Cheesecake Shake</span><span class="item-price">₹329</span></div><p class="item-description">Cookie butter blended with cheesecake goodness</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Oreo Cookie Crumble Shake</span><span class="item-price">₹299</span></div><p class="item-description">Classic cookies and cream perfection</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Nutella Cheesecake Shake</span><span class="item-price">₹349</span></div><p class="item-description">Hazelnut chocolate meets creamy cheesecake</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Choco Brownie Shake</span><span class="item-price">₹380</span></div><p class="item-description">Rich chocolate brownies blended to perfection</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Blueberry Cheesecake Shake</span><span class="item-price">₹329</span></div><p class="item-description">Fresh blueberries with creamy cheesecake</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Ferrero Rocher Shake</span><span class="item-price">₹369</span></div><p class="item-description">Luxurious hazelnut chocolate indulgence</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Double Chocolate Shake</span><span class="item-price">₹299</span></div><p class="item-description">Double the chocolate, double the bliss</p></div>
-</div>
-</div>
-</section>
-
-<!-- ===== REFRESHERS ===== -->
-<section id="refreshers" class="menu-section">
-<div class="section-header">
-<h2>The Chill Bar</h2>
-<p>Refreshing mocktails and iced teas</p>
-</div>
-<div class="menu-grid">
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Classic Mint Mojito</span><span class="item-price">₹249</span></div><p class="item-description">Fresh mint, lime, and sparkling soda</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Cranberry Mojito</span><span class="item-price">₹279</span></div><p class="item-description">Tart cranberry with mint and lime</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Virgin Sangria</span><span class="item-price">₹309</span></div><p class="item-description">Mixed fruit mocktail with sparkling notes</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Kimazzo</span><span class="item-price">₹299</span></div><p class="item-description">Refreshing specialty blend</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Berry Spritzer</span><span class="item-price">₹299</span></div><p class="item-description">Mixed berries with sparkling water</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Lemon Iced Tea</span><span class="item-price">₹279</span></div><p class="item-description">Classic citrus refreshment</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Peach Iced Tea</span><span class="item-price">₹289</span></div><p class="item-description">Sweet peach infused iced tea</p></div>
-</div>
-</section>
-
-<!-- ===== HOT CHOCOLATE ===== -->
-<section id="hotchoc" class="menu-section">
-<div class="section-header">
-<h2>Sweet Winter Sips</h2>
-<p>Warm, indulgent chocolate beverages</p>
-</div>
-<div class="menu-grid">
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Classic Hot Chocolate</span><span class="item-price">₹269</span></div><p class="item-description">Rich, velvety classic hot chocolate</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Hazelnut Hot Chocolate</span><span class="item-price">₹319</span></div><p class="item-description">Creamy hot chocolate with hazelnut indulgence</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Strawberry Hot Chocolate</span><span class="item-price">₹319</span></div><p class="item-description">Fruity strawberry warmth in velvety chocolate</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Coconut Hot Chocolate</span><span class="item-price">₹299</span></div><p class="item-description">Tropical coconut notes in warm chocolate</p></div>
-</div>
-</section>
-
-<!-- ===== STARTERS ===== -->
-<section id="starters" class="menu-section">
-<div class="section-header">
-<h2>Starters &amp; Small Plates</h2>
-<p>Perfect beginnings to your culinary journey</p>
-</div>
-<div class="menu-grid">
-
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Classic Tomato Bruschetta</span><span class="item-price">₹379</span></div><p class="item-description">Vine-ripened tomatoes, basil pesto on toasted ciabatta</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Peach &amp; Cream Cheese Bruschetta</span><span class="item-price">₹389</span></div><p class="item-description">Sweet peaches with whipped cream cheese on grilled bread</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Peri Peri Cottage Cheese</span><span class="item-price">₹329</span></div><p class="item-description">Spiced cottage cheese cubes with African peri peri marinade</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Classic Hummus Platter</span><span class="item-price">₹419</span></div><p class="item-description">Creamy chickpea hummus served with warm pita bread</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Vegetable Masa Harina Tacos</span><span class="item-price">₹429</span></div><p class="item-description">Authentic Mexican-style tacos with seasoned vegetables</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Vietnamese Rice Paper Rolls</span><span class="item-price">₹399</span></div><p class="item-description">Fresh vegetables wrapped in delicate rice paper with dipping sauce</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Cheese Garlic Bread</span><span class="item-price">₹399</span></div><p class="item-description">Toasted garlic bread loaded with melted cheese</p></div>
-</div>
-</section>
-
-<!-- ===== SOUPS ===== -->
-<section id="soups" class="menu-section">
-<div class="section-header">
-<h2>Soups &amp; Broths</h2>
-<p>Warm, comforting, and nourishing</p>
-</div>
-<div class="menu-grid">
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Creamy Broccoli Soup</span><span class="item-price">₹229</span></div><p class="item-description">Velvety broccoli soup with a hint of cream and herbs</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Potato &amp; Leek Soup</span><span class="item-price">₹199</span></div><p class="item-description">Classic French-inspired soup with tender potatoes and leeks</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Mushroom Cappuccino</span><span class="item-price">₹199</span></div><p class="item-description">Frothy mushroom essence topped with micro herbs</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Roasted Pumpkin Soup</span><span class="item-price">₹199</span></div><p class="item-description">Autumn-inspired roasted pumpkin with aromatic spices</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Sweet Corn Velouté</span><span class="item-price">₹199</span></div><p class="item-description">Silky sweet corn soup with a touch of butter</p></div>
-</div>
-</section>
-
-<!-- ===== SALADS ===== -->
-<section id="salads" class="menu-section">
-<div class="section-header">
-<h2>Fresh Salads</h2>
-<p>Crisp, vibrant, and wholesome</p>
-</div>
-<div class="menu-grid">
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Mandarin Iceberg Salad</span><span class="item-price">₹339</span></div><p class="item-description">Crisp iceberg lettuce with mandarin segments and citrus dressing</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Caprese Cottage Salad</span><span class="item-price">₹439</span></div><p class="item-description">Italian-style cottage cheese with tomatoes, basil, and balsamic</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Som Tam (Thai Papaya Salad)</span><span class="item-price">₹349</span></div><p class="item-description">Shredded green papaya with Thai herbs and tangy lime dressing</p></div>
-</div>
-</section>
-
-<!-- ===== BOWLS ===== -->
-<section id="bowls" class="menu-section">
-<div class="section-header">
-<h2>Signature Bowls</h2>
-<p>Global flavors in a bowl</p>
-</div>
-<div class="menu-grid">
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Italian Herb Rice Bowl</span><span class="item-price">₹525</span></div><p class="item-description">Herb-infused rice with romesco sauce and Mediterranean vegetables</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Mexican Fiesta Bowl</span><span class="item-price">₹549</span></div><p class="item-description">Spiced kidney beans, rice, salsa, and Mexican condiments</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Bangkok Red Curry Bowl</span><span class="item-price">₹449</span></div><p class="item-description">Aromatic Thai red curry with jasmine rice and vegetables</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Thai Green Curry Bowl</span><span class="item-price">₹449</span></div><p class="item-description">Fragrant green curry with coconut milk, bamboo shoots, and basil</p></div>
-</div>
-</section>
-
-<!-- ===== PASTA ===== -->
-<section id="pasta" class="menu-section">
-<div class="section-header">
-<h2>Artisan Pasta</h2>
-<p>Handcrafted Italian classics</p>
-</div>
-<div class="menu-grid">
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Aglio Olio Classic</span><span class="item-price">₹369</span></div><p class="item-description">Traditional garlic and olive oil pasta with red chili flakes</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Caramelised Onion Cream Pasta</span><span class="item-price">₹499</span></div><p class="item-description">Sweet caramelised onions in a silky cream sauce</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Three Cheese Comfort Pasta</span><span class="item-price">₹469</span></div><p class="item-description">Indulgent blend of three premium cheeses in creamy sauce</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Pesto Verde Italiano</span><span class="item-price">₹519</span></div><p class="item-description">Fresh basil pesto with pine nuts and parmesan</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Arrabbiata Rosso</span><span class="item-price">₹489</span></div><p class="item-description">Spicy tomato sauce with garlic and red chilies</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Béchamel Mornay Pasta</span><span class="item-price">₹539</span></div><p class="item-description">Classic French white sauce with gruyere cheese</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Fresh Ravioli – Chef's Signature</span><span class="item-price">₹599</span></div><p class="item-description">House-made ravioli with seasonal fillings and signature sauce</p></div>
-</div>
-</section>
-
-<!-- ===== PIZZA ===== -->
-<section id="pizza" class="menu-section">
-<div class="section-header">
-<h2>Wood-Fired Pizza</h2>
-<p>Artisan pizzas baked to perfection</p>
-</div>
-<div class="menu-grid">
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>The OG Margherita</span><span class="item-price">₹549</span></div><p class="item-description">Classic tomato sauce, mozzarella, fresh basil</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Onion &amp; Capsicum</span><span class="item-price">₹549</span></div><p class="item-description">Caramelised onions and crisp capsicum on tomato base</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Olive &amp; Jalapeño</span><span class="item-price">₹589</span></div><p class="item-description">Briny olives and spicy jalapeños on a classic base</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Paneer Tikka Pizza</span><span class="item-price">₹599</span></div><p class="item-description">Tandoori-spiced paneer with tikka sauce and mozzarella</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Palak Paneer Pizza</span><span class="item-price">₹599</span></div><p class="item-description">Creamy spinach sauce with paneer and cheese</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Truffle Funghi</span><span class="item-price">₹659</span></div><p class="item-description">Wild mushrooms with truffle oil and parmesan shavings</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Burrata Caprese Pizza</span><span class="item-price">₹549</span></div><p class="item-description">Pesto sauce, cherry tomato, fresh burrata</p></div>
-</div>
-</section>
-
-<!-- ===== SANDWICH ===== -->
-<section id="sandwich" class="menu-section">
-<div class="section-header">
-<h2>Artisan Sandwiches</h2>
-<p>Toasted, grilled, and loaded with goodness</p>
-</div>
-<div class="menu-grid">
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Charcoal Grilled Sandwich</span><span class="item-price">₹485</span></div><p class="item-description">Smoky charcoal-grilled sandwich with fresh fillings</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Paneer Corn Sandwich</span><span class="item-price">₹475</span></div><p class="item-description">Soft paneer and sweet corn in a toasted sandwich</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Chilli Paneer Sandwich</span><span class="item-price">₹485</span></div><p class="item-description">Indo-Chinese chilli paneer in a grilled sandwich</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Mushroom Cheese Sandwich</span><span class="item-price">₹445</span></div><p class="item-description">Sautéed mushrooms with melted cheese on toasted bread</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Pesto Sandwich</span><span class="item-price">₹485</span></div><p class="item-description">Fresh basil pesto with seasonal vegetables and mozzarella</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Loaded Veg Grill Sandwich</span><span class="item-price">₹485</span></div><p class="item-description">Garden vegetables piled high and grilled to perfection</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Paneer Tikka Sandwich</span><span class="item-price">₹495</span></div><p class="item-description">Tandoori-spiced paneer tikka in toasted bread</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Veg Loaded Sandwich</span><span class="item-price">₹489</span></div><p class="item-description">Stacked with fresh vegetables and house sauces</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Veg Cheese Sandwich</span><span class="item-price">₹449</span></div><p class="item-description">Classic cheese and vegetables on toasted bread</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Avocado Sandwich</span><span class="item-price">₹489</span></div><p class="item-description">Fresh avocado spread with seasonal toppings</p></div>
-</div>
-</section>
-
-<!-- ===== ASIAN FLAVOURS ===== -->
-<section id="asian" class="menu-section">
-<div class="section-header">
-<h2>Asian Flavours</h2>
-<p>Bold, aromatic dishes from across Asia</p>
-</div>
-<div class="menu-grid">
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Hakka Noodles</span><span class="item-price">₹485</span></div><p class="item-description">Stir-fried Hakka noodles with vegetables in Asian sauces</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Chilli Garlic Noodles</span><span class="item-price">₹485</span></div><p class="item-description">Spicy garlic-tossed noodles with fresh chillies</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Kung Pao Paneer Rice</span><span class="item-price">₹499</span></div><p class="item-description">Wok-tossed paneer with spicy kung pao sauce and rice</p></div>
-<div class="menu-item"><div class="item-header"><span class="item-name"><span class="veg-dot"></span>Kung Pao Paneer Noodles</span><span class="item-price">₹499</span></div><p class="item-description">Wok-tossed paneer with spicy kung pao sauce and noodles</p></div>
-</div>
-</section>
-
-</div>
-
-<footer>© 2026 Kava The Caffeine House </footer>
+<footer>&#169; 2026 <strong>Kava The Caffeine House</strong> &nbsp;·&nbsp; Crafted with care, served with love</footer>
 
 <script>
-function showSection(sectionId, btn) {
-    document.querySelectorAll('.menu-section').forEach(s => s.classList.remove('active'));
-    document.querySelectorAll('.tab-button').forEach(t => t.classList.remove('active'));
-    document.getElementById(sectionId).classList.add('active');
-    btn.classList.add('active');
-    window.scrollTo({ top: 0, behavior: window.innerWidth <= 768 ? 'smooth' : 'auto' });
-}
-let lastTouchEnd = 0;
-document.addEventListener('touchend', function (event) {
-    const now = (new Date()).getTime();
-    if (now - lastTouchEnd <= 300) { event.preventDefault(); }
-    lastTouchEnd = now;
-}, false);
-</script>
+const MENU = {
+  coffee:{label:'Coffee',emoji:'☕',subsections:{
+    'Brewed & Black':[
+      {name:'Espresso',price:149,desc:'Pure, concentrated coffee excellence — a single or double shot of perfectly extracted espresso.'},
+      {name:'Americano',price:169,desc:'Espresso with hot water for a smooth, lingering finish.'},
+      {name:'Iced Espresso',price:169,desc:'Chilled espresso shot poured over ice — bold and clean.'}
+    ],
+    'Slow Bar':[
+      {name:'V60 Pourover (Hot / Iced)',price:279,desc:'Precision brewed pour over coffee, highlighting the unique character of each bean.'},
+      {name:'Aeropress (Hot / Iced)',price:279,desc:'Smooth, rich aeropress brew — full flavor with low acidity.'},
+      {name:'French Press',price:279,desc:'Full-bodied traditional French press with rich, immersive texture.'},
+      {name:'Vietnamese Filter',price:239,desc:'Traditional Vietnamese drip coffee — strong, slow, and deeply satisfying.'}
+    ],
+    'Hot White Rituals':[
+      {name:'Cortado',price:219,desc:'Espresso balanced with an equal part of warm, velvety milk.'},
+      {name:'Flat White',price:219,desc:'Velvety microfoam poured over rich espresso — silky and precise.'},
+      {name:'Cappuccino',price:229,desc:'Classic Italian coffee with perfectly layered foam.'},
+      {name:'Latte',price:229,desc:'Smooth espresso topped with steamed milk and a light froth.'},
+      {name:'Mocardo',price:239,desc:'Espresso with a subtle, elegant hint of chocolate.'},
+      {name:'Mocha',price:239,desc:'Rich chocolate with espresso and steamed milk — indulgent and warming.'},
+      {name:'Mint Mocha',price:319,desc:'Refreshing mint layered with rich chocolate espresso.'},
+      {name:'Sea Salt Mocha',price:329,desc:'Chocolate espresso with a delicate sea salt finish that elevates every sip.'},
+      {name:'French Vanilla Latte',price:259,desc:'Smooth, aromatic vanilla infused throughout a classic latte.'},
+      {name:'Sea Salt Latte',price:259,desc:'A smooth latte finished with a whisper of sea salt.'},
+      {name:'Honey Spiced Latte',price:329,desc:'Aromatic warming spices blended with natural honey sweetness.'},
+      {name:'Salted Caramel Latte',price:299,desc:'Sweet caramel latte kissed with a pinch of sea salt.'},
+      {name:'Biscoff Latte',price:319,desc:'Caramelised cookie butter blended into a comforting, warming latte.'}
+    ],
+    'Froth on Ice':[
+      {name:'Iced Americano',price:179,desc:'Cold espresso with water poured over ice — refreshing and sharp.'},
+      {name:'Iced Cortado',price:229,desc:'Cold espresso with a perfect cold milk balance over ice.'},
+      {name:'Iced Latte',price:259,desc:'Smooth espresso with cold milk poured over ice.'},
+      {name:'Iced Caramel Latte',price:299,desc:'Sweet caramel with espresso and cold milk over ice.'},
+      {name:'Iced Mocha',price:289,desc:'Chocolate and espresso chilled to perfection.'},
+      {name:'Iced Caramelized Jaggery Latte',price:299,desc:'Traditional jaggery sweetness meets modern cold coffee.'},
+      {name:'Iced Kava Special',price:239,desc:'Our signature iced coffee creation — a house favourite.'},
+      {name:'Espresso Tonic',price:299,desc:'Bold espresso floated over sparkling tonic water.'},
+      {name:'Espresso Ginger Ale',price:299,desc:'Espresso with a spicy ginger ale sparkle — surprisingly bright.'}
+    ],
+    "The Barista's Canvas":[
+      {name:'Passion Legacy',price:319,desc:'Our signature passionfruit and coffee creation.'},
+      {name:'Coolberg Caffeinated',price:319,desc:'Non-alcoholic craft beer with a coffee twist.'},
+      {name:'Lime-Lite',price:299,desc:'Sparkling lime refreshment — crisp and light.'},
+      {name:'Modern Mojo',price:379,desc:'A contemporary twist on classic café flavors.'},
+      {name:'Salted Caramel Paloma',price:339,desc:'Sweet and salty citrus delight — bold and complex.'},
+      {name:'Salted Cheese Vietnamese',price:299,desc:'Salted cheese foam crowned over Vietnamese-style cold coffee.'},
+      {name:'Salted Coconut Vietnamese',price:299,desc:'Salted coconut cream layered over Vietnamese-style cold coffee.'}
+    ]
+  }},
+  coldbrew:{label:'Cold Brew',emoji:'🧊',subsections:{
+    'Slow-Steeped Signatures':[
+      {name:'Classic Cold Brew Melody',price:260,desc:'Our signature slow-steeped cold brew — smooth and rich with notes of dark chocolate, nuts, and caramel.'},
+      {name:'Classic Cold Brew Whiskey Barrel',price:299,desc:'Cold brew aged with whiskey barrel notes for a bold, smoky finish.',addon:'Add Whiskey Barrel +₹55'},
+      {name:'Cold Brew Tonic',price:299,desc:'Smooth cold brew floated over sparkling tonic water.'},
+      {name:'Cold Brew Ginger Ale',price:299,desc:'Cold brew with a spicy ginger ale sparkle.'},
+      {name:"Pankaj's Citrus Fire",price:299,desc:'A fiery citrus-forward cold brew creation crafted by our head barista Pankaj.'},
+      {name:'Cold Brew Mojito',price:319,desc:'Cold brew with fresh mint, lime, and a sparkling twist.'},
+      {name:'Berry Eclipse',price:310,desc:'Cold brew with a luscious mixed berry blend — bright and fruity.'},
+      {name:'Cold Brew with Orange Juice',price:299,desc:'A zesty splash of orange layered over chilled cold brew and tonic fizz. Light, crisp, and energizing.'}
+    ]
+  }},
+  matcha:{label:'Matcha',emoji:'🍵',subsections:{
+    'The Green Chalice':[
+      {name:'Matcha Latte',price:349,desc:'Ceremonial grade Japanese matcha whisked with steamed milk — earthy and calming.'},
+      {name:'Iced Matcha Latte',price:369,desc:'Chilled ceremonial matcha with cold milk over ice.'},
+      {name:'Coconut Cloud Matcha',price:389,desc:'Matcha topped with a dreamy coconut milk foam.'},
+      {name:'Blueberry Coconut Matcha',price:389,desc:'Wild blueberry sweetness meets tropical coconut and earthy matcha.'},
+      {name:'Orange Matcha Tonic',price:379,desc:'Refreshing citrus with sparkling matcha tonic — bright and zingy.'},
+      {name:'Strawberry Matcha Latte',price:379,desc:'Sweet strawberries layered with earthy ceremonial matcha.'},
+      {name:'Lemonade Iced Matcha',price:369,desc:'Zesty lemonade meets vibrant green matcha over ice.'},
+      {name:'Passionfruit Matcha Spritzer',price:389,desc:'Tropical passionfruit with sparkling matcha — exotic and refreshing.'}
+    ]
+  }},
+  shakes:{label:'Shakes',emoji:'🥤',subsections:{
+    'The Frappe Bar':[
+      {name:'Classic Frappe',price:249,desc:'Traditional iced coffee frappe — smooth, cold, and energizing.'},
+      {name:'Caramelized Frappe',price:279,desc:'Rich caramel blended with coffee for a sweet, silky frappe.'},
+      {name:'Hazelnut Frappe',price:289,desc:'Nutty hazelnut meets iced coffee in a perfectly blended frappe.'},
+      {name:'Espresso Brownie Frappe',price:390,desc:'Decadent chocolate brownie blended with espresso.'},
+      {name:'Spiced Frappe',price:269,desc:'Warming spices chilled into a blended coffee frappe.'},
+      {name:'Mocha Frappe',price:299,desc:'Rich chocolate and coffee blended over ice.'}
+    ],
+    'The Creamy Canvas':[
+      {name:'Biscoff Cheesecake Shake',price:329,desc:'Caramelised cookie butter blended with creamy cheesecake goodness.'},
+      {name:'Oreo Cookie Crumble Shake',price:299,desc:'Classic cookies and cream shake — generously crumbled.'},
+      {name:'Nutella Cheesecake Shake',price:349,desc:'Hazelnut chocolate meets silky cheesecake in every sip.'},
+      {name:'Choco Brownie Shake',price:380,desc:'Rich chocolate brownies blended into a thick, indulgent shake.'},
+      {name:'Blueberry Cheesecake Shake',price:329,desc:'Fresh blueberries with creamy cheesecake — fruity and rich.'},
+      {name:'Ferrero Rocher Shake',price:369,desc:'Luxurious hazelnut chocolate — dessert in a glass.'},
+      {name:'Double Chocolate Shake',price:299,desc:'Double the chocolate, double the bliss.'}
+    ]
+  }},
+  refreshers:{label:'Refreshers',emoji:'🍋',subsections:{
+    'The Chill Bar':[
+      {name:'Classic Mint Mojito',price:249,desc:'Fresh mint, lime, and sparkling soda — the perfect cooler.'},
+      {name:'Cranberry Mojito',price:279,desc:'Tart cranberry with fresh mint and lime sparkle.'},
+      {name:'Virgin Sangria',price:309,desc:'Mixed fruit mocktail with sparkling notes and fruity depth.'},
+      {name:'Kimazzo',price:299,desc:'Our refreshing specialty house blend.'},
+      {name:'Berry Spritzer',price:299,desc:'Mixed berries with sparkling water — light and vibrant.'},
+      {name:'Lemon Iced Tea',price:279,desc:'Classic citrus iced tea — simple and refreshing.'},
+      {name:'Peach Iced Tea',price:289,desc:'Sweet, ripe peach infused into chilled tea.'}
+    ]
+  }},
+  hotchoc:{label:'Hot Choc',emoji:'🍫',subsections:{
+    'Sweet Winter Sips':[
+      {name:'Classic Hot Chocolate',price:269,desc:'Rich, velvety hot chocolate made with premium cocoa.'},
+      {name:'Hazelnut Hot Chocolate',price:319,desc:'Creamy hot chocolate swirled with hazelnut indulgence.'},
+      {name:'Strawberry Hot Chocolate',price:319,desc:'Fruity strawberry meets warm velvety chocolate.'},
+      {name:'Coconut Hot Chocolate',price:299,desc:'Tropical coconut notes in a warm, comforting chocolate.'}
+    ]
+  }},
+  starters:{label:'Starters',emoji:'🥗',subsections:{
+    'Small Plates':[
+      {name:'Classic Tomato Bruschetta',price:379,desc:'Vine-ripened tomatoes and fresh basil pesto on toasted ciabatta.'},
+      {name:'Peach & Cream Cheese Bruschetta',price:389,desc:'Sweet peaches with whipped cream cheese on grilled artisan bread.'},
+      {name:'Peri Peri Cottage Cheese',price:329,desc:'Spiced cottage cheese cubes with bold African peri peri marinade.'},
+      {name:'Classic Hummus Platter',price:419,desc:'Creamy chickpea hummus drizzled with olive oil, served with warm pita bread.'},
+      {name:'Vegetable Masa Harina Tacos',price:429,desc:'Authentic Mexican-style corn tacos with seasoned vegetables and condiments.'},
+      {name:'Vietnamese Rice Paper Rolls',price:399,desc:'Fresh garden vegetables wrapped in delicate rice paper with dipping sauce.'},
+      {name:'Cheese Garlic Bread',price:399,desc:'Toasted garlic bread loaded with generous melted cheese.'}
+    ]
+  }},
+  soups:{label:'Soups',emoji:'🍲',subsections:{
+    'Warm & Nourishing':[
+      {name:'Creamy Broccoli Soup',price:229,desc:'Velvety broccoli soup with a hint of cream and fresh herbs.'},
+      {name:'Potato & Leek Soup',price:199,desc:'Classic French-inspired soup with tender potatoes and sweet leeks.'},
+      {name:'Mushroom Cappuccino',price:199,desc:'Frothy mushroom essence topped with micro herbs — elegant and earthy.'},
+      {name:'Roasted Pumpkin Soup',price:199,desc:'Autumn-inspired roasted pumpkin with warm aromatic spices.'},
+      {name:'Sweet Corn Velouté',price:199,desc:'Silky sweet corn soup with a touch of butter — simple and comforting.'}
+    ]
+  }},
+  salads:{label:'Salads',emoji:'🥬',subsections:{
+    'Fresh & Vibrant':[
+      {name:'Mandarin Iceberg Salad',price:339,desc:'Crisp iceberg lettuce with mandarin segments and a bright citrus dressing.'},
+      {name:'Caprese Cottage Salad',price:439,desc:'Italian-style cottage cheese with vine tomatoes, fresh basil, and aged balsamic.'},
+      {name:'Som Tam (Thai Papaya Salad)',price:349,desc:'Shredded green papaya with Thai herbs, peanuts, and a tangy lime dressing.'}
+    ]
+  }},
+  bowls:{label:'Bowls',emoji:'🍜',subsections:{
+    'Global Flavors':[
+      {name:'Italian Herb Rice Bowl',price:525,desc:'Herb-infused rice with romesco sauce and roasted Mediterranean vegetables.'},
+      {name:'Mexican Fiesta Bowl',price:549,desc:'Spiced kidney beans, saffron rice, salsa, guacamole, and Mexican condiments.'},
+      {name:'Bangkok Red Curry Bowl',price:449,desc:'Aromatic Thai red curry with jasmine rice and seasonal vegetables.'},
+      {name:'Thai Green Curry Bowl',price:449,desc:'Fragrant green curry with coconut milk, bamboo shoots, and fresh basil over rice.'}
+    ]
+  }},
+  pasta:{label:'Pasta',emoji:'🍝',subsections:{
+    'Artisan Italian':[
+      {name:'Aglio Olio Classic',price:369,desc:'Traditional garlic and olive oil pasta with red chili flakes and parsley.'},
+      {name:'Caramelised Onion Cream Pasta',price:499,desc:'Deeply sweet caramelised onions in a silky, rich cream sauce.'},
+      {name:'Three Cheese Comfort Pasta',price:469,desc:'An indulgent blend of three premium cheeses in a creamy, velvety sauce.'},
+      {name:'Pesto Verde Italiano',price:519,desc:'Fresh basil pesto with toasted pine nuts and aged parmesan.'},
+      {name:'Arrabbiata Rosso',price:489,desc:'Fiery tomato sauce with garlic, red chilies, and fresh herbs.'},
+      {name:'Béchamel Mornay Pasta',price:539,desc:'Classic French white sauce enriched with gruyere cheese — deeply comforting.'},
+      {name:"Fresh Ravioli – Chef's Signature",price:599,desc:'House-made ravioli with seasonal fillings and our chef\'s signature sauce.',addon:"Chef's special — ask for today's filling"}
+    ]
+  }},
+  pizza:{label:'Pizza',emoji:'🍕',subsections:{
+    'Wood-Fired':[
+      {name:'The OG Margherita',price:549,desc:'Classic tomato sauce, fresh mozzarella, and garden basil — timeless.'},
+      {name:'Onion & Capsicum',price:549,desc:'Caramelised onions and crisp capsicum on a classic tomato base.'},
+      {name:'Olive & Jalapeño',price:589,desc:'Briny olives and spicy jalapeños — bold and satisfying.'},
+      {name:'Paneer Tikka Pizza',price:599,desc:'Tandoori-spiced paneer with tikka sauce and melted mozzarella.'},
+      {name:'Palak Paneer Pizza',price:599,desc:'Creamy spinach sauce with soft paneer and melted cheese.'},
+      {name:'Truffle Funghi',price:659,desc:'Wild mushrooms, truffle oil, and shaved parmesan on a white base.'},
+      {name:'Burrata Caprese Pizza',price:549,desc:'Fresh pesto sauce, cherry tomatoes, and creamy burrata.'}
+    ]
+  }},
+  sandwich:{label:'Sandwich',emoji:'🥪',subsections:{
+    'Artisan Grills':[
+      {name:'Charcoal Grilled Sandwich',price:485,desc:'Smoky charcoal-grilled sandwich with fresh seasonal fillings.'},
+      {name:'Paneer Corn Sandwich',price:475,desc:'Soft paneer and sweet corn in a golden toasted sandwich.'},
+      {name:'Chilli Paneer Sandwich',price:485,desc:'Indo-Chinese chilli paneer tucked into a grilled sandwich.'},
+      {name:'Mushroom Cheese Sandwich',price:445,desc:'Sautéed mushrooms with generous melted cheese on toasted bread.'},
+      {name:'Pesto Sandwich',price:485,desc:'Fresh basil pesto with seasonal vegetables and creamy mozzarella.'},
+      {name:'Loaded Veg Grill Sandwich',price:485,desc:'Garden vegetables piled high and grilled until golden.'},
+      {name:'Paneer Tikka Sandwich',price:495,desc:'Tandoori-spiced paneer tikka in toasted bread with chutneys.'},
+      {name:'Veg Loaded Sandwich',price:489,desc:'Stacked with fresh vegetables and our signature house sauces.'},
+      {name:'Veg Cheese Sandwich',price:449,desc:'Classic cheese and vegetables on toasted bread — a reliable favourite.'},
+      {name:'Avocado Sandwich',price:489,desc:'Creamy fresh avocado spread with seasonal toppings.'}
+    ]
+  }},
+  asian:{label:'Asian',emoji:'🥢',subsections:{
+    'Bold & Aromatic':[
+      {name:'Hakka Noodles',price:485,desc:'Stir-fried Hakka noodles tossed with seasonal vegetables in savoury Asian sauces.'},
+      {name:'Chilli Garlic Noodles',price:485,desc:'Wok-tossed noodles with spicy garlic and fresh chillies.'},
+      {name:'Kung Pao Paneer Rice',price:499,desc:'Wok-tossed paneer in a bold, spicy kung pao sauce served over steamed rice.'},
+      {name:'Kung Pao Paneer Noodles',price:499,desc:'Wok-tossed paneer in spicy kung pao sauce tossed through noodles.'}
+    ]
+  }}
+};
 
+let currentSection='coffee';
+let searchQuery='';
+let expanded=new Set();
+
+function buildNav(){
+  document.getElementById('navScroll').innerHTML=Object.entries(MENU).map(([k,v])=>
+    `<button class="nav-btn${k===currentSection?' active':''}" onclick="setSection('${k}')"><span class="n-emoji">${v.emoji}</span>${v.label}</button>`
+  ).join('');
+}
+
+function setSection(key){
+  currentSection=key;
+  if(searchQuery){clearSearch();return;}
+  expanded=new Set();
+  buildNav();
+  render();
+  window.scrollTo({top:document.querySelector('.sticky-top').offsetHeight,behavior:'smooth'});
+}
+
+function handleSearch(val){
+  searchQuery=val.toLowerCase().trim();
+  document.getElementById('clearBtn').style.display=searchQuery?'flex':'none';
+  expanded=new Set();
+  render();
+}
+
+function clearSearch(){
+  searchQuery='';
+  document.getElementById('searchInput').value='';
+  document.getElementById('clearBtn').style.display='none';
+  expanded=new Set();
+  render();
+}
+
+function toggle(id){
+  expanded.has(id)?expanded.delete(id):expanded.add(id);
+  const card=document.getElementById(id);
+  if(!card)return;
+  card.classList.toggle('expanded',expanded.has(id));
+}
+
+function hl(text,q){
+  if(!q)return text;
+  return text.replace(new RegExp(`(${q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')})`, 'gi'),'<mark>$1</mark>');
+}
+
+function itemHTML(item,id){
+  const isExp=expanded.has(id);
+  const q=searchQuery;
+  return`<div class="item-card${isExp?' expanded':''}" id="${id}" onclick="toggle('${id}')">
+    <div class="item-row">
+      <div class="item-left"><span class="veg-dot"></span><span class="item-name">${hl(item.name,q)}</span></div>
+      <div class="item-right"><span class="item-price">₹${item.price}</span><span class="chevron">▾</span></div>
+    </div>
+    <div class="item-desc">
+      ${hl(item.desc,q)}
+      ${item.addon?`<div class="addon-pill">✦ ${item.addon}</div>`:''}
+    </div>
+  </div>`;
+}
+
+function render(){
+  const c=document.getElementById('content');
+  if(searchQuery){
+    let html='<div class="search-result-header">Results for "'+searchQuery+'"</div>';
+    let found=0;
+    Object.entries(MENU).forEach(([sk,sv])=>{
+      let secItems='';
+      Object.entries(sv.subsections).forEach(([sub,items])=>{
+        items.forEach((item,i)=>{
+          if(item.name.toLowerCase().includes(searchQuery)||item.desc.toLowerCase().includes(searchQuery)){
+            const id=`s-${sk}-${i}-${sub.replace(/\W/g,'')}`;
+            secItems+=itemHTML(item,id);
+            found++;
+          }
+        });
+      });
+      if(secItems){
+        html+=`<div class="search-result-category">${sv.emoji} ${sv.label}</div><div class="items-list">${secItems}</div><div class="gap"></div>`;
+      }
+    });
+    if(!found)html=`<div class="no-results"><span>🔍</span>Nothing found for "<strong>${searchQuery}</strong>"<br><small style="color:var(--text3)">Try a different keyword</small></div>`;
+    c.innerHTML=html;
+    return;
+  }
+  const sec=MENU[currentSection];
+  const total=Object.values(sec.subsections).reduce((a,b)=>a+b.length,0);
+  let html=`<div class="gap-lg"></div><div class="section-head"><h2>${sec.emoji} ${sec.label}</h2><span class="item-count">${total} items</span></div>`;
+  const subs=Object.entries(sec.subsections);
+  subs.forEach(([sub,items])=>{
+    if(subs.length>1)html+=`<div class="subsec-label">${sub}</div>`;
+    html+=`<div class="items-list">`;
+    items.forEach((item,i)=>{
+      const id=`${currentSection}-${sub.replace(/\W/g,'')}-${i}`;
+      html+=itemHTML(item,id);
+    });
+    html+=`</div><div class="gap"></div>`;
+  });
+  c.innerHTML=html;
+}
+
+buildNav();
+render();
+</script>
 </body>
 </html>

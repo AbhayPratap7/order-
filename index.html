@@ -198,6 +198,26 @@ footer strong{color:var(--brown);font-weight:500;}
   .items-list{padding:0 8px;}
   .item-card{padding:12px 12px;}
 }
+
+.best-icon{
+  margin-left:8px;
+  font-size:10px;
+  font-weight:600;
+  color:#6b4226;
+  background:rgba(107,66,38,0.08);
+  padding:2px 6px;
+  border-radius:10px;
+}
+.must-icon{
+  margin-left:8px;
+  font-size:11px;
+  font-weight:600;
+  color:#c2410c; /* slightly warm orange-red */
+  background:rgba(194,65,12,0.08);
+  padding:2px 6px;
+  border-radius:10px;
+  letter-spacing:0.3px;
+}
 </style>
 </head>
 <body>
@@ -231,10 +251,10 @@ const MENU = {
       {name:'Iced Espresso',price:169,desc:'Chilled espresso shot poured over ice — bold and clean.'}
     ],
     'Slow Bar':[
-      {name:'V60 Pourover (Hot / Iced)',price:279,desc:'Precision brewed pour over coffee, highlighting the unique character of each bean.'},
+      {name:'V60 Pourover (Hot / Iced)',price:279,desc:'Precision brewed pour over coffee, highlighting the unique character of each bean.', tag:'bestseller'},
       {name:'Aeropress (Hot / Iced)',price:279,desc:'Smooth, rich aeropress brew — full flavor with low acidity.'},
       {name:'French Press',price:279,desc:'Full-bodied traditional French press with rich, immersive texture.'},
-      {name:'Vietnamese Filter',price:239,desc:'Traditional Vietnamese drip coffee — strong, slow, and deeply satisfying.'}
+      {name:'Vietnamese Filter',price:239,desc:'Traditional Vietnamese drip coffee — strong, slow, and deeply satisfying.', tag:'bestseller'}
     ],
     'Hot White Rituals':[
       {name:'Cortado',price:219,desc:'Espresso balanced with an equal part of warm, velvety milk.'},
@@ -247,18 +267,18 @@ const MENU = {
       {name:'Sea Salt Mocha',price:329,desc:'Chocolate espresso with a delicate sea salt finish that elevates every sip.'},
       {name:'French Vanilla Latte',price:259,desc:'Smooth, aromatic vanilla infused throughout a classic latte.'},
       {name:'Sea Salt Latte',price:259,desc:'A smooth latte finished with a whisper of sea salt.'},
-      {name:'Honey Spiced Latte',price:329,desc:'Aromatic warming spices blended with natural honey sweetness.'},
+      {name:'Honey Spiced Latte',price:329,desc:'Aromatic warming spices blended with natural honey sweetness.', tag:'bestseller'},
       {name:'Salted Caramel Latte',price:299,desc:'Sweet caramel latte kissed with a pinch of sea salt.'},
-      {name:'Biscoff Latte',price:319,desc:'Caramelised cookie butter blended into a comforting, warming latte.'}
+      {name:'Biscoff Latte',price:319,desc:'Caramelised cookie butter blended into a comforting, warming latte.', tag:'bestseller'}
     ],
     'Froth on Ice':[
-      {name:'Iced Americano',price:179,desc:'Cold espresso with water poured over ice — refreshing and sharp.'},
+      {name:'Iced Americano',price:179,desc:'Cold espresso with water poured over ice — refreshing and sharp.', tag:'bestseller'},
       {name:'Iced Cortado',price:229,desc:'Cold espresso with a perfect cold milk balance over ice.'},
       {name:'Iced Latte',price:259,desc:'Smooth espresso with cold milk poured over ice.'},
       {name:'Iced Caramel Latte',price:299,desc:'Sweet caramel with espresso and cold milk over ice.'},
       {name:'Iced Mocha',price:289,desc:'Chocolate and espresso chilled to perfection.'},
       {name:'Iced Caramelized Jaggery Latte',price:299,desc:'Traditional jaggery sweetness meets modern cold coffee.'},
-      {name:'Iced Kava Special',price:239,desc:'Our signature iced coffee creation — a house favourite.'},
+      {name:'Iced Kava Special',price:239,desc:'Our signature iced coffee creation — a house favourite.', tag:'bestseller'},
       {name:'Espresso Tonic',price:299,desc:'Bold espresso floated over sparkling tonic water.'},
       {name:'Espresso Ginger Ale',price:299,desc:'Espresso with a spicy ginger ale sparkle — surprisingly bright.'}
     ],
@@ -268,14 +288,14 @@ const MENU = {
       {name:'Lime-Lite',price:299,desc:'Sparkling lime refreshment — crisp and light.'},
       {name:'Modern Mojo',price:379,desc:'A contemporary twist on classic café flavors.'},
       {name:'Salted Caramel Paloma',price:339,desc:'Sweet and salty citrus delight — bold and complex.'},
-      {name:'Salted Cheese Vietnamese',price:299,desc:'Salted cheese foam crowned over Vietnamese-style cold coffee.'},
-      {name:'Salted Coconut Vietnamese',price:299,desc:'Salted coconut cream layered over Vietnamese-style cold coffee.'}
+      {name:'Salted Cheese Vietnamese',price:299,desc:'Salted cheese foam crowned over Vietnamese-style cold coffee.', tag:'bestseller'},
+      {name:'Salted Coconut Vietnamese',price:299,desc:'Salted coconut cream layered over Vietnamese-style cold coffee.', tag:'bestseller'}
     ]
   }},
   coldbrew:{label:'Cold Brew',emoji:'🧊',subsections:{
     'Slow-Steeped Signatures':[
-      {name:'Classic Cold Brew Melody',price:260,desc:'Our signature slow-steeped cold brew — smooth and rich with notes of dark chocolate, nuts, and caramel.'},
-      {name:'Classic Cold Brew Whiskey Barrel',price:299,desc:'Cold brew aged with whiskey barrel notes for a bold, smoky finish.',addon:'Add Whiskey Barrel +₹55'},
+      {name:'Classic Cold Brew Melody',price:260,desc:'Our signature slow-steeped cold brew — smooth and rich with notes of dark chocolate, nuts, and caramel.', tag:'bestseller'},
+      {name:'Classic Cold Brew Whiskey Barrel',price:299,desc:'Cold brew aged with whiskey barrel notes for a bold, smoky finish.',addon:'Add Whiskey Barrel +₹55', tag:'bestseller'},
       {name:'Cold Brew Tonic',price:299,desc:'Smooth cold brew floated over sparkling tonic water.'},
       {name:'Cold Brew Ginger Ale',price:299,desc:'Cold brew with a spicy ginger ale sparkle.'},
       {name:"Pankaj's Citrus Fire",price:299,desc:'A fiery citrus-forward cold brew creation crafted by our head barista Pankaj.'},
@@ -288,17 +308,17 @@ const MENU = {
     'The Green Chalice':[
       {name:'Matcha Latte',price:349,desc:'Ceremonial grade Japanese matcha whisked with steamed milk — earthy and calming.'},
       {name:'Iced Matcha Latte',price:369,desc:'Chilled ceremonial matcha with cold milk over ice.'},
-      {name:'Coconut Cloud Matcha',price:389,desc:'Matcha topped with a dreamy coconut milk foam.'},
+      {name:'Coconut Cloud Matcha',price:389,desc:'Matcha topped with a dreamy coconut milk foam.', tag:'bestseller'},
       {name:'Blueberry Coconut Matcha',price:389,desc:'Wild blueberry sweetness meets tropical coconut and earthy matcha.'},
       {name:'Orange Matcha Tonic',price:379,desc:'Refreshing citrus with sparkling matcha tonic — bright and zingy.'},
-      {name:'Strawberry Matcha Latte',price:379,desc:'Sweet strawberries layered with earthy ceremonial matcha.'},
+      {name:'Strawberry Matcha Latte',price:379,desc:'Sweet strawberries layered with earthy ceremonial matcha.', tag:'bestseller'},
       {name:'Lemonade Iced Matcha',price:369,desc:'Zesty lemonade meets vibrant green matcha over ice.'},
       {name:'Passionfruit Matcha Spritzer',price:389,desc:'Tropical passionfruit with sparkling matcha — exotic and refreshing.'}
     ]
   }},
   shakes:{label:'Shakes',emoji:'🥤',subsections:{
     'The Frappe Bar':[
-      {name:'Classic Frappe',price:249,desc:'Traditional iced coffee frappe — smooth, cold, and energizing.'},
+      {name:'Classic Frappe',price:249,desc:'Traditional iced coffee frappe — smooth, cold, and energizing.', tag:'bestseller'},
       {name:'Caramelized Frappe',price:279,desc:'Rich caramel blended with coffee for a sweet, silky frappe.'},
       {name:'Hazelnut Frappe',price:289,desc:'Nutty hazelnut meets iced coffee in a perfectly blended frappe.'},
       {name:'Espresso Brownie Frappe',price:390,desc:'Decadent chocolate brownie blended with espresso.'},
@@ -306,29 +326,29 @@ const MENU = {
       {name:'Mocha Frappe',price:299,desc:'Rich chocolate and coffee blended over ice.'}
     ],
     'The Creamy Canvas':[
-      {name:'Biscoff Cheesecake Shake',price:329,desc:'Caramelised cookie butter blended with creamy cheesecake goodness.'},
+      {name:'Biscoff Cheesecake Shake',price:329,desc:'Caramelised cookie butter blended with creamy cheesecake goodness.', tag:'bestseller'},
       {name:'Oreo Cookie Crumble Shake',price:299,desc:'Classic cookies and cream shake — generously crumbled.'},
-      {name:'Nutella Cheesecake Shake',price:349,desc:'Hazelnut chocolate meets silky cheesecake in every sip.'},
+      {name:'Nutella Cheesecake Shake',price:349,desc:'Hazelnut chocolate meets silky cheesecake in every sip.', tag:'bestseller'},
       {name:'Choco Brownie Shake',price:380,desc:'Rich chocolate brownies blended into a thick, indulgent shake.'},
-      {name:'Blueberry Cheesecake Shake',price:329,desc:'Fresh blueberries with creamy cheesecake — fruity and rich.'},
+      {name:'Blueberry Cheesecake Shake',price:329,desc:'Fresh blueberries with creamy cheesecake — fruity and rich.', tag:'bestseller'},
       {name:'Ferrero Rocher Shake',price:369,desc:'Luxurious hazelnut chocolate — dessert in a glass.'},
       {name:'Double Chocolate Shake',price:299,desc:'Double the chocolate, double the bliss.'}
     ]
   }},
   refreshers:{label:'Refreshers',emoji:'🍋',subsections:{
     'The Chill Bar':[
-      {name:'Classic Mint Mojito',price:249,desc:'Fresh mint, lime, and sparkling soda — the perfect cooler.'},
+      {name:'Classic Mint Mojito',price:249,desc:'Fresh mint, lime, and sparkling soda — the perfect cooler.', tag:'bestseller'},
       {name:'Cranberry Mojito',price:279,desc:'Tart cranberry with fresh mint and lime sparkle.'},
-      {name:'Virgin Sangria',price:309,desc:'Mixed fruit mocktail with sparkling notes and fruity depth.'},
+      {name:'Virgin Sangria',price:309,desc:'Mixed fruit mocktail with sparkling notes and fruity depth.', tag:'bestseller'},
       {name:'Kimazzo',price:299,desc:'Our refreshing specialty house blend.'},
-      {name:'Berry Spritzer',price:299,desc:'Mixed berries with sparkling water — light and vibrant.'},
+      {name:'Berry Spritzer',price:299,desc:'Mixed berries with sparkling water — light and vibrant.', tag:'bestseller'},
       {name:'Lemon Iced Tea',price:279,desc:'Classic citrus iced tea — simple and refreshing.'},
       {name:'Peach Iced Tea',price:289,desc:'Sweet, ripe peach infused into chilled tea.'}
     ]
   }},
   hotchoc:{label:'Hot Choc',emoji:'🍫',subsections:{
     'Sweet Winter Sips':[
-      {name:'Classic Hot Chocolate',price:269,desc:'Rich, velvety hot chocolate made with premium cocoa.'},
+      {name:'Classic Hot Chocolate',price:269,desc:'Rich, velvety hot chocolate made with premium cocoa.', tag:'bestseller'},
       {name:'Hazelnut Hot Chocolate',price:319,desc:'Creamy hot chocolate swirled with hazelnut indulgence.'},
       {name:'Strawberry Hot Chocolate',price:319,desc:'Fruity strawberry meets warm velvety chocolate.'},
       {name:'Coconut Hot Chocolate',price:299,desc:'Tropical coconut notes in a warm, comforting chocolate.'}
@@ -336,10 +356,10 @@ const MENU = {
   }},
   starters:{label:'Starters',emoji:'🥗',subsections:{
     'Small Plates':[
-      {name:'Classic Tomato Bruschetta',price:379,desc:'Vine-ripened tomatoes and fresh basil pesto on toasted ciabatta.'},
+      {name:'Classic Tomato Bruschetta',price:379,desc:'Vine-ripened tomatoes and fresh basil pesto on toasted ciabatta.', tag:'bestseller'},
       {name:'Peach & Cream Cheese Bruschetta',price:389,desc:'Sweet peaches with whipped cream cheese on grilled artisan bread.'},
-      {name:'Peri Peri Cottage Cheese',price:329,desc:'Spiced cottage cheese cubes with bold African peri peri marinade.'},
-      {name:'Classic Hummus Platter',price:419,desc:'Creamy chickpea hummus drizzled with olive oil, served with warm pita bread.'},
+      {name:'Peri Peri Cottage Cheese',price:329,desc:'Spiced cottage cheese cubes with bold African peri peri marinade.', tag:'bestseller'},
+      {name:'Classic Hummus Platter',price:419,desc:'Creamy chickpea hummus drizzled with olive oil, served with warm pita bread.', tag:'bestseller'},
       {name:'Vegetable Masa Harina Tacos',price:429,desc:'Authentic Mexican-style corn tacos with seasoned vegetables and condiments.'},
       {name:'Vietnamese Rice Paper Rolls',price:399,desc:'Fresh garden vegetables wrapped in delicate rice paper with dipping sauce.'},
       {name:'Cheese Garlic Bread',price:399,desc:'Toasted garlic bread loaded with generous melted cheese.'}
@@ -348,7 +368,7 @@ const MENU = {
   soups:{label:'Soups',emoji:'🍲',subsections:{
     'Warm & Nourishing':[
       {name:'Creamy Broccoli Soup',price:229,desc:'Velvety broccoli soup with a hint of cream and fresh herbs.'},
-      {name:'Potato & Leek Soup',price:199,desc:'Classic French-inspired soup with tender potatoes and sweet leeks.'},
+      {name:'Potato & Leek Soup',price:199,desc:'Classic French-inspired soup with tender potatoes and sweet leeks.', tag:'bestseller'},
       {name:'Mushroom Cappuccino',price:199,desc:'Frothy mushroom essence topped with micro herbs — elegant and earthy.'},
       {name:'Roasted Pumpkin Soup',price:199,desc:'Autumn-inspired roasted pumpkin with warm aromatic spices.'},
       {name:'Sweet Corn Velouté',price:199,desc:'Silky sweet corn soup with a touch of butter — simple and comforting.'}
@@ -357,27 +377,27 @@ const MENU = {
   salads:{label:'Salads',emoji:'🥬',subsections:{
     'Fresh & Vibrant':[
       {name:'Mandarin Iceberg Salad',price:339,desc:'Crisp iceberg lettuce with mandarin segments and a bright citrus dressing.'},
-      {name:'Caprese Cottage Salad',price:439,desc:'Italian-style cottage cheese with vine tomatoes, fresh basil, and aged balsamic.'},
+      {name:'Caprese Cottage Salad',price:439,desc:'Italian-style cottage cheese with vine tomatoes, fresh basil, and aged balsamic.', tag:'bestseller'},
       {name:'Som Tam (Thai Papaya Salad)',price:349,desc:'Shredded green papaya with Thai herbs, peanuts, and a tangy lime dressing.'}
     ]
   }},
   bowls:{label:'Bowls',emoji:'🍜',subsections:{
     'Global Flavors':[
       {name:'Italian Herb Rice Bowl',price:525,desc:'Herb-infused rice with romesco sauce and roasted Mediterranean vegetables.'},
-      {name:'Mexican Fiesta Bowl',price:549,desc:'Spiced kidney beans, saffron rice, salsa, guacamole, and Mexican condiments.'},
-      {name:'Bangkok Red Curry Bowl',price:449,desc:'Aromatic Thai red curry with jasmine rice and seasonal vegetables.'},
+      {name:'Mexican Fiesta Bowl',price:549,desc:'Spiced kidney beans, saffron rice, salsa, guacamole, and Mexican condiments.', tag:'bestseller'},
+      {name:'Bangkok Red Curry Bowl',price:449,desc:'Aromatic Thai red curry with jasmine rice and seasonal vegetables.', tag:'bestseller'},
       {name:'Thai Green Curry Bowl',price:449,desc:'Fragrant green curry with coconut milk, bamboo shoots, and fresh basil over rice.'}
     ]
   }},
   pasta:{label:'Pasta',emoji:'🍝',subsections:{
     'Artisan Italian':[
-      {name:'Aglio Olio Classic',price:369,desc:'Traditional garlic and olive oil pasta with red chili flakes and parsley.'},
+      {name:'Aglio Olio Classic',price:369,desc:'Traditional garlic and olive oil pasta with red chili flakes and parsley.', tag:'bestseller'},
       {name:'Caramelised Onion Cream Pasta',price:499,desc:'Deeply sweet caramelised onions in a silky, rich cream sauce.'},
       {name:'Three Cheese Comfort Pasta',price:469,desc:'An indulgent blend of three premium cheeses in a creamy, velvety sauce.'},
-      {name:'Pesto Verde Italiano',price:519,desc:'Fresh basil pesto with toasted pine nuts and aged parmesan.'},
+      {name:'Pesto Verde Italiano',price:519,desc:'Fresh basil pesto with toasted pine nuts and aged parmesan.', tag:'bestseller'},
       {name:'Arrabbiata Rosso',price:489,desc:'Fiery tomato sauce with garlic, red chilies, and fresh herbs.'},
       {name:'Béchamel Mornay Pasta',price:539,desc:'Classic French white sauce enriched with gruyere cheese — deeply comforting.'},
-      {name:"Fresh Ravioli – Chef's Signature",price:599,desc:'House-made ravioli with seasonal fillings and our chef\'s signature sauce.',addon:"Chef's special — ask for today's filling"}
+      {name:"Fresh Ravioli – Chef's Signature",price:599,desc:'House-made ravioli with seasonal fillings and our chef\'s signature sauce.',addon:"Chef's special — ask for today's filling", tag:'bestseller'}
     ]
   }},
   pizza:{label:'Pizza',emoji:'🍕',subsections:{
@@ -393,23 +413,23 @@ const MENU = {
   }},
   sandwich:{label:'Sandwich',emoji:'🥪',subsections:{
     'Artisan Grills':[
-      {name:'Charcoal Grilled Sandwich',price:485,desc:'Smoky charcoal-grilled sandwich with fresh seasonal fillings.'},
+      {name:'Charcoal Grilled Sandwich',price:485,desc:'Smoky charcoal-grilled sandwich with fresh seasonal fillings.', tag:'bestseller'},
       {name:'Paneer Corn Sandwich',price:475,desc:'Soft paneer and sweet corn in a golden toasted sandwich.'},
       {name:'Chilli Paneer Sandwich',price:485,desc:'Indo-Chinese chilli paneer tucked into a grilled sandwich.'},
       {name:'Mushroom Cheese Sandwich',price:445,desc:'Sautéed mushrooms with generous melted cheese on toasted bread.'},
-      {name:'Pesto Sandwich',price:485,desc:'Fresh basil pesto with seasonal vegetables and creamy mozzarella.'},
+      {name:'Pesto Sandwich',price:485,desc:'Fresh basil pesto with seasonal vegetables and creamy mozzarella.', tag:'bestseller'},
       {name:'Loaded Veg Grill Sandwich',price:485,desc:'Garden vegetables piled high and grilled until golden.'},
-      {name:'Paneer Tikka Sandwich',price:495,desc:'Tandoori-spiced paneer tikka in toasted bread with chutneys.'},
+      {name:'Paneer Tikka Sandwich',price:495,desc:'Tandoori-spiced paneer tikka in toasted bread with chutneys.', tag:'bestseller'},
       {name:'Veg Loaded Sandwich',price:489,desc:'Stacked with fresh vegetables and our signature house sauces.'},
       {name:'Veg Cheese Sandwich',price:449,desc:'Classic cheese and vegetables on toasted bread — a reliable favourite.'},
-      {name:'Avocado Sandwich',price:489,desc:'Creamy fresh avocado spread with seasonal toppings.'}
+      {name:'Avocado Sandwich',price:489,desc:'Creamy fresh avocado spread with seasonal toppings.', tag:'bestseller'}
     ]
   }},
   asian:{label:'Asian',emoji:'🥢',subsections:{
     'Bold & Aromatic':[
       {name:'Hakka Noodles',price:485,desc:'Stir-fried Hakka noodles tossed with seasonal vegetables in savoury Asian sauces.'},
       {name:'Chilli Garlic Noodles',price:485,desc:'Wok-tossed noodles with spicy garlic and fresh chillies.'},
-      {name:'Kung Pao Paneer Rice',price:499,desc:'Wok-tossed paneer in a bold, spicy kung pao sauce served over steamed rice.'},
+      {name:'Kung Pao Paneer Rice',price:499,desc:'Wok-tossed paneer in a bold, spicy kung pao sauce served over steamed rice.', tag:'bestseller'},
       {name:'Kung Pao Paneer Noodles',price:499,desc:'Wok-tossed paneer in spicy kung pao sauce tossed through noodles.'}
     ]
   }}
@@ -466,7 +486,11 @@ function itemHTML(item,id){
   const q=searchQuery;
   return`<div class="item-card${isExp?' expanded':''}" id="${id}" onclick="toggle('${id}')">
     <div class="item-row">
-      <div class="item-left"><span class="veg-dot"></span><span class="item-name">${hl(item.name,q)}</span></div>
+      <div class="item-left"><span class="veg-dot"></span><span class="item-name">
+  ${hl(item.name,q)}
+  ${item.tag === 'bestseller' ? '<span class="best-icon">⭐ Bestseller </span>' : ''}
+  ${item.tag === 'musttry' ? '<span class="must-icon">🔥 Must Try</span>' : ''}
+</span></div>
       <div class="item-right"><span class="item-price">₹${item.price}</span><span class="chevron">▾</span></div>
     </div>
     <div class="item-desc">

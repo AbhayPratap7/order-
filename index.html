@@ -25,6 +25,7 @@
   --border:      rgba(107,66,38,0.13);
   --border2:     rgba(107,66,38,0.28);
   --green:       #4a8c5c;
+  --red:         #c0392b;
   --radius:      12px;
   --radius-sm:   9px;
 }
@@ -94,6 +95,15 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg-page);color:var(--text
 .nav-btn.active{background:var(--brown);border-color:var(--brown);color:#fff;font-weight:600;}
 .nav-btn .n-emoji{font-size:13px;line-height:1;}
 
+/* Favorites nav badge */
+.fav-badge{
+  background:#e74c3c;color:#fff;
+  font-size:9px;font-weight:700;
+  border-radius:50%;width:16px;height:16px;
+  display:inline-flex;align-items:center;justify-content:center;
+  margin-left:2px;line-height:1;
+}
+
 /* ── CONTENT ── */
 .content{padding:0 0 60px;}
 
@@ -154,6 +164,72 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg-page);color:var(--text
   border-radius:20px;padding:3px 10px;font-weight:500;
 }
 
+/* ── FAV HEART BUTTON ── */
+.fav-icon{
+  font-size:15px;
+  cursor:pointer;
+  flex-shrink:0;
+  transition:transform 0.2s, color 0.2s;
+  color:var(--text3);
+  line-height:1;
+  -webkit-tap-highlight-color:transparent;
+  z-index:2;
+}
+.fav-icon:hover{transform:scale(1.2);}
+.fav-icon.faved{color:#e74c3c;animation:heartPop 0.3s ease;}
+@keyframes heartPop{
+  0%{transform:scale(1);}
+  50%{transform:scale(1.4);}
+  100%{transform:scale(1);}
+}
+
+/* ── FAVORITES SECTION ── */
+.fav-section{
+  background:linear-gradient(135deg, rgba(231,76,60,0.04) 0%, rgba(107,66,38,0.04) 100%);
+  border:1.5px solid rgba(231,76,60,0.15);
+  border-radius:var(--radius);
+  margin:16px 12px 0;
+  padding-bottom:6px;
+  overflow:hidden;
+}
+.fav-section-head{
+  padding:14px 16px 8px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.fav-section-head h2{
+  font-family:'Playfair Display',serif;
+  font-size:18px;font-weight:600;
+  color:#c0392b;
+  display:flex;align-items:center;gap:8px;
+}
+.fav-section-head .item-count{font-size:11px;color:var(--text3);}
+.fav-clear-btn{
+  font-size:10px;color:var(--text3);
+  background:none;border:1px solid var(--border);
+  border-radius:12px;padding:3px 10px;cursor:pointer;
+  font-family:'DM Sans',sans-serif;letter-spacing:0.5px;
+  transition:all 0.2s;
+}
+.fav-clear-btn:hover{border-color:#e74c3c;color:#e74c3c;}
+.fav-empty{
+  padding:20px;text-align:center;
+  color:var(--text3);font-size:13px;line-height:1.8;
+}
+.fav-empty span{font-size:26px;display:block;margin-bottom:6px;}
+
+/* ── TOAST ── */
+.toast{
+  position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);
+  background:var(--brown);color:#fff;
+  font-size:12.5px;font-weight:500;
+  padding:10px 20px;border-radius:24px;
+  box-shadow:0 4px 20px rgba(107,66,38,0.3);
+  z-index:999;transition:transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
+  white-space:nowrap;pointer-events:none;
+}
+.toast.show{transform:translateX(-50%) translateY(0);}
+.toast.red{background:#c0392b;}
+
 /* ── SEARCH RESULTS ── */
 .search-result-header{padding:14px 18px 4px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text3);font-weight:500;}
 .search-result-category{font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:var(--brown);opacity:0.8;padding:12px 18px 6px;}
@@ -200,23 +276,14 @@ footer strong{color:var(--brown);font-weight:500;}
 }
 
 .best-icon{
-  margin-left:8px;
-  font-size:10px;
-  font-weight:600;
-  color:#6b4226;
-  background:rgba(107,66,38,0.08);
-  padding:2px 6px;
-  border-radius:10px;
+  margin-left:8px;font-size:10px;font-weight:600;
+  color:#6b4226;background:rgba(107,66,38,0.08);
+  padding:2px 6px;border-radius:10px;
 }
 .must-icon{
-  margin-left:8px;
-  font-size:11px;
-  font-weight:600;
-  color:#c2410c; /* slightly warm orange-red */
-  background:rgba(194,65,12,0.08);
-  padding:2px 6px;
-  border-radius:10px;
-  letter-spacing:0.3px;
+  margin-left:8px;font-size:11px;font-weight:600;
+  color:#c2410c;background:rgba(194,65,12,0.08);
+  padding:2px 6px;border-radius:10px;letter-spacing:0.3px;
 }
 </style>
 </head>
@@ -224,7 +291,6 @@ footer strong{color:var(--brown);font-weight:500;}
 
 <header class="header">
   <h1>KAVA THE CAFFEINE HOUSE</h1>
-  
   <div class="header-line"></div>
 </header>
 
@@ -239,6 +305,9 @@ footer strong{color:var(--brown);font-weight:500;}
 </div>
 
 <div class="content" id="content"></div>
+
+<!-- Toast Notification -->
+<div class="toast" id="toast"></div>
 
 <footer>&#169; 2026 <strong>Kava The Caffeine House</strong> &nbsp;·&nbsp; Crafted with care, served with love</footer>
 
@@ -314,7 +383,7 @@ const MENU = {
       {name:'Strawberry Matcha Latte',price:379,desc:'Sweet strawberries layered with earthy ceremonial matcha.', tag:'bestseller'},
       {name:'Lemonade Iced Matcha',price:369,desc:'Zesty lemonade meets vibrant green matcha over ice.'},
       {name:'Passionfruit Matcha Spritzer',price:389,desc:'Tropical passionfruit with sparkling matcha — exotic and refreshing.',tag:'musttry'},
-       {name:'Mango Matcha',price:349,desc:'Tropical mango blended with smooth matcha for a refreshing , energizing treat'}
+      {name:'Mango Matcha',price:349,desc:'Tropical mango blended with smooth matcha for a refreshing, energizing treat.'}
     ]
   }},
   shakes:{label:'Shakes',emoji:'🥤',subsections:{
@@ -398,8 +467,8 @@ const MENU = {
       {name:'Pesto Verde Italiano',price:519,desc:'Fresh basil pesto with toasted pine nuts and aged parmesan.', tag:'bestseller'},
       {name:'Arrabbiata Rosso',price:489,desc:'Fiery tomato sauce with garlic, red chilies, and fresh herbs.'},
       {name:'Béchamel Mornay Pasta',price:539,desc:'Classic French white sauce enriched with gruyere cheese — deeply comforting.'},
-      {name:"Fresh Ravioli – Chef's Signature",price:599,desc:'House-made ravioli with seasonal fillings and our chef\'s signature sauce.',addon:"Chef's special — ask for today's filling", tag:'bestseller'},
-      {name:'Romesco Pasta',price:539,desc:'Fresh Roasted Sauce with a hint of chilli oil experince the mediterranean soul in a plate '},
+      {name:"Fresh Ravioli – Chef's Signature",price:599,desc:"House-made ravioli with seasonal fillings and our chef's signature sauce.",addon:"Chef's special — ask for today's filling", tag:'bestseller'},
+      {name:'Romesco Pasta',price:539,desc:'Fresh Roasted Sauce with a hint of chilli oil — experience the mediterranean soul in a plate.'}
     ]
   }},
   pizza:{label:'Pizza',emoji:'🍕',subsections:{
@@ -437,62 +506,132 @@ const MENU = {
   }}
 };
 
-let currentSection='coffee';
-let searchQuery='';
-let expanded=new Set();
+let currentSection = 'coffee';
+let searchQuery = '';
+let expanded = new Set();
 
-function buildNav(){
-  document.getElementById('navScroll').innerHTML=Object.entries(MENU).map(([k,v])=>
-    `<button class="nav-btn${k===currentSection?' active':''}" onclick="setSection('${k}')"><span class="n-emoji">${v.emoji}</span>${v.label}</button>`
-  ).join('');
+/* ── FAVORITES (localStorage) ── */
+function getFavs() {
+  try { return JSON.parse(localStorage.getItem('kava_favs') || '[]'); }
+  catch(e) { return []; }
+}
+function saveFavs(arr) {
+  localStorage.setItem('kava_favs', JSON.stringify(arr));
+}
+function isFaved(name) {
+  return getFavs().some(f => f.name === name);
+}
+function toggleFav(e, itemName, itemPrice, itemDesc, itemTag, itemAddon) {
+  e.stopPropagation();
+  let favs = getFavs();
+  const idx = favs.findIndex(f => f.name === itemName);
+  if (idx >= 0) {
+    favs.splice(idx, 1);
+    saveFavs(favs);
+    showToast('Removed from favourites', true);
+  } else {
+    favs.push({ name: itemName, price: itemPrice, desc: itemDesc, tag: itemTag || '', addon: itemAddon || '' });
+    saveFavs(favs);
+    showToast('❤️ Added to favourites!');
+  }
+  // Update all heart icons for this item across the page
+  document.querySelectorAll(`.fav-icon[data-name="${CSS.escape(itemName)}"]`).forEach(el => {
+    el.classList.toggle('faved', isFaved(itemName));
+    el.textContent = isFaved(itemName) ? '❤️' : '♡';
+  });
+  // Update nav badge
+  updateFavBadge();
+  // Re-render favorites section if on favorites tab
+  if (currentSection === 'favorites') render();
+}
+function clearAllFavs() {
+  saveFavs([]);
+  updateFavBadge();
+  render();
+  showToast('Favourites cleared');
+}
+function updateFavBadge() {
+  const count = getFavs().length;
+  const badge = document.getElementById('fav-badge');
+  if (badge) {
+    badge.textContent = count;
+    badge.style.display = count > 0 ? 'inline-flex' : 'none';
+  }
 }
 
-function setSection(key){
-  currentSection=key;
-  if(searchQuery){clearSearch();return;}
-  expanded=new Set();
+/* ── TOAST ── */
+let toastTimer;
+function showToast(msg, isRed) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast show' + (isRed ? ' red' : '');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => { t.className = 'toast'; }, 2200);
+}
+
+/* ── NAV ── */
+function buildNav() {
+  const favCount = getFavs().length;
+  const favBtn = `<button class="nav-btn${currentSection==='favorites'?' active':''}" onclick="setSection('favorites')">
+    <span class="n-emoji">❤️</span>Favourites
+    <span class="fav-badge" id="fav-badge" style="display:${favCount>0?'inline-flex':'none'}">${favCount}</span>
+  </button>`;
+  document.getElementById('navScroll').innerHTML =
+    Object.entries(MENU).map(([k,v]) =>
+      `<button class="nav-btn${k===currentSection?' active':''}" onclick="setSection('${k}')"><span class="n-emoji">${v.emoji}</span>${v.label}</button>`
+    ).join('') + favBtn;
+}
+
+function setSection(key) {
+  currentSection = key;
+  if (searchQuery) { clearSearch(); return; }
+  expanded = new Set();
   buildNav();
   render();
-  window.scrollTo({top:document.querySelector('.sticky-top').offsetHeight,behavior:'smooth'});
+  window.scrollTo({ top: document.querySelector('.sticky-top').offsetHeight, behavior:'smooth' });
 }
 
-function handleSearch(val){
-  searchQuery=val.toLowerCase().trim();
-  document.getElementById('clearBtn').style.display=searchQuery?'flex':'none';
-  expanded=new Set();
+function handleSearch(val) {
+  searchQuery = val.toLowerCase().trim();
+  document.getElementById('clearBtn').style.display = searchQuery ? 'flex' : 'none';
+  expanded = new Set();
   render();
 }
-
-function clearSearch(){
-  searchQuery='';
-  document.getElementById('searchInput').value='';
-  document.getElementById('clearBtn').style.display='none';
-  expanded=new Set();
+function clearSearch() {
+  searchQuery = '';
+  document.getElementById('searchInput').value = '';
+  document.getElementById('clearBtn').style.display = 'none';
+  expanded = new Set();
   render();
 }
-
-function toggle(id){
-  expanded.has(id)?expanded.delete(id):expanded.add(id);
-  const card=document.getElementById(id);
-  if(!card)return;
-  card.classList.toggle('expanded',expanded.has(id));
+function toggle(id) {
+  expanded.has(id) ? expanded.delete(id) : expanded.add(id);
+  const card = document.getElementById(id);
+  if (!card) return;
+  card.classList.toggle('expanded', expanded.has(id));
+}
+function hl(text, q) {
+  if (!q) return text;
+  return text.replace(new RegExp(`(${q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')})`,'gi'),'<mark>$1</mark>');
 }
 
-function hl(text,q){
-  if(!q)return text;
-  return text.replace(new RegExp(`(${q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')})`, 'gi'),'<mark>$1</mark>');
-}
-
-function itemHTML(item,id){
-  const isExp=expanded.has(id);
-  const q=searchQuery;
-  return`<div class="item-card${isExp?' expanded':''}" id="${id}" onclick="toggle('${id}')">
+function itemHTML(item, id) {
+  const isExp = expanded.has(id);
+  const q = searchQuery;
+  const faved = isFaved(item.name);
+  return `<div class="item-card${isExp?' expanded':''}" id="${id}" onclick="toggle('${id}')">
     <div class="item-row">
-      <div class="item-left"><span class="veg-dot"></span><span class="item-name">
-  ${hl(item.name,q)}
-  ${item.tag === 'bestseller' ? '<span class="best-icon">⭐ Bestseller </span>' : ''}
-  ${item.tag === 'musttry' ? '<span class="must-icon">🔥 MustTry</span>' : ''}
-</span></div>
+      <div class="item-left">
+        <span class="veg-dot"></span>
+        <span class="fav-icon${faved?' faved':''}" data-name="${item.name.replace(/"/g,'&quot;')}"
+          onclick="toggleFav(event,'${item.name.replace(/'/g,"\\'")}',${item.price},'${(item.desc||'').replace(/'/g,"\\'")}','${item.tag||''}','${(item.addon||'').replace(/'/g,"\\'")}')"
+        >${faved?'❤️':'♡'}</span>
+        <span class="item-name">
+          ${hl(item.name,q)}
+          ${item.tag==='bestseller'?'<span class="best-icon">⭐ Bestseller</span>':''}
+          ${item.tag==='musttry'?'<span class="must-icon">🔥 MustTry</span>':''}
+        </span>
+      </div>
       <div class="item-right"><span class="item-price">₹${item.price}</span><span class="chevron">▾</span></div>
     </div>
     <div class="item-desc">
@@ -502,44 +641,85 @@ function itemHTML(item,id){
   </div>`;
 }
 
-function render(){
-  const c=document.getElementById('content');
-  if(searchQuery){
-    let html='<div class="search-result-header">Results for "'+searchQuery+'"</div>';
-    let found=0;
-    Object.entries(MENU).forEach(([sk,sv])=>{
-      let secItems='';
-      Object.entries(sv.subsections).forEach(([sub,items])=>{
-        items.forEach((item,i)=>{
-          if(item.name.toLowerCase().includes(searchQuery)||item.desc.toLowerCase().includes(searchQuery)){
-            const id=`s-${sk}-${i}-${sub.replace(/\W/g,'')}`;
-            secItems+=itemHTML(item,id);
+/* ── RENDER ── */
+function render() {
+  const c = document.getElementById('content');
+
+  // FAVORITES SECTION
+  if (currentSection === 'favorites' && !searchQuery) {
+    const favs = getFavs();
+    if (!favs.length) {
+      c.innerHTML = `
+        <div class="gap-lg"></div>
+        <div class="fav-section" style="margin:16px 12px;">
+          <div class="fav-section-head">
+            <h2>❤️ Your Favourites</h2>
+          </div>
+          <div class="fav-empty">
+            <span>🫶</span>
+            Tap ♡ on any item to save it here.<br>
+            <small style="color:var(--text3)">Your wishlist lives across visits!</small>
+          </div>
+        </div>`;
+      return;
+    }
+    let html = `<div class="gap-lg"></div>
+      <div class="fav-section">
+        <div class="fav-section-head">
+          <h2>❤️ Your Favourites</h2>
+          <div style="display:flex;align-items:center;gap:8px;">
+            <span class="item-count">${favs.length} item${favs.length!==1?'s':''}</span>
+            <button class="fav-clear-btn" onclick="clearAllFavs()">Clear all</button>
+          </div>
+        </div>
+        <div class="items-list" style="padding:0 10px;">
+          ${favs.map((item,i) => itemHTML(item, `fav-${i}`)).join('')}
+        </div>
+        <div class="gap"></div>
+      </div>`;
+    c.innerHTML = html;
+    return;
+  }
+
+  // SEARCH
+  if (searchQuery) {
+    let html = `<div class="search-result-header">Results for "${searchQuery}"</div>`;
+    let found = 0;
+    Object.entries(MENU).forEach(([sk,sv]) => {
+      let secItems = '';
+      Object.entries(sv.subsections).forEach(([sub,items]) => {
+        items.forEach((item,i) => {
+          if (item.name.toLowerCase().includes(searchQuery) || item.desc.toLowerCase().includes(searchQuery)) {
+            const id = `s-${sk}-${i}-${sub.replace(/\W/g,'')}`;
+            secItems += itemHTML(item, id);
             found++;
           }
         });
       });
-      if(secItems){
-        html+=`<div class="search-result-category">${sv.emoji} ${sv.label}</div><div class="items-list">${secItems}</div><div class="gap"></div>`;
+      if (secItems) {
+        html += `<div class="search-result-category">${sv.emoji} ${sv.label}</div><div class="items-list">${secItems}</div><div class="gap"></div>`;
       }
     });
-    if(!found)html=`<div class="no-results"><span>🔍</span>Nothing found for "<strong>${searchQuery}</strong>"<br><small style="color:var(--text3)">Try a different keyword</small></div>`;
-    c.innerHTML=html;
+    if (!found) html = `<div class="no-results"><span>🔍</span>Nothing found for "<strong>${searchQuery}</strong>"<br><small style="color:var(--text3)">Try a different keyword</small></div>`;
+    c.innerHTML = html;
     return;
   }
-  const sec=MENU[currentSection];
-  const total=Object.values(sec.subsections).reduce((a,b)=>a+b.length,0);
-  let html=`<div class="gap-lg"></div><div class="section-head"><h2>${sec.emoji} ${sec.label}</h2><span class="item-count">${total} items</span></div>`;
-  const subs=Object.entries(sec.subsections);
-  subs.forEach(([sub,items])=>{
-    if(subs.length>1)html+=`<div class="subsec-label">${sub}</div>`;
-    html+=`<div class="items-list">`;
-    items.forEach((item,i)=>{
-      const id=`${currentSection}-${sub.replace(/\W/g,'')}-${i}`;
-      html+=itemHTML(item,id);
+
+  // NORMAL SECTION
+  const sec = MENU[currentSection];
+  const total = Object.values(sec.subsections).reduce((a,b) => a+b.length, 0);
+  let html = `<div class="gap-lg"></div><div class="section-head"><h2>${sec.emoji} ${sec.label}</h2><span class="item-count">${total} items</span></div>`;
+  const subs = Object.entries(sec.subsections);
+  subs.forEach(([sub,items]) => {
+    if (subs.length > 1) html += `<div class="subsec-label">${sub}</div>`;
+    html += `<div class="items-list">`;
+    items.forEach((item,i) => {
+      const id = `${currentSection}-${sub.replace(/\W/g,'')}-${i}`;
+      html += itemHTML(item, id);
     });
-    html+=`</div><div class="gap"></div>`;
+    html += `</div><div class="gap"></div>`;
   });
-  c.innerHTML=html;
+  c.innerHTML = html;
 }
 
 buildNav();

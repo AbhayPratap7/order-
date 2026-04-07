@@ -95,6 +95,22 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg-page);color:var(--text
 .nav-btn.active{background:var(--brown);border-color:var(--brown);color:#fff;font-weight:600;}
 .nav-btn .n-emoji{font-size:13px;line-height:1;}
 
+/* Favourites nav btn special styling */
+.nav-btn.fav-nav-btn{
+  border-color:rgba(231,76,60,0.3);
+  color:#c0392b;
+  background:rgba(231,76,60,0.05);
+}
+.nav-btn.fav-nav-btn:hover{
+  border-color:#e74c3c;
+  background:rgba(231,76,60,0.1);
+}
+.nav-btn.fav-nav-btn.active{
+  background:#c0392b;
+  border-color:#c0392b;
+  color:#fff;
+}
+
 /* Favorites nav badge */
 .fav-badge{
   background:#e74c3c;color:#fff;
@@ -102,6 +118,44 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg-page);color:var(--text
   border-radius:50%;width:16px;height:16px;
   display:inline-flex;align-items:center;justify-content:center;
   margin-left:2px;line-height:1;
+}
+
+/* ── FAVOURITES QUICK ACCESS BANNER ── */
+.fav-quick-banner{
+  margin:16px 12px 0;
+  background:linear-gradient(135deg, #fff5f5 0%, #fff9f5 100%);
+  border:1.5px solid rgba(231,76,60,0.2);
+  border-radius:var(--radius);
+  padding:14px 16px;
+  display:flex;align-items:center;justify-content:space-between;
+  cursor:pointer;
+  transition:all 0.2s;
+  -webkit-tap-highlight-color:transparent;
+}
+.fav-quick-banner:hover{
+  border-color:rgba(231,76,60,0.4);
+  background:linear-gradient(135deg,#ffeeee 0%,#fff5ef 100%);
+}
+.fav-quick-banner-left{display:flex;align-items:center;gap:12px;}
+.fav-quick-banner-icon{
+  width:40px;height:40px;border-radius:50%;
+  background:rgba(231,76,60,0.1);
+  display:flex;align-items:center;justify-content:center;
+  font-size:18px;flex-shrink:0;
+}
+.fav-quick-banner-text h3{
+  font-family:'Playfair Display',serif;
+  font-size:15px;font-weight:600;color:#c0392b;
+  margin-bottom:2px;
+}
+.fav-quick-banner-text p{
+  font-size:11.5px;color:var(--text3);font-weight:400;
+}
+.fav-quick-banner-text p strong{
+  color:var(--brown);font-weight:600;
+}
+.fav-quick-banner-arrow{
+  color:rgba(192,57,43,0.5);font-size:18px;flex-shrink:0;
 }
 
 /* ── CONTENT ── */
@@ -534,19 +588,18 @@ function toggleFav(e, itemName, itemPrice, itemDesc, itemTag, itemAddon) {
     saveFavs(favs);
     showToast('❤️ Added to favourites!');
   }
-  // Update all heart icons for this item across the page
   document.querySelectorAll(`.fav-icon[data-name="${CSS.escape(itemName)}"]`).forEach(el => {
     el.classList.toggle('faved', isFaved(itemName));
     el.textContent = isFaved(itemName) ? '❤️' : '♡';
   });
-  // Update nav badge
   updateFavBadge();
-  // Re-render favorites section if on favorites tab
+  updateFavBanner();
   if (currentSection === 'favorites') render();
 }
 function clearAllFavs() {
   saveFavs([]);
   updateFavBadge();
+  updateFavBanner();
   render();
   showToast('Favourites cleared');
 }
@@ -556,6 +609,19 @@ function updateFavBadge() {
   if (badge) {
     badge.textContent = count;
     badge.style.display = count > 0 ? 'inline-flex' : 'none';
+  }
+}
+
+/* ── UPDATE BANNER TEXT ── */
+function updateFavBanner() {
+  const banner = document.getElementById('fav-quick-banner');
+  if (!banner) return;
+  const count = getFavs().length;
+  const subEl = banner.querySelector('.fav-banner-sub');
+  if (subEl) {
+    subEl.innerHTML = count > 0
+      ? `<strong>${count} item${count !== 1 ? 's' : ''} saved</strong> — tap to view your list`
+      : 'Tap ♡ on any item to save your picks';
   }
 }
 
@@ -572,14 +638,16 @@ function showToast(msg, isRed) {
 /* ── NAV ── */
 function buildNav() {
   const favCount = getFavs().length;
-  const favBtn = `<button class="nav-btn${currentSection==='favorites'?' active':''}" onclick="setSection('favorites')">
+  // Favourites FIRST in nav
+  const favBtn = `<button class="nav-btn fav-nav-btn${currentSection==='favorites'?' active':''}" onclick="setSection('favorites')">
     <span class="n-emoji">❤️</span>Favourites
     <span class="fav-badge" id="fav-badge" style="display:${favCount>0?'inline-flex':'none'}">${favCount}</span>
   </button>`;
   document.getElementById('navScroll').innerHTML =
+    favBtn +
     Object.entries(MENU).map(([k,v]) =>
       `<button class="nav-btn${k===currentSection?' active':''}" onclick="setSection('${k}')"><span class="n-emoji">${v.emoji}</span>${v.label}</button>`
-    ).join('') + favBtn;
+    ).join('');
 }
 
 function setSection(key) {
@@ -638,6 +706,24 @@ function itemHTML(item, id) {
       ${hl(item.desc,q)}
       ${item.addon?`<div class="addon-pill">✦ ${item.addon}</div>`:''}
     </div>
+  </div>`;
+}
+
+/* ── FAVOURITES QUICK ACCESS BANNER HTML ── */
+function favBannerHTML() {
+  const count = getFavs().length;
+  const subText = count > 0
+    ? `<strong>${count} item${count !== 1 ? 's' : ''} saved</strong> — tap to view your list`
+    : 'Tap ♡ on any item to save your picks';
+  return `<div class="fav-quick-banner" id="fav-quick-banner" onclick="setSection('favorites')">
+    <div class="fav-quick-banner-left">
+      <div class="fav-quick-banner-icon">❤️</div>
+      <div class="fav-quick-banner-text">
+        <h3>Your Favourites</h3>
+        <p class="fav-banner-sub">${subText}</p>
+      </div>
+    </div>
+    <div class="fav-quick-banner-arrow">›</div>
   </div>`;
 }
 
@@ -705,10 +791,13 @@ function render() {
     return;
   }
 
-  // NORMAL SECTION
+  // NORMAL SECTION — with favourites banner at top
   const sec = MENU[currentSection];
   const total = Object.values(sec.subsections).reduce((a,b) => a+b.length, 0);
-  let html = `<div class="gap-lg"></div><div class="section-head"><h2>${sec.emoji} ${sec.label}</h2><span class="item-count">${total} items</span></div>`;
+  let html = `<div class="gap-lg"></div>`;
+  // Favourites quick access banner always visible on normal sections
+  html += favBannerHTML();
+  html += `<div class="section-head"><h2>${sec.emoji} ${sec.label}</h2><span class="item-count">${total} items</span></div>`;
   const subs = Object.entries(sec.subsections);
   subs.forEach(([sub,items]) => {
     if (subs.length > 1) html += `<div class="subsec-label">${sub}</div>`;

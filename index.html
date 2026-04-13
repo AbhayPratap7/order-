@@ -33,297 +33,298 @@
 html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;}
 body{font-family:'DM Sans',sans-serif;background:var(--bg-page);color:var(--text);min-height:100vh;overflow-x:hidden;}
 
-/* ══════════════════════════════════════
-   SPLASH SCREEN
-══════════════════════════════════════ */
-#splash{
-  position:fixed;
-  inset:0;
-  z-index:9999;
-  background:var(--brown);
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  gap:0;
-  transition:opacity 0.7s ease, visibility 0.7s ease;
-}
-#splash.hide{
-  opacity:0;
-  visibility:hidden;
-  pointer-events:none;
-}
+/* ══ SPLASH ══ */
+#splash{position:fixed;inset:0;z-index:9999;background:var(--brown);display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.7s ease,visibility 0.7s ease;}
+#splash.hide{opacity:0;visibility:hidden;pointer-events:none;}
+.splash-steam{display:flex;gap:8px;margin-bottom:10px;height:32px;align-items:flex-end;}
+.steam-line{width:3px;border-radius:2px;background:rgba(255,255,255,0.25);transform-origin:bottom center;animation:steamRise 1.6s ease-in-out infinite;}
+.steam-line:nth-child(1){height:18px;animation-delay:0s;}
+.steam-line:nth-child(2){height:26px;animation-delay:0.25s;}
+.steam-line:nth-child(3){height:14px;animation-delay:0.5s;}
+@keyframes steamRise{0%,100%{opacity:0.15;transform:scaleY(0.7) translateY(4px);}50%{opacity:0.5;transform:scaleY(1) translateY(-4px);}}
+.splash-cup{font-size:52px;line-height:1;margin-bottom:22px;animation:cupPulse 2s ease-in-out infinite;}
+@keyframes cupPulse{0%,100%{transform:scale(1);}50%{transform:scale(1.04);}}
+.splash-greeting{font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:10px;animation:fadeInUp 0.6s ease both;animation-delay:0.1s;}
+.splash-title{font-family:'Playfair Display',serif;font-size:clamp(26px,7vw,42px);font-weight:600;color:#fff;letter-spacing:2px;text-align:center;line-height:1.15;margin-bottom:6px;animation:fadeInUp 0.6s ease both;animation-delay:0.2s;}
+.splash-line{width:40px;height:1.5px;background:rgba(255,255,255,0.3);border-radius:2px;margin:14px auto 14px;animation:fadeInUp 0.6s ease both;animation-delay:0.3s;}
+.splash-sub{font-family:'Playfair Display',serif;font-size:clamp(14px,3.5vw,18px);font-style:italic;color:rgba(255,255,255,0.75);letter-spacing:0.5px;text-align:center;animation:fadeInUp 0.6s ease both;animation-delay:0.4s;}
+.splash-dots{display:flex;gap:7px;margin-top:44px;animation:fadeInUp 0.6s ease both;animation-delay:0.6s;}
+.splash-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,0.3);animation:dotBounce 1.2s ease-in-out infinite;}
+.splash-dot:nth-child(1){animation-delay:0s;}
+.splash-dot:nth-child(2){animation-delay:0.2s;}
+.splash-dot:nth-child(3){animation-delay:0.4s;}
+@keyframes dotBounce{0%,80%,100%{transform:scale(0.7);background:rgba(255,255,255,0.25);}40%{transform:scale(1.15);background:rgba(255,255,255,0.7);}}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
 
-/* Steam animation above cup */
-.splash-steam{
-  display:flex;
-  gap:8px;
-  margin-bottom:10px;
-  height:32px;
-  align-items:flex-end;
-}
-.steam-line{
-  width:3px;
-  border-radius:2px;
-  background:rgba(255,255,255,0.25);
-  transform-origin:bottom center;
-  animation:steamRise 1.6s ease-in-out infinite;
-}
-.steam-line:nth-child(1){ height:18px; animation-delay:0s; }
-.steam-line:nth-child(2){ height:26px; animation-delay:0.25s; }
-.steam-line:nth-child(3){ height:14px; animation-delay:0.5s; }
-@keyframes steamRise{
-  0%,100%{ opacity:0.15; transform:scaleY(0.7) translateY(4px); }
-  50%{ opacity:0.5; transform:scaleY(1) translateY(-4px); }
-}
-
-/* Cup icon */
-.splash-cup{
-  font-size:52px;
-  line-height:1;
-  margin-bottom:22px;
-  animation:cupPulse 2s ease-in-out infinite;
-  filter:drop-shadow(0 4px 16px rgba(0,0,0,0.25));
-}
-@keyframes cupPulse{
-  0%,100%{ transform:scale(1); }
-  50%{ transform:scale(1.04); }
-}
-
-/* Greeting */
-.splash-greeting{
-  font-family:'DM Sans',sans-serif;
-  font-size:11px;
-  font-weight:500;
-  letter-spacing:3px;
-  text-transform:uppercase;
-  color:rgba(255,255,255,0.55);
-  margin-bottom:10px;
-  animation:fadeInUp 0.6s ease both;
-  animation-delay:0.1s;
-}
-
-/* Main title */
-.splash-title{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(26px,7vw,42px);
-  font-weight:600;
-  color:#fff;
-  letter-spacing:2px;
-  text-align:center;
-  line-height:1.15;
-  margin-bottom:6px;
-  animation:fadeInUp 0.6s ease both;
-  animation-delay:0.2s;
-}
-
-/* Divider line */
-.splash-line{
-  width:40px;
-  height:1.5px;
-  background:rgba(255,255,255,0.3);
-  border-radius:2px;
-  margin:14px auto 14px;
-  animation:fadeInUp 0.6s ease both;
-  animation-delay:0.3s;
-}
-
-/* Welcome sub */
-.splash-sub{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(14px,3.5vw,18px);
-  font-style:italic;
-  color:rgba(255,255,255,0.75);
-  letter-spacing:0.5px;
-  text-align:center;
-  animation:fadeInUp 0.6s ease both;
-  animation-delay:0.4s;
-}
-
-/* Loading dots */
-.splash-dots{
-  display:flex;
-  gap:7px;
-  margin-top:44px;
-  animation:fadeInUp 0.6s ease both;
-  animation-delay:0.6s;
-}
-.splash-dot{
-  width:7px;
-  height:7px;
-  border-radius:50%;
-  background:rgba(255,255,255,0.3);
-  animation:dotBounce 1.2s ease-in-out infinite;
-}
-.splash-dot:nth-child(1){ animation-delay:0s; }
-.splash-dot:nth-child(2){ animation-delay:0.2s; }
-.splash-dot:nth-child(3){ animation-delay:0.4s; }
-@keyframes dotBounce{
-  0%,80%,100%{ transform:scale(0.7); background:rgba(255,255,255,0.25); }
-  40%{ transform:scale(1.15); background:rgba(255,255,255,0.7); }
-}
-
-@keyframes fadeInUp{
-  from{ opacity:0; transform:translateY(14px); }
-  to{ opacity:1; transform:translateY(0); }
-}
-
-/* ── HEADER ── */
-.header{
-  background:var(--brown);
-  padding:34px 20px 24px;
-  text-align:center;
-  position:relative;
-  overflow:hidden;
-}
-.header::before{
-  content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse 80% 60% at 50% 100%, rgba(255,255,255,0.06) 0%, transparent 70%);
-  pointer-events:none;
-}
-.header h1{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(20px,5vw,34px);
-  font-weight:600;color:#fff;
-  letter-spacing:3px;margin-bottom:6px;
-}
-.header-sub{font-size:11px;color:rgba(255,255,255,0.55);letter-spacing:2px;text-transform:uppercase;font-weight:400;}
+/* ══ HEADER ══ */
+.header{background:var(--brown);padding:34px 20px 24px;text-align:center;position:relative;overflow:hidden;}
+.header::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 100%, rgba(255,255,255,0.06) 0%, transparent 70%);pointer-events:none;}
+.header h1{font-family:'Playfair Display',serif;font-size:clamp(20px,5vw,34px);font-weight:600;color:#fff;letter-spacing:3px;margin-bottom:6px;}
 .header-line{width:36px;height:1.5px;background:rgba(255,255,255,0.3);margin:12px auto 0;border-radius:2px;}
 
-/* ── STICKY TOP ── */
-.sticky-top{position:sticky;top:0;z-index:200;background:#fff;border-bottom:1px solid var(--border);box-shadow:0 1px 12px rgba(107,66,38,0.07);}
-
-/* ── SEARCH ── */
-.search-wrap{padding:12px 16px;position:relative;}
-.search-icon{position:absolute;left:28px;top:50%;transform:translateY(-50%);color:var(--text3);font-size:15px;pointer-events:none;}
-.search-box{
-  width:100%;background:var(--surface);
-  border:1.5px solid var(--border);border-radius:24px;
-  padding:10px 36px 10px 40px;
-  color:var(--text);font-size:13px;
-  font-family:'DM Sans',sans-serif;outline:none;
-  transition:border 0.2s,background 0.2s;
-}
-.search-box::placeholder{color:var(--text3);}
-.search-box:focus{border-color:var(--brown-mid);background:#fff;}
-.search-clear{
-  position:absolute;right:28px;top:50%;transform:translateY(-50%);
-  background:var(--surface3);border:none;color:var(--text2);
-  width:20px;height:20px;border-radius:50%;font-size:11px;
-  cursor:pointer;display:none;align-items:center;justify-content:center;
-}
-
-/* ── NAV ── */
-.nav-scroll{display:flex;gap:6px;padding:0 16px 12px;overflow-x:auto;scrollbar-width:none;}
-.nav-scroll::-webkit-scrollbar{display:none;}
-.nav-btn{
-  flex-shrink:0;padding:7px 15px;
-  border-radius:20px;border:1.5px solid var(--border);
-  background:transparent;color:var(--text2);
-  font-size:11px;font-weight:500;letter-spacing:0.5px;
-  text-transform:uppercase;cursor:pointer;
-  transition:all 0.2s;font-family:'DM Sans',sans-serif;
-  white-space:nowrap;display:flex;align-items:center;gap:5px;
-  -webkit-tap-highlight-color:transparent;
-}
-.nav-btn:hover{border-color:var(--brown-mid);color:var(--brown);}
-.nav-btn.active{background:var(--brown);border-color:var(--brown);color:#fff;font-weight:600;}
-.nav-btn .n-emoji{font-size:13px;line-height:1;}
-
-.nav-btn.fav-nav-btn{
-  border-color:rgba(231,76,60,0.3);
-  color:#c0392b;
-  background:rgba(231,76,60,0.05);
-}
-.nav-btn.fav-nav-btn:hover{
-  border-color:#e74c3c;
-  background:rgba(231,76,60,0.1);
-}
-.nav-btn.fav-nav-btn.active{
-  background:#c0392b;
-  border-color:#c0392b;
-  color:#fff;
-}
-
-.fav-badge{
-  background:#e74c3c;color:#fff;
-  font-size:9px;font-weight:700;
-  border-radius:50%;width:16px;height:16px;
-  display:inline-flex;align-items:center;justify-content:center;
-  margin-left:2px;line-height:1;
-}
-
-/* ── FAVOURITES QUICK ACCESS BANNER ── */
-.fav-quick-banner{
-  margin:16px 12px 0;
-  background:linear-gradient(135deg, #fff5f5 0%, #fff9f5 100%);
-  border:1.5px solid rgba(231,76,60,0.2);
-  border-radius:var(--radius);
-  padding:14px 16px;
-  display:flex;align-items:center;justify-content:space-between;
+/* ══ GAME BUTTON (top-right of header) ══ */
+.game-trigger-btn{
+  position:absolute;
+  top:14px;right:14px;
+  background:rgba(255,255,255,0.12);
+  border:1.5px solid rgba(255,255,255,0.25);
+  border-radius:22px;
+  padding:7px 12px;
+  display:flex;align-items:center;gap:6px;
   cursor:pointer;
+  color:#fff;
+  font-family:'DM Sans',sans-serif;
+  font-size:11px;font-weight:600;
+  letter-spacing:0.5px;
+  text-transform:uppercase;
   transition:all 0.2s;
   -webkit-tap-highlight-color:transparent;
+  z-index:10;
 }
-.fav-quick-banner:hover{
-  border-color:rgba(231,76,60,0.4);
-  background:linear-gradient(135deg,#ffeeee 0%,#fff5ef 100%);
+.game-trigger-btn:hover{background:rgba(255,255,255,0.2);border-color:rgba(255,255,255,0.45);}
+.game-trigger-btn .gt-icon{font-size:14px;animation:carBounce 1.5s ease-in-out infinite;}
+@keyframes carBounce{0%,100%{transform:translateX(0);}50%{transform:translateX(3px);}}
+.game-trigger-btn .gt-pulse{
+  width:7px;height:7px;border-radius:50%;
+  background:#4ade80;
+  box-shadow:0 0 0 0 rgba(74,222,128,0.5);
+  animation:livePulse 1.4s ease-in-out infinite;
 }
-.fav-quick-banner-left{display:flex;align-items:center;gap:12px;}
-.fav-quick-banner-icon{
-  width:40px;height:40px;border-radius:50%;
-  background:rgba(231,76,60,0.1);
+@keyframes livePulse{0%{box-shadow:0 0 0 0 rgba(74,222,128,0.6);}70%{box-shadow:0 0 0 6px rgba(74,222,128,0);}100%{box-shadow:0 0 0 0 rgba(74,222,128,0);}}
+
+/* ══ GAME OVERLAY ══ */
+.game-overlay{
+  position:fixed;inset:0;
+  background:rgba(20,12,6,0.85);
+  z-index:800;
+  display:flex;align-items:flex-end;justify-content:center;
+  opacity:0;pointer-events:none;
+  transition:opacity 0.3s ease;
+  backdrop-filter:blur(3px);
+}
+.game-overlay.open{opacity:1;pointer-events:auto;}
+.game-sheet{
+  background:#0d0d0d;
+  width:100%;max-width:480px;
+  max-height:92vh;
+  border-radius:24px 24px 0 0;
+  overflow:hidden;
+  display:flex;flex-direction:column;
+  transform:translateY(100%);
+  transition:transform 0.4s cubic-bezier(0.32,0.72,0,1);
+  box-shadow:0 -8px 50px rgba(0,0,0,0.6);
+}
+.game-overlay.open .game-sheet{transform:translateY(0);}
+.game-handle{width:36px;height:4px;background:#333;border-radius:2px;margin:12px auto 0;flex-shrink:0;}
+
+/* Game header */
+.game-header{
+  padding:12px 18px 10px;
+  display:flex;align-items:center;justify-content:space-between;
+  border-bottom:1px solid #1e1e1e;
+  flex-shrink:0;
+}
+.game-header-left{display:flex;align-items:center;gap:10px;}
+.game-header-icon{
+  width:36px;height:36px;border-radius:10px;
+  background:linear-gradient(135deg,#6b4226,#d4a97a);
   display:flex;align-items:center;justify-content:center;
   font-size:18px;flex-shrink:0;
 }
-.fav-quick-banner-text h3{
-  font-family:'Playfair Display',serif;
-  font-size:15px;font-weight:600;color:#c0392b;
-  margin-bottom:2px;
+.game-header-text h3{font-family:'Playfair Display',serif;font-size:15px;color:#fff;font-weight:600;margin-bottom:1px;}
+.game-header-text p{font-size:10px;color:#666;letter-spacing:0.5px;text-transform:uppercase;}
+.game-close{
+  width:30px;height:30px;border-radius:50%;
+  background:#1a1a1a;border:1px solid #2a2a2a;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;font-size:13px;color:#666;
+  transition:all 0.2s;
+  -webkit-tap-highlight-color:transparent;
 }
-.fav-quick-banner-text p{
-  font-size:11.5px;color:var(--text3);font-weight:400;
+.game-close:hover{background:#2a2a2a;color:#fff;}
+
+/* Score bar */
+.game-scorebar{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:8px 18px;
+  background:#0a0a0a;
+  border-bottom:1px solid #1a1a1a;
+  flex-shrink:0;
 }
-.fav-quick-banner-text p strong{
-  color:var(--brown);font-weight:600;
-}
-.fav-quick-banner-arrow{
-  color:rgba(192,57,43,0.5);font-size:18px;flex-shrink:0;
+.score-item{display:flex;align-items:center;gap:6px;}
+.score-label{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:#555;font-weight:500;}
+.score-val{font-size:15px;font-weight:700;color:#d4a97a;font-family:'DM Sans',sans-serif;}
+.score-best{font-size:15px;font-weight:700;color:#4a8c5c;}
+.life-icons{display:flex;gap:3px;font-size:13px;}
+
+/* ══ CANVAS AREA ══ */
+#gameCanvas{
+  display:block;
+  width:100%;
+  background:#111;
+  flex-shrink:0;
+  touch-action:none;
 }
 
-/* ── CONTENT ── */
-.content{padding:0 0 100px;}
-
-/* ── SECTION HEAD ── */
-.section-head{padding:22px 18px 4px;display:flex;align-items:baseline;gap:10px;}
-.section-head h2{font-family:'Playfair Display',serif;font-size:22px;font-weight:600;color:var(--brown);}
-.section-head .item-count{font-size:11px;color:var(--text3);letter-spacing:0.5px;}
-
-/* ── SUBSECTION LABEL ── */
-.subsec-label{
-  font-size:9.5px;font-weight:500;letter-spacing:1.8px;
-  text-transform:uppercase;color:var(--text3);
-  padding:14px 18px 8px;
-  display:flex;align-items:center;gap:10px;
+/* Controls */
+.game-controls{
+  display:flex;gap:10px;
+  padding:10px 18px;
+  justify-content:center;
+  align-items:center;
+  flex-shrink:0;
+  background:#0a0a0a;
+  border-top:1px solid #1a1a1a;
 }
-.subsec-label::after{content:'';flex:1;height:1px;background:var(--border);}
-
-/* ── ITEMS ── */
-.items-list{padding:0 12px;display:flex;flex-direction:column;gap:3px;}
-.item-card{
-  background:#fff;border:1.5px solid var(--border);
-  border-radius:var(--radius-sm);padding:13px 15px;
-  cursor:pointer;transition:all 0.15s;
-  position:relative;overflow:hidden;
+.ctrl-btn{
+  flex:1;max-width:120px;
+  background:#1a1a1a;
+  border:1.5px solid #2a2a2a;
+  border-radius:12px;
+  padding:14px 10px;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;
+  font-size:22px;
+  transition:all 0.1s;
   -webkit-tap-highlight-color:transparent;
   user-select:none;
 }
-.item-card::after{
-  content:'';position:absolute;
-  left:0;top:12%;bottom:12%;width:3px;
-  background:transparent;border-radius:0 2px 2px 0;
-  transition:background 0.15s;
+.ctrl-btn:active,.ctrl-btn.pressed{background:#2a2a2a;border-color:#444;transform:scale(0.94);}
+.ctrl-center{
+  flex:0.6;max-width:70px;
+  background:#6b4226;
+  border:1.5px solid #8a5a38;
+  border-radius:12px;
+  padding:14px 10px;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;
+  font-size:13px;font-weight:700;color:#fff;
+  letter-spacing:0.5px;text-transform:uppercase;
+  transition:all 0.1s;
+  -webkit-tap-highlight-color:transparent;
 }
+.ctrl-center:active{background:#8a5a38;transform:scale(0.94);}
+
+/* Progress bar to offer */
+.offer-progress-wrap{
+  padding:8px 18px 6px;
+  background:#0a0a0a;
+  border-bottom:1px solid #1a1a1a;
+  flex-shrink:0;
+}
+.offer-progress-label{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-bottom:5px;
+}
+.offer-progress-label span{font-size:9.5px;color:#555;letter-spacing:1px;text-transform:uppercase;}
+.offer-progress-label strong{font-size:9.5px;color:#d4a97a;letter-spacing:0.5px;}
+.offer-bar-bg{height:5px;background:#1a1a1a;border-radius:3px;overflow:hidden;}
+.offer-bar-fill{height:100%;width:0%;background:linear-gradient(90deg,#6b4226,#d4a97a);border-radius:3px;transition:width 0.3s ease;}
+
+/* Offer Won Modal */
+.offer-won-overlay{
+  position:absolute;inset:0;
+  background:rgba(0,0,0,0.92);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  z-index:10;
+  opacity:0;pointer-events:none;
+  transition:opacity 0.4s ease;
+  padding:20px;
+}
+.offer-won-overlay.show{opacity:1;pointer-events:auto;}
+.offer-won-card{
+  background:linear-gradient(135deg,#1a0f07,#0d0d0d);
+  border:1.5px solid #6b4226;
+  border-radius:20px;
+  padding:28px 24px;
+  text-align:center;
+  max-width:300px;
+  width:100%;
+  box-shadow:0 0 40px rgba(107,66,38,0.4);
+  animation:wonPop 0.5s cubic-bezier(0.34,1.56,0.64,1) both;
+}
+@keyframes wonPop{from{transform:scale(0.7);opacity:0;}to{transform:scale(1);opacity:1;}}
+.won-trophy{font-size:52px;margin-bottom:12px;display:block;}
+.won-title{font-family:'Playfair Display',serif;font-size:22px;color:#d4a97a;font-weight:600;margin-bottom:6px;}
+.won-sub{font-size:12px;color:#888;margin-bottom:18px;line-height:1.6;}
+.won-coupon{
+  background:#0a0a0a;border:1.5px dashed #6b4226;
+  border-radius:12px;padding:12px 16px;margin-bottom:18px;
+}
+.won-coupon-label{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#6b4226;margin-bottom:4px;}
+.won-coupon-code{font-size:22px;font-weight:700;color:#d4a97a;letter-spacing:3px;font-family:'DM Sans',sans-serif;}
+.won-coupon-desc{font-size:11px;color:#666;margin-top:4px;}
+.won-btn{
+  background:var(--brown,#6b4226);border:none;color:#fff;
+  border-radius:12px;padding:12px 24px;
+  font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;
+  cursor:pointer;width:100%;transition:all 0.2s;
+  -webkit-tap-highlight-color:transparent;
+}
+.won-btn:hover{background:#8a5a38;}
+
+/* Game over screen inside canvas */
+.gameover-overlay{
+  position:absolute;inset:0;
+  background:rgba(0,0,0,0.88);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  z-index:9;
+  opacity:0;pointer-events:none;
+  transition:opacity 0.3s ease;
+  gap:8px;
+}
+.gameover-overlay.show{opacity:1;pointer-events:auto;}
+.go-title{font-family:'Playfair Display',serif;font-size:28px;color:#e74c3c;font-weight:600;}
+.go-score{font-size:14px;color:#888;margin-top:2px;}
+.go-score strong{color:#d4a97a;}
+.go-hint{font-size:11px;color:#444;margin-top:8px;letter-spacing:0.5px;}
+
+/* Canvas wrapper for positioning overlays */
+.canvas-wrap{position:relative;flex-shrink:0;}
+
+/* Sticky top */
+.sticky-top{position:sticky;top:0;z-index:200;background:#fff;border-bottom:1px solid var(--border);box-shadow:0 1px 12px rgba(107,66,38,0.07);}
+.search-wrap{padding:12px 16px;position:relative;}
+.search-icon{position:absolute;left:28px;top:50%;transform:translateY(-50%);color:var(--text3);font-size:15px;pointer-events:none;}
+.search-box{width:100%;background:var(--surface);border:1.5px solid var(--border);border-radius:24px;padding:10px 36px 10px 40px;color:var(--text);font-size:13px;font-family:'DM Sans',sans-serif;outline:none;transition:border 0.2s,background 0.2s;}
+.search-box::placeholder{color:var(--text3);}
+.search-box:focus{border-color:var(--brown-mid);background:#fff;}
+.search-clear{position:absolute;right:28px;top:50%;transform:translateY(-50%);background:var(--surface3);border:none;color:var(--text2);width:20px;height:20px;border-radius:50%;font-size:11px;cursor:pointer;display:none;align-items:center;justify-content:center;}
+.nav-scroll{display:flex;gap:6px;padding:0 16px 12px;overflow-x:auto;scrollbar-width:none;}
+.nav-scroll::-webkit-scrollbar{display:none;}
+.nav-btn{flex-shrink:0;padding:7px 15px;border-radius:20px;border:1.5px solid var(--border);background:transparent;color:var(--text2);font-size:11px;font-weight:500;letter-spacing:0.5px;text-transform:uppercase;cursor:pointer;transition:all 0.2s;font-family:'DM Sans',sans-serif;white-space:nowrap;display:flex;align-items:center;gap:5px;-webkit-tap-highlight-color:transparent;}
+.nav-btn:hover{border-color:var(--brown-mid);color:var(--brown);}
+.nav-btn.active{background:var(--brown);border-color:var(--brown);color:#fff;font-weight:600;}
+.nav-btn .n-emoji{font-size:13px;line-height:1;}
+.nav-btn.fav-nav-btn{border-color:rgba(231,76,60,0.3);color:#c0392b;background:rgba(231,76,60,0.05);}
+.nav-btn.fav-nav-btn:hover{border-color:#e74c3c;background:rgba(231,76,60,0.1);}
+.nav-btn.fav-nav-btn.active{background:#c0392b;border-color:#c0392b;color:#fff;}
+.fav-badge{background:#e74c3c;color:#fff;font-size:9px;font-weight:700;border-radius:50%;width:16px;height:16px;display:inline-flex;align-items:center;justify-content:center;margin-left:2px;line-height:1;}
+.swipe-hint{font-size:11px;font-weight:500;letter-spacing:0.4px;text-align:center;padding:6px 16px 4px;display:none;color:var(--brown);background:linear-gradient(90deg,transparent,rgba(107,66,38,0.07),transparent);border-top:1px solid var(--border);animation:swipePulse 2.5s ease-in-out infinite;}
+.swipe-hint::before{content:'⟵ ';}
+.swipe-hint::after{content:' ⟶';}
+@keyframes swipePulse{0%,100%{opacity:0.6;}50%{opacity:1;}}
+@media(max-width:600px){.swipe-hint{display:block;}.item-name{font-size:13px;}}
+@media(max-width:400px){.header h1{letter-spacing:1px;}.items-list{padding:0 8px;}.item-card{padding:12px 12px;}}
+
+/* Content */
+.content{padding:0 0 100px;}
+.fav-quick-banner{margin:16px 12px 0;background:linear-gradient(135deg,#fff5f5 0%,#fff9f5 100%);border:1.5px solid rgba(231,76,60,0.2);border-radius:var(--radius);padding:14px 16px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;transition:all 0.2s;-webkit-tap-highlight-color:transparent;}
+.fav-quick-banner:hover{border-color:rgba(231,76,60,0.4);background:linear-gradient(135deg,#ffeeee 0%,#fff5ef 100%);}
+.fav-quick-banner-left{display:flex;align-items:center;gap:12px;}
+.fav-quick-banner-icon{width:40px;height:40px;border-radius:50%;background:rgba(231,76,60,0.1);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.fav-quick-banner-text h3{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:#c0392b;margin-bottom:2px;}
+.fav-quick-banner-text p{font-size:11.5px;color:var(--text3);font-weight:400;}
+.fav-quick-banner-text p strong{color:var(--brown);font-weight:600;}
+.fav-quick-banner-arrow{color:rgba(192,57,43,0.5);font-size:18px;flex-shrink:0;}
+.section-head{padding:22px 18px 4px;display:flex;align-items:baseline;gap:10px;}
+.section-head h2{font-family:'Playfair Display',serif;font-size:22px;font-weight:600;color:var(--brown);}
+.section-head .item-count{font-size:11px;color:var(--text3);letter-spacing:0.5px;}
+.subsec-label{font-size:9.5px;font-weight:500;letter-spacing:1.8px;text-transform:uppercase;color:var(--text3);padding:14px 18px 8px;display:flex;align-items:center;gap:10px;}
+.subsec-label::after{content:'';flex:1;height:1px;background:var(--border);}
+.items-list{padding:0 12px;display:flex;flex-direction:column;gap:3px;}
+.item-card{background:#fff;border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:13px 15px;cursor:pointer;transition:all 0.15s;position:relative;overflow:hidden;-webkit-tap-highlight-color:transparent;user-select:none;}
+.item-card::after{content:'';position:absolute;left:0;top:12%;bottom:12%;width:3px;background:transparent;border-radius:0 2px 2px 0;transition:background 0.15s;}
 .item-card:hover{border-color:var(--border2);background:var(--surface);}
 .item-card.expanded{border-color:var(--brown-border2);background:var(--surface);}
 .item-card.expanded::after{background:var(--brown);}
@@ -336,408 +337,108 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg-page);color:var(--text
 .item-price{font-size:14px;font-weight:600;color:var(--brown);}
 .chevron{color:var(--text3);font-size:9px;transition:transform 0.25s;display:inline-block;}
 .item-card.expanded .chevron{transform:rotate(180deg);}
-.item-desc{
-  font-size:12.5px;color:var(--text2);line-height:1.65;
-  margin-top:10px;padding-top:10px;
-  border-top:1px solid var(--border);
-  display:none;animation:fd 0.2s ease;
-}
+.item-desc{font-size:12.5px;color:var(--text2);line-height:1.65;margin-top:10px;padding-top:10px;border-top:1px solid var(--border);display:none;animation:fd 0.2s ease;}
 .item-card.expanded .item-desc{display:block;}
 @keyframes fd{from{opacity:0;transform:translateY(-4px);}to{opacity:1;transform:translateY(0);}}
-.addon-pill{
-  display:inline-flex;align-items:center;gap:4px;
-  margin-top:8px;font-size:11px;color:var(--brown);
-  background:var(--brown-dim);border:1px solid var(--brown-border);
-  border-radius:20px;padding:3px 10px;font-weight:500;
-}
-
-/* ── FAV HEART BUTTON ── */
-.fav-icon{
-  font-size:15px;
-  cursor:pointer;
-  flex-shrink:0;
-  transition:transform 0.2s, color 0.2s;
-  color:var(--text3);
-  line-height:1;
-  -webkit-tap-highlight-color:transparent;
-  z-index:2;
-}
+.addon-pill{display:inline-flex;align-items:center;gap:4px;margin-top:8px;font-size:11px;color:var(--brown);background:var(--brown-dim);border:1px solid var(--brown-border);border-radius:20px;padding:3px 10px;font-weight:500;}
+.fav-icon{font-size:15px;cursor:pointer;flex-shrink:0;transition:transform 0.2s,color 0.2s;color:var(--text3);line-height:1;-webkit-tap-highlight-color:transparent;z-index:2;}
 .fav-icon:hover{transform:scale(1.2);}
 .fav-icon.faved{color:#e74c3c;animation:heartPop 0.3s ease;}
-@keyframes heartPop{
-  0%{transform:scale(1);}
-  50%{transform:scale(1.4);}
-  100%{transform:scale(1);}
-}
-
-/* ── FAVORITES SECTION ── */
-.fav-section{
-  background:linear-gradient(135deg, rgba(231,76,60,0.04) 0%, rgba(107,66,38,0.04) 100%);
-  border:1.5px solid rgba(231,76,60,0.15);
-  border-radius:var(--radius);
-  margin:16px 12px 0;
-  padding-bottom:6px;
-  overflow:hidden;
-}
-.fav-section-head{
-  padding:14px 16px 8px;
-  display:flex;align-items:center;justify-content:space-between;
-}
-.fav-section-head h2{
-  font-family:'Playfair Display',serif;
-  font-size:18px;font-weight:600;
-  color:#c0392b;
-  display:flex;align-items:center;gap:8px;
-}
-.fav-section-head .item-count{font-size:11px;color:var(--text3);}
-.fav-clear-btn{
-  font-size:10px;color:var(--text3);
-  background:none;border:1px solid var(--border);
-  border-radius:12px;padding:3px 10px;cursor:pointer;
-  font-family:'DM Sans',sans-serif;letter-spacing:0.5px;
-  transition:all 0.2s;
-}
+@keyframes heartPop{0%{transform:scale(1);}50%{transform:scale(1.4);}100%{transform:scale(1);}}
+.fav-section{background:linear-gradient(135deg,rgba(231,76,60,0.04) 0%,rgba(107,66,38,0.04) 100%);border:1.5px solid rgba(231,76,60,0.15);border-radius:var(--radius);margin:16px 12px 0;padding-bottom:6px;overflow:hidden;}
+.fav-section-head{padding:14px 16px 8px;display:flex;align-items:center;justify-content:space-between;}
+.fav-section-head h2{font-family:'Playfair Display',serif;font-size:18px;font-weight:600;color:#c0392b;display:flex;align-items:center;gap:8px;}
+.fav-clear-btn{font-size:10px;color:var(--text3);background:none;border:1px solid var(--border);border-radius:12px;padding:3px 10px;cursor:pointer;font-family:'DM Sans',sans-serif;letter-spacing:0.5px;transition:all 0.2s;}
 .fav-clear-btn:hover{border-color:#e74c3c;color:#e74c3c;}
-.fav-empty{
-  padding:20px;text-align:center;
-  color:var(--text3);font-size:13px;line-height:1.8;
-}
+.fav-empty{padding:20px;text-align:center;color:var(--text3);font-size:13px;line-height:1.8;}
 .fav-empty span{font-size:26px;display:block;margin-bottom:6px;}
-
-/* ── TOAST ── */
-.toast{
-  position:fixed;bottom:90px;left:50%;transform:translateX(-50%) translateY(80px);
-  background:var(--brown);color:#fff;
-  font-size:12.5px;font-weight:500;
-  padding:10px 20px;border-radius:24px;
-  box-shadow:0 4px 20px rgba(107,66,38,0.3);
-  z-index:999;transition:transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
-  white-space:nowrap;pointer-events:none;
-}
+.toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--brown);color:#fff;font-size:12.5px;font-weight:500;padding:10px 20px;border-radius:24px;box-shadow:0 4px 20px rgba(107,66,38,0.3);z-index:999;transition:transform 0.3s cubic-bezier(0.34,1.56,0.64,1);white-space:nowrap;pointer-events:none;}
 .toast.show{transform:translateX(-50%) translateY(0);}
 .toast.red{background:#c0392b;}
-
-/* ── SEARCH RESULTS ── */
+.toast.green{background:#4a8c5c;}
 .search-result-header{padding:14px 18px 4px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text3);font-weight:500;}
 .search-result-category{font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:var(--brown);opacity:0.8;padding:12px 18px 6px;}
 .no-results{padding:50px 20px;text-align:center;color:var(--text3);font-size:13px;line-height:1.8;}
 .no-results span{font-size:28px;display:block;margin-bottom:10px;}
 mark{background:rgba(107,66,38,0.12);color:var(--brown);border-radius:3px;padding:0 2px;}
-
-/* ── GAPS ── */
-.gap{height:14px;}
-.gap-lg{height:20px;}
-
-/* ── FOOTER ── */
-footer{
-  text-align:center;padding:28px 20px;
-  border-top:1px solid var(--border);
-  font-size:12px;color:var(--text3);font-weight:300;
-  background:#fff;
-}
+.gap{height:14px;}.gap-lg{height:20px;}
+.best-icon{margin-left:8px;font-size:10px;font-weight:600;color:#6b4226;background:rgba(107,66,38,0.08);padding:2px 6px;border-radius:10px;}
+.must-icon{margin-left:8px;font-size:11px;font-weight:600;color:#c2410c;background:rgba(194,65,12,0.08);padding:2px 6px;border-radius:10px;letter-spacing:0.3px;}
+footer{text-align:center;padding:28px 20px;border-top:1px solid var(--border);font-size:12px;color:var(--text3);font-weight:300;background:#fff;}
 footer strong{color:var(--brown);font-weight:500;}
 
-/* ── MOBILE ── */
-.swipe-hint{
-  font-size:11px;font-weight:500;letter-spacing:0.4px;
-  text-align:center;padding:6px 16px 4px;display:none;
-  color:var(--brown);
-  background:linear-gradient(90deg,transparent,rgba(107,66,38,0.07),transparent);
-  border-top:1px solid var(--border);
-  animation:swipePulse 2.5s ease-in-out infinite;
-}
-.swipe-hint::before{content:'⟵ ';}
-.swipe-hint::after{content:' ⟶';}
-@keyframes swipePulse{
-  0%,100%{opacity:0.6;}
-  50%{opacity:1;}
-}
-@media(max-width:600px){
-  .swipe-hint{display:block;}
-  .item-name{font-size:13px;}
-}
-@media(max-width:400px){
-  .header h1{letter-spacing:1px;}
-  .items-list{padding:0 8px;}
-  .item-card{padding:12px 12px;}
-}
+/* Special FAB */
+.special-fab{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:400;display:flex;align-items:center;gap:8px;background:var(--brown);color:#fff;border:none;border-radius:30px;padding:13px 22px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;letter-spacing:0.4px;cursor:pointer;box-shadow:0 4px 20px rgba(107,66,38,0.45),0 2px 8px rgba(107,66,38,0.3);transition:transform 0.2s,box-shadow 0.2s,background 0.2s;white-space:nowrap;-webkit-tap-highlight-color:transparent;animation:fabEntrance 0.5s cubic-bezier(0.34,1.56,0.64,1) both;}
+.special-fab:hover{background:var(--brown-mid);transform:translateX(-50%) translateY(-2px);box-shadow:0 8px 28px rgba(107,66,38,0.5),0 3px 10px rgba(107,66,38,0.35);}
+.special-fab:active{transform:translateX(-50%) scale(0.96);}
+.special-fab-star{font-size:16px;animation:starSpin 3s ease-in-out infinite;}
+@keyframes starSpin{0%,100%{transform:rotate(0deg) scale(1);}50%{transform:rotate(15deg) scale(1.15);}}
+@keyframes fabEntrance{from{opacity:0;transform:translateX(-50%) translateY(30px);}to{opacity:1;transform:translateX(-50%) translateY(0);}}
 
-.best-icon{
-  margin-left:8px;font-size:10px;font-weight:600;
-  color:#6b4226;background:rgba(107,66,38,0.08);
-  padding:2px 6px;border-radius:10px;
-}
-.must-icon{
-  margin-left:8px;font-size:11px;font-weight:600;
-  color:#c2410c;background:rgba(194,65,12,0.08);
-  padding:2px 6px;border-radius:10px;letter-spacing:0.3px;
-}
-
-/* ══════════════════════════════════════
-   TODAY'S SPECIAL — FLOATING BUTTON
-══════════════════════════════════════ */
-.special-fab{
-  position:fixed;
-  bottom:24px;
-  left:50%;
-  transform:translateX(-50%);
-  z-index:400;
-  display:flex;
-  align-items:center;
-  gap:8px;
-  background:var(--brown);
-  color:#fff;
-  border:none;
-  border-radius:30px;
-  padding:13px 22px;
-  font-family:'DM Sans',sans-serif;
-  font-size:13px;
-  font-weight:600;
-  letter-spacing:0.4px;
-  cursor:pointer;
-  box-shadow:0 4px 20px rgba(107,66,38,0.45), 0 2px 8px rgba(107,66,38,0.3);
-  transition:transform 0.2s, box-shadow 0.2s, background 0.2s;
-  white-space:nowrap;
-  -webkit-tap-highlight-color:transparent;
-  animation:fabEntrance 0.5s cubic-bezier(0.34,1.56,0.64,1) both;
-}
-.special-fab:hover{
-  background:var(--brown-mid);
-  transform:translateX(-50%) translateY(-2px);
-  box-shadow:0 8px 28px rgba(107,66,38,0.5), 0 3px 10px rgba(107,66,38,0.35);
-}
-.special-fab:active{
-  transform:translateX(-50%) scale(0.96);
-}
-.special-fab-star{
-  font-size:16px;
-  animation:starSpin 3s ease-in-out infinite;
-}
-@keyframes starSpin{
-  0%,100%{transform:rotate(0deg) scale(1);}
-  50%{transform:rotate(15deg) scale(1.15);}
-}
-@keyframes fabEntrance{
-  from{opacity:0;transform:translateX(-50%) translateY(30px);}
-  to{opacity:1;transform:translateX(-50%) translateY(0);}
-}
-
-/* ── TODAY'S SPECIAL OVERLAY ── */
-.special-overlay{
-  position:fixed;
-  inset:0;
-  background:rgba(42,31,22,0.6);
-  z-index:500;
-  display:flex;
-  align-items:flex-end;
-  justify-content:center;
-  opacity:0;
-  pointer-events:none;
-  transition:opacity 0.3s ease;
-  backdrop-filter:blur(2px);
-  -webkit-backdrop-filter:blur(2px);
-}
-.special-overlay.open{
-  opacity:1;
-  pointer-events:auto;
-}
-.special-sheet{
-  background:var(--bg-page);
-  width:100%;
-  max-width:600px;
-  max-height:88vh;
-  border-radius:24px 24px 0 0;
-  overflow:hidden;
-  display:flex;
-  flex-direction:column;
-  transform:translateY(100%);
-  transition:transform 0.38s cubic-bezier(0.32,0.72,0,1);
-  box-shadow:0 -8px 40px rgba(107,66,38,0.25);
-}
-.special-overlay.open .special-sheet{
-  transform:translateY(0);
-}
-
-.special-handle{
-  width:36px;height:4px;
-  background:var(--surface3);
-  border-radius:2px;
-  margin:12px auto 0;
-  flex-shrink:0;
-}
-
-.special-header{
-  padding:16px 20px 14px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  border-bottom:1px solid var(--border);
-  flex-shrink:0;
-}
+/* Special overlay */
+.special-overlay{position:fixed;inset:0;background:rgba(42,31,22,0.6);z-index:500;display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.3s ease;backdrop-filter:blur(2px);}
+.special-overlay.open{opacity:1;pointer-events:auto;}
+.special-sheet{background:var(--bg-page);width:100%;max-width:600px;max-height:88vh;border-radius:24px 24px 0 0;overflow:hidden;display:flex;flex-direction:column;transform:translateY(100%);transition:transform 0.38s cubic-bezier(0.32,0.72,0,1);box-shadow:0 -8px 40px rgba(107,66,38,0.25);}
+.special-overlay.open .special-sheet{transform:translateY(0);}
+.special-handle{width:36px;height:4px;background:var(--surface3);border-radius:2px;margin:12px auto 0;flex-shrink:0;}
+.special-header{padding:16px 20px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);flex-shrink:0;}
 .special-header-left{display:flex;align-items:center;gap:12px;}
-.special-header-icon{
-  width:44px;height:44px;
-  border-radius:50%;
-  background:linear-gradient(135deg, var(--brown) 0%, var(--brown-mid) 100%);
-  display:flex;align-items:center;justify-content:center;
-  font-size:20px;flex-shrink:0;
-}
-.special-header-text h2{
-  font-family:'Playfair Display',serif;
-  font-size:18px;font-weight:600;color:var(--brown);
-  margin-bottom:2px;
-}
-.special-header-text p{
-  font-size:11px;color:var(--text3);letter-spacing:0.5px;
-  text-transform:uppercase;
-}
-.special-close{
-  width:32px;height:32px;border-radius:50%;
-  background:var(--surface);border:1.5px solid var(--border);
-  display:flex;align-items:center;justify-content:center;
-  cursor:pointer;font-size:14px;color:var(--text2);
-  transition:all 0.2s;flex-shrink:0;
-  -webkit-tap-highlight-color:transparent;
-}
+.special-header-icon{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--brown) 0%,var(--brown-mid) 100%);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+.special-header-text h2{font-family:'Playfair Display',serif;font-size:18px;font-weight:600;color:var(--brown);margin-bottom:2px;}
+.special-header-text p{font-size:11px;color:var(--text3);letter-spacing:0.5px;text-transform:uppercase;}
+.special-close{width:32px;height:32px;border-radius:50%;background:var(--surface);border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:14px;color:var(--text2);transition:all 0.2s;flex-shrink:0;-webkit-tap-highlight-color:transparent;}
 .special-close:hover{background:var(--surface2);border-color:var(--border2);}
-
-.special-date-badge{
-  display:flex;align-items:center;gap:8px;
-  padding:10px 20px 8px;
-  flex-shrink:0;
-}
-.special-date-pill{
-  display:inline-flex;align-items:center;gap:5px;
-  font-size:11px;font-weight:500;color:var(--brown);
-  background:var(--brown-dim);border:1px solid var(--brown-border);
-  border-radius:20px;padding:4px 12px;
-  letter-spacing:0.3px;
-}
-
-.special-list{
-  overflow-y:auto;
-  padding:4px 0 20px;
-  flex:1;
-  -webkit-overflow-scrolling:touch;
-  scrollbar-width:thin;
-  scrollbar-color:var(--surface3) transparent;
-}
+.special-date-badge{display:flex;align-items:center;gap:8px;padding:10px 20px 8px;flex-shrink:0;}
+.special-date-pill{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:500;color:var(--brown);background:var(--brown-dim);border:1px solid var(--brown-border);border-radius:20px;padding:4px 12px;letter-spacing:0.3px;}
+.special-list{overflow-y:auto;padding:4px 0 20px;flex:1;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:var(--surface3) transparent;}
 .special-list::-webkit-scrollbar{width:4px;}
 .special-list::-webkit-scrollbar-thumb{background:var(--surface3);border-radius:2px;}
-
-.special-cat-label{
-  font-size:9px;font-weight:600;letter-spacing:2px;
-  text-transform:uppercase;color:var(--text3);
-  padding:12px 20px 6px;
-  display:flex;align-items:center;gap:10px;
-}
+.special-cat-label{font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--text3);padding:12px 20px 6px;display:flex;align-items:center;gap:10px;}
 .special-cat-label::after{content:'';flex:1;height:1px;background:var(--border);}
-
-.special-item{
-  margin:0 12px 6px;
-  background:#fff;
-  border:1.5px solid var(--border);
-  border-radius:var(--radius-sm);
-  padding:13px 15px;
-  position:relative;
-  overflow:hidden;
-  cursor:pointer;
-  transition:all 0.15s;
-  -webkit-tap-highlight-color:transparent;
-}
-.special-item::before{
-  content:'';
-  position:absolute;
-  left:0;top:0;bottom:0;width:3px;
-  background:linear-gradient(to bottom, var(--brown), var(--brown-pale));
-  border-radius:0 2px 2px 0;
-}
+.special-item{margin:0 12px 6px;background:#fff;border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:13px 15px;position:relative;overflow:hidden;cursor:pointer;transition:all 0.15s;-webkit-tap-highlight-color:transparent;}
+.special-item::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(to bottom,var(--brown),var(--brown-pale));border-radius:0 2px 2px 0;}
 .special-item:hover{border-color:var(--border2);background:var(--surface);}
 .special-item-row{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;}
 .special-item-left{flex:1;min-width:0;padding-left:4px;}
-.special-item-name{
-  font-size:13.5px;font-weight:500;color:var(--text);
-  margin-bottom:4px;line-height:1.3;
-  display:flex;align-items:center;flex-wrap:wrap;gap:4px;
-}
+.special-item-name{font-size:13.5px;font-weight:500;color:var(--text);margin-bottom:4px;line-height:1.3;display:flex;align-items:center;flex-wrap:wrap;gap:4px;}
 .special-item-desc{font-size:12px;color:var(--text2);line-height:1.55;}
-.special-item-right{
-  display:flex;flex-direction:column;align-items:flex-end;gap:5px;flex-shrink:0;
-}
-.special-item-price{
-  font-size:14px;font-weight:700;color:var(--brown);
-}
-.special-badge{
-  font-size:9.5px;font-weight:600;letter-spacing:0.3px;
-  padding:2px 8px;border-radius:10px;white-space:nowrap;
-}
-.badge-today{
-  color:#fff;
-  background:var(--brown);
-}
-.badge-chef{
-  color:#c2410c;
-  background:rgba(194,65,12,0.1);
-  border:1px solid rgba(194,65,12,0.2);
-}
-.badge-limited{
-  color:#6b21a8;
-  background:rgba(107,33,168,0.08);
-  border:1px solid rgba(107,33,168,0.2);
-}
-
-.special-veg{
-  width:10px;height:10px;flex-shrink:0;
-  border:1.5px solid var(--green);border-radius:2px;
-  position:relative;display:inline-block;vertical-align:middle;
-  margin-right:2px;
-}
-.special-veg::after{
-  content:'';position:absolute;
-  top:1.5px;left:1.5px;
-  width:4px;height:4px;
-  background:var(--green);border-radius:50%;
-}
-
-.special-note{
-  margin:10px 20px 0;
-  padding:12px 14px;
-  background:var(--brown-dim);
-  border:1px solid var(--brown-border);
-  border-radius:var(--radius-sm);
-  font-size:11.5px;color:var(--text2);
-  line-height:1.55;text-align:center;
-  flex-shrink:0;
-}
+.special-item-right{display:flex;flex-direction:column;align-items:flex-end;gap:5px;flex-shrink:0;}
+.special-item-price{font-size:14px;font-weight:700;color:var(--brown);}
+.special-badge{font-size:9.5px;font-weight:600;letter-spacing:0.3px;padding:2px 8px;border-radius:10px;white-space:nowrap;}
+.badge-today{color:#fff;background:var(--brown);}
+.badge-chef{color:#c2410c;background:rgba(194,65,12,0.1);border:1px solid rgba(194,65,12,0.2);}
+.badge-limited{color:#6b21a8;background:rgba(107,33,168,0.08);border:1px solid rgba(107,33,168,0.2);}
+.special-veg{width:10px;height:10px;flex-shrink:0;border:1.5px solid var(--green);border-radius:2px;position:relative;display:inline-block;vertical-align:middle;margin-right:2px;}
+.special-veg::after{content:'';position:absolute;top:1.5px;left:1.5px;width:4px;height:4px;background:var(--green);border-radius:50%;}
 </style>
 </head>
 <body>
 
-<!-- ══ SPLASH SCREEN ══ -->
+<!-- SPLASH -->
 <div id="splash">
-  <div class="splash-steam">
-    <div class="steam-line"></div>
-    <div class="steam-line"></div>
-    <div class="steam-line"></div>
-  </div>
+  <div class="splash-steam"><div class="steam-line"></div><div class="steam-line"></div><div class="steam-line"></div></div>
   <div class="splash-cup">☕</div>
-  <div class="splash-greeting">Hii Caffeinated People</div>
+  <div class="splash-greeting">Hii Caffeine Lovers</div>
   <div class="splash-title">Welcome to KAVA</div>
   <div class="splash-line"></div>
   <div class="splash-sub">The Caffeine House</div>
-  <div class="splash-dots">
-    <div class="splash-dot"></div>
-    <div class="splash-dot"></div>
-    <div class="splash-dot"></div>
-  </div>
+  <div class="splash-dots"><div class="splash-dot"></div><div class="splash-dot"></div><div class="splash-dot"></div></div>
 </div>
-<!-- ══ END SPLASH ══ -->
 
+<!-- HEADER -->
 <header class="header">
   <h1>KAVA THE CAFFEINE HOUSE</h1>
   <div class="header-line"></div>
+
+  <!-- GAME TRIGGER BUTTON -->
+  <button class="game-trigger-btn" onclick="openGame()" aria-label="Play Game">
+    <span class="gt-icon">🚗</span>
+    <span>Race</span>
+    <span class="gt-pulse"></span>
+  </button>
 </header>
 
+<!-- STICKY NAV -->
 <div class="sticky-top">
   <div class="search-wrap">
     <span class="search-icon">&#9906;</span>
@@ -750,48 +451,635 @@ footer strong{color:var(--brown);font-weight:500;}
 
 <div class="content" id="content"></div>
 
-<!-- TODAY'S SPECIAL FLOATING BUTTON -->
+<!-- TODAY'S SPECIAL FAB -->
 <button class="special-fab" onclick="openSpecial()" aria-label="Today's Special">
   <span class="special-fab-star">✦</span>
   Today's Special
 </button>
 
-<!-- TODAY'S SPECIAL BOTTOM SHEET -->
+<!-- TODAY'S SPECIAL SHEET -->
 <div class="special-overlay" id="specialOverlay" onclick="handleOverlayClick(event)">
   <div class="special-sheet" id="specialSheet">
     <div class="special-handle"></div>
     <div class="special-header">
       <div class="special-header-left">
         <div class="special-header-icon">✦</div>
-        <div class="special-header-text">
-          <h2>Today's Special</h2>
-          <p>Handpicked by our team</p>
-        </div>
+        <div class="special-header-text"><h2>Today's Special</h2><p>Handpicked by our team</p></div>
       </div>
       <div class="special-close" onclick="closeSpecial()">✕</div>
     </div>
-    <div class="special-date-badge">
-      <div class="special-date-pill" id="specialDatePill">📅 Loading…</div>
-    </div>
+    <div class="special-date-badge"><div class="special-date-pill" id="specialDatePill">📅 Loading…</div></div>
     <div class="special-list" id="specialList"></div>
   </div>
 </div>
 
-<!-- Toast Notification -->
+<!-- ══════════════════════════════════════
+     GAME OVERLAY
+══════════════════════════════════════ -->
+<div class="game-overlay" id="gameOverlay" onclick="handleGameOverlayClick(event)">
+  <div class="game-sheet" id="gameSheet">
+    <div class="game-handle"></div>
+
+    <!-- Header -->
+    <div class="game-header">
+      <div class="game-header-left">
+        <div class="game-header-icon">🚗</div>
+        <div class="game-header-text">
+          <h3>Kava Speedway</h3>
+          <p>Survive the chaos · Unlock a reward</p>
+        </div>
+      </div>
+      <div class="game-close" onclick="closeGame()">✕</div>
+    </div>
+
+    <!-- Score bar -->
+    <div class="game-scorebar">
+      <div class="score-item"><span class="score-label">Score</span><span class="score-val" id="scoreVal">0</span></div>
+      <div class="score-item"><span class="life-icons" id="lifeIcons">❤️❤️❤️</span></div>
+      <div class="score-item"><span class="score-label">Best</span><span class="score-best" id="bestVal">0</span></div>
+    </div>
+
+    <!-- Offer progress -->
+    <div class="offer-progress-wrap">
+      <div class="offer-progress-label">
+        <span>🏆 Reach 3000 pts for a reward</span>
+        <strong id="progressPct">0%</strong>
+      </div>
+      <div class="offer-bar-bg"><div class="offer-bar-fill" id="offerBarFill"></div></div>
+    </div>
+
+    <!-- Canvas -->
+    <div class="canvas-wrap">
+      <canvas id="gameCanvas"></canvas>
+
+      <!-- Game over layer -->
+      <div class="gameover-overlay" id="gameoverOverlay">
+        <div class="go-title">💥 Crashed!</div>
+        <div class="go-score">Score: <strong id="goScoreDisp">0</strong></div>
+        <div class="go-hint">Tap START to try again</div>
+      </div>
+
+      <!-- Offer won layer -->
+      <div class="offer-won-overlay" id="offerWonOverlay">
+        <div class="offer-won-card">
+          <span class="won-trophy">🏆</span>
+          <div class="won-title">You Unlocked It!</div>
+          <div class="won-sub">Legendary driving! Show this code to your server and claim your treat.</div>
+          <div class="won-coupon">
+            <div class="won-coupon-label">Your Offer Code</div>
+            <div class="won-coupon-code">KAVA10</div>
+            <div class="won-coupon-desc">10% off your entire order today</div>
+          </div>
+          <button class="won-btn" onclick="dismissOffer()">Awesome! Keep Playing 🚗</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Controls -->
+    <div class="game-controls">
+      <div class="ctrl-btn" id="btnLeft" ontouchstart="keyDown('left')" ontouchend="keyUp('left')" onmousedown="keyDown('left')" onmouseup="keyUp('left')">◀</div>
+      <div class="ctrl-center" id="btnStart" onclick="startGame()">START</div>
+      <div class="ctrl-btn" id="btnRight" ontouchstart="keyDown('right')" ontouchend="keyUp('right')" onmousedown="keyDown('right')" onmouseup="keyUp('right')">▶</div>
+    </div>
+
+  </div>
+</div>
+
 <div class="toast" id="toast"></div>
 
-<footer>&#169; 2026 <strong>Kava The Caffeine House</strong> &nbsp;·&nbsp; Crafted with care, served with love</footer>
+<footer>© 2026 <strong>Kava The Caffeine House</strong> &nbsp;·&nbsp; Crafted with care, served with love</footer>
 
 <script>
-/* ══ SPLASH DISMISS ══ */
+/* ══════════════════════
+   SPLASH
+══════════════════════ */
 window.addEventListener('load', function() {
   setTimeout(function() {
-    var splash = document.getElementById('splash');
-    splash.classList.add('hide');
-    setTimeout(function() { splash.style.display = 'none'; }, 750);
+    var s = document.getElementById('splash');
+    s.classList.add('hide');
+    setTimeout(function() { s.style.display='none'; }, 750);
   }, 2600);
 });
 
+/* ══════════════════════════════════════════════════
+   KAVA SPEEDWAY — CANVAS RACING GAME
+   Target: 3000 pts to unlock offer (brutally hard)
+══════════════════════════════════════════════════ */
+const canvas  = document.getElementById('gameCanvas');
+const ctx     = canvas.getContext('2d');
+
+// Sizing: fit sheet width, fixed height
+function resizeCanvas() {
+  const sheet = document.getElementById('gameSheet');
+  const w = Math.min(sheet.clientWidth, 480);
+  canvas.width  = w;
+  canvas.height = Math.min(Math.floor(w * 0.75), 260);
+}
+
+/* ── Game state ── */
+const ROAD_LANES = 5;
+let gameRunning = false;
+let gamePaused  = false;
+let score       = 0;
+let bestScore   = parseInt(localStorage.getItem('kava_best') || '0');
+let lives       = 3;
+let offerUnlocked = false;
+let frameId;
+let tick = 0;
+let speed = 2.2;         // pixels per frame, increases over time
+let spawnRate = 90;      // frames between spawns, decreases over time
+
+/* ── Player ── */
+const player = { lane: 2, x: 0, y: 0, w: 28, h: 44, moving: false, targetX: 0 };
+
+/* ── Obstacles ── */
+let obstacles = [];
+
+/* ── Road ── */
+let roadOffset = 0;
+
+/* ── Input ── */
+const keys = { left: false, right: false };
+let moveDelay = 0;
+
+function keyDown(dir) {
+  keys[dir] = true;
+  document.getElementById('btn' + dir.charAt(0).toUpperCase() + dir.slice(1)).classList.add('pressed');
+}
+function keyUp(dir) {
+  keys[dir] = false;
+  document.getElementById('btn' + dir.charAt(0).toUpperCase() + dir.slice(1)).classList.remove('pressed');
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowLeft')  { keys.left  = true; e.preventDefault(); }
+  if (e.key === 'ArrowRight') { keys.right = true; e.preventDefault(); }
+  if (e.key === ' ' || e.key === 'Enter') { if (!gameRunning) startGame(); }
+});
+document.addEventListener('keyup', e => {
+  if (e.key === 'ArrowLeft')  keys.left  = false;
+  if (e.key === 'ArrowRight') keys.right = false;
+});
+
+/* ── Swipe support ── */
+let touchStartX = 0;
+canvas.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, {passive:true});
+canvas.addEventListener('touchend', e => {
+  const dx = e.changedTouches[0].clientX - touchStartX;
+  if (Math.abs(dx) > 20) {
+    if (dx < 0 && player.lane > 0)            player.lane--;
+    else if (dx > 0 && player.lane < ROAD_LANES-1) player.lane++;
+  }
+});
+
+/* ── Lane geometry ── */
+function laneX(lane) {
+  const laneW = canvas.width / ROAD_LANES;
+  return laneW * lane + laneW / 2;
+}
+
+/* ── INIT ── */
+function initGame() {
+  score       = 0;
+  lives       = 3;
+  tick        = 0;
+  speed       = 2.2;
+  spawnRate   = 90;
+  obstacles   = [];
+  roadOffset  = 0;
+  player.lane = 2;
+  player.x    = laneX(2);
+  player.targetX = player.x;
+  player.y    = canvas.height - player.h - 12;
+  moveDelay   = 0;
+  updateHUD();
+}
+
+/* ── START ── */
+function startGame() {
+  if (gameRunning) return;
+  resizeCanvas();
+  initGame();
+  document.getElementById('gameoverOverlay').classList.remove('show');
+  document.getElementById('offerWonOverlay').classList.remove('show');
+  document.getElementById('btnStart').textContent = 'PAUSE';
+  gameRunning = true;
+  gamePaused  = false;
+  if (frameId) cancelAnimationFrame(frameId);
+  loop();
+}
+
+document.getElementById('btnStart').addEventListener('click', function() {
+  if (!gameRunning) { startGame(); return; }
+  gamePaused = !gamePaused;
+  this.textContent = gamePaused ? 'RESUME' : 'PAUSE';
+  if (!gamePaused) loop();
+});
+// prevent double-trigger from onclick
+document.getElementById('btnStart').onclick = null;
+
+/* ── MAIN LOOP ── */
+function loop() {
+  if (!gameRunning || gamePaused) return;
+  update();
+  draw();
+  frameId = requestAnimationFrame(loop);
+}
+
+/* ── UPDATE ── */
+function update() {
+  tick++;
+
+  // Increase difficulty every 180 frames (~3 sec at 60fps)
+  if (tick % 180 === 0) {
+    speed      = Math.min(speed + 0.28, 14);
+    spawnRate  = Math.max(spawnRate - 4, 22);
+  }
+
+  // Score: points per frame, scaled by speed
+  score += Math.floor(speed * 0.18);
+  updateHUD();
+
+  // Road scroll
+  roadOffset = (roadOffset + speed) % (canvas.height / 4);
+
+  // Player movement — one lane per key press (smooth)
+  if (moveDelay > 0) moveDelay--;
+  if (moveDelay === 0) {
+    if (keys.left  && player.lane > 0)              { player.lane--; moveDelay = 10; }
+    if (keys.right && player.lane < ROAD_LANES - 1) { player.lane++; moveDelay = 10; }
+  }
+  const targetX = laneX(player.lane);
+  player.x += (targetX - player.x) * 0.25;
+
+  // Spawn obstacles
+  if (tick % spawnRate === 0) spawnObstacle();
+
+  // Extra obstacle at high speed
+  if (speed > 6 && tick % Math.max(spawnRate - 15, 18) === 3) spawnObstacle();
+
+  // Move obstacles
+  for (let i = obstacles.length - 1; i >= 0; i--) {
+    obstacles[i].y += speed * obstacles[i].speedMult;
+    if (obstacles[i].y > canvas.height + 60) {
+      obstacles.splice(i, 1);
+    }
+  }
+
+  // Collision
+  for (let i = obstacles.length - 1; i >= 0; i--) {
+    const o = obstacles[i];
+    const px = player.x - player.w / 2;
+    const py = player.y;
+    const ox = laneX(o.lane) - o.w / 2;
+    const oy = o.y;
+    const margin = 4;
+    if (
+      px + margin < ox + o.w - margin &&
+      px + player.w - margin > ox + margin &&
+      py + margin < oy + o.h - margin &&
+      py + player.h - margin > oy + margin
+    ) {
+      obstacles.splice(i, 1);
+      loseLife();
+      if (lives <= 0) { gameOver(); return; }
+    }
+  }
+}
+
+function spawnObstacle() {
+  // Avoid spawning in same lane as player always — but at higher speed can overlap
+  const occupied = new Set();
+  // At lower speeds, give player a tiny mercy window
+  if (speed < 5) occupied.add(player.lane);
+
+  const available = [];
+  for (let l = 0; l < ROAD_LANES; l++) {
+    if (!occupied.has(l)) available.push(l);
+  }
+  if (!available.length) return;
+
+  // Sometimes spawn 2 obstacles at once for chaos
+  const count = speed > 7 ? (Math.random() < 0.45 ? 2 : 1) : 1;
+  const shuffled = available.sort(() => Math.random() - 0.5);
+
+  for (let i = 0; i < Math.min(count, shuffled.length); i++) {
+    // Vary obstacle types
+    const types = ['truck','car','barrier','oil','cone'];
+    const type  = types[Math.floor(Math.random() * types.length)];
+    const sizes = { truck:[30,52], car:[26,44], barrier:[32,22], oil:[24,24], cone:[18,24] };
+    const [w, h] = sizes[type];
+    const speedMult = 0.85 + Math.random() * 0.6;
+    obstacles.push({ lane: shuffled[i], y: -h - Math.random() * 30, w, h, type, speedMult });
+  }
+}
+
+function loseLife() {
+  lives = Math.max(0, lives - 1);
+  updateHUD();
+  // Flash screen
+  ctx.fillStyle = 'rgba(231,76,60,0.35)';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+}
+
+function gameOver() {
+  gameRunning = false;
+  cancelAnimationFrame(frameId);
+  if (score > bestScore) {
+    bestScore = score;
+    localStorage.setItem('kava_best', bestScore);
+  }
+  document.getElementById('goScoreDisp').textContent = score;
+  document.getElementById('gameoverOverlay').classList.add('show');
+  document.getElementById('btnStart').textContent = 'START';
+  updateHUD();
+}
+
+/* ── DRAW ── */
+function draw() {
+  const W = canvas.width, H = canvas.height;
+  const laneW = W / ROAD_LANES;
+
+  // Road background
+  ctx.fillStyle = '#1a1a1a';
+  ctx.fillRect(0, 0, W, H);
+
+  // Road surface
+  ctx.fillStyle = '#252525';
+  ctx.fillRect(0, 0, W, H);
+
+  // Lane dividers (dashed)
+  ctx.strokeStyle = '#3a3a3a';
+  ctx.lineWidth   = 1.5;
+  ctx.setLineDash([18, 14]);
+  ctx.lineDashOffset = -roadOffset;
+  for (let i = 1; i < ROAD_LANES; i++) {
+    ctx.beginPath();
+    ctx.moveTo(i * laneW, 0);
+    ctx.lineTo(i * laneW, H);
+    ctx.stroke();
+  }
+  ctx.setLineDash([]);
+
+  // Road edge lines
+  ctx.strokeStyle = '#f59e0b44';
+  ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.moveTo(2, 0); ctx.lineTo(2, H); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(W-2, 0); ctx.lineTo(W-2, H); ctx.stroke();
+
+  // Speed lines effect at high speed
+  if (speed > 5) {
+    const alpha = Math.min((speed - 5) / 9, 0.25);
+    ctx.strokeStyle = `rgba(255,255,255,${alpha})`;
+    ctx.lineWidth = 1;
+    for (let i = 0; i < 6; i++) {
+      const sx = Math.random() * W;
+      const len = 15 + Math.random() * 30;
+      ctx.beginPath(); ctx.moveTo(sx, 0); ctx.lineTo(sx, len); ctx.stroke();
+    }
+  }
+
+  // Draw obstacles
+  for (const o of obstacles) {
+    const ox = laneX(o.lane) - o.w / 2;
+    drawObstacle(ctx, o, ox);
+  }
+
+  // Draw player car
+  drawPlayerCar(ctx, player.x - player.w / 2, player.y, player.w, player.h);
+
+  // Distance marker overlay (top)
+  if (score > 0) {
+    ctx.fillStyle = 'rgba(0,0,0,0.45)';
+    ctx.fillRect(W/2 - 38, 6, 76, 20);
+    ctx.fillStyle = '#d4a97a';
+    ctx.font = 'bold 11px DM Sans, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('⚡ ' + speed.toFixed(1) + 'x', W/2, 20);
+    ctx.textAlign = 'left';
+  }
+}
+
+function drawPlayerCar(ctx, x, y, w, h) {
+  // Body
+  ctx.fillStyle = '#d4a97a';
+  ctx.beginPath();
+  roundRect(ctx, x+2, y+h*0.25, w-4, h*0.6, 5);
+  ctx.fill();
+
+  // Roof
+  ctx.fillStyle = '#b8835a';
+  ctx.beginPath();
+  roundRect(ctx, x+5, y+h*0.1, w-10, h*0.35, 4);
+  ctx.fill();
+
+  // Windshield
+  ctx.fillStyle = '#1a2a3a';
+  ctx.beginPath();
+  roundRect(ctx, x+6, y+h*0.12, w-12, h*0.2, 3);
+  ctx.fill();
+
+  // Rear window
+  ctx.fillStyle = '#1a2a3a';
+  ctx.beginPath();
+  roundRect(ctx, x+7, y+h*0.36, w-14, h*0.14, 2);
+  ctx.fill();
+
+  // Wheels
+  ctx.fillStyle = '#111';
+  [{ wx: x,     wy: y+h*0.2, ww: 6, wh: 10 },
+   { wx: x+w-6, wy: y+h*0.2, ww: 6, wh: 10 },
+   { wx: x,     wy: y+h*0.72, ww: 6, wh: 10 },
+   { wx: x+w-6, wy: y+h*0.72, ww: 6, wh: 10 }].forEach(wh => {
+    ctx.beginPath();
+    roundRect(ctx, wh.wx, wh.wy, wh.ww, wh.wh, 2);
+    ctx.fill();
+  });
+
+  // Headlights
+  ctx.fillStyle = '#fff9c4';
+  ctx.beginPath(); ctx.arc(x+5,  y+h*0.08, 3, 0, Math.PI*2); ctx.fill();
+  ctx.beginPath(); ctx.arc(x+w-5, y+h*0.08, 3, 0, Math.PI*2); ctx.fill();
+
+  // Exhaust puff at high speed
+  if (speed > 4) {
+    ctx.fillStyle = `rgba(180,180,180,${Math.min((speed-4)/10, 0.3)})`;
+    ctx.beginPath(); ctx.arc(x+w/2-4, y+h+4, 4+Math.random()*3, 0, Math.PI*2); ctx.fill();
+    ctx.beginPath(); ctx.arc(x+w/2+4, y+h+4, 3+Math.random()*3, 0, Math.PI*2); ctx.fill();
+  }
+}
+
+function drawObstacle(ctx, o, ox) {
+  switch(o.type) {
+    case 'truck':
+      ctx.fillStyle = '#e74c3c';
+      ctx.beginPath(); roundRect(ctx, ox+2, o.y, o.w-4, o.h, 4); ctx.fill();
+      ctx.fillStyle = '#c0392b';
+      ctx.beginPath(); roundRect(ctx, ox+4, o.y+2, o.w-8, o.h*0.4, 3); ctx.fill();
+      ctx.fillStyle = '#1a2a3a';
+      ctx.beginPath(); roundRect(ctx, ox+5, o.y+4, o.w-10, o.h*0.22, 2); ctx.fill();
+      // wheels
+      ctx.fillStyle = '#111';
+      ctx.beginPath(); roundRect(ctx, ox, o.y+8, 5, 9, 2); ctx.fill();
+      ctx.beginPath(); roundRect(ctx, ox+o.w-5, o.y+8, 5, 9, 2); ctx.fill();
+      ctx.beginPath(); roundRect(ctx, ox, o.y+o.h-14, 5, 9, 2); ctx.fill();
+      ctx.beginPath(); roundRect(ctx, ox+o.w-5, o.y+o.h-14, 5, 9, 2); ctx.fill();
+      break;
+
+    case 'car':
+      ctx.fillStyle = '#3498db';
+      ctx.beginPath(); roundRect(ctx, ox+2, o.y+o.h*0.25, o.w-4, o.h*0.6, 4); ctx.fill();
+      ctx.fillStyle = '#2980b9';
+      ctx.beginPath(); roundRect(ctx, ox+4, o.y+o.h*0.08, o.w-8, o.h*0.38, 3); ctx.fill();
+      ctx.fillStyle = '#1a2a3a';
+      ctx.beginPath(); roundRect(ctx, ox+5, o.y+o.h*0.1, o.w-10, o.h*0.2, 2); ctx.fill();
+      ctx.fillStyle = '#111';
+      ctx.beginPath(); roundRect(ctx, ox, o.y+o.h*0.2, 5, 8, 2); ctx.fill();
+      ctx.beginPath(); roundRect(ctx, ox+o.w-5, o.y+o.h*0.2, 5, 8, 2); ctx.fill();
+      ctx.beginPath(); roundRect(ctx, ox, o.y+o.h*0.72, 5, 8, 2); ctx.fill();
+      ctx.beginPath(); roundRect(ctx, ox+o.w-5, o.y+o.h*0.72, 5, 8, 2); ctx.fill();
+      // taillights
+      ctx.fillStyle = '#ff4444';
+      ctx.beginPath(); ctx.arc(ox+4, o.y+o.h-3, 2.5, 0, Math.PI*2); ctx.fill();
+      ctx.beginPath(); ctx.arc(ox+o.w-4, o.y+o.h-3, 2.5, 0, Math.PI*2); ctx.fill();
+      break;
+
+    case 'barrier':
+      // Striped crash barrier
+      ctx.fillStyle = '#f59e0b';
+      ctx.beginPath(); roundRect(ctx, ox, o.y, o.w, o.h, 3); ctx.fill();
+      ctx.fillStyle = '#1a1a1a';
+      for (let s = 0; s < 4; s++) {
+        ctx.fillRect(ox + s * (o.w/4), o.y, o.w/8, o.h);
+      }
+      // outline
+      ctx.strokeStyle = '#d97706';
+      ctx.lineWidth = 1.5;
+      ctx.beginPath(); roundRect(ctx, ox, o.y, o.w, o.h, 3); ctx.stroke();
+      break;
+
+    case 'oil':
+      // Oil slick
+      ctx.fillStyle = 'rgba(30,20,60,0.9)';
+      ctx.beginPath();
+      ctx.ellipse(ox + o.w/2, o.y + o.h/2, o.w/2, o.h/2, 0, 0, Math.PI*2);
+      ctx.fill();
+      // rainbow sheen
+      const oilGrad = ctx.createRadialGradient(ox+o.w/2, o.y+o.h/2, 2, ox+o.w/2, o.y+o.h/2, o.w/2);
+      oilGrad.addColorStop(0,   'rgba(100,0,200,0.3)');
+      oilGrad.addColorStop(0.4, 'rgba(0,200,100,0.2)');
+      oilGrad.addColorStop(1,   'rgba(200,100,0,0.1)');
+      ctx.fillStyle = oilGrad;
+      ctx.beginPath();
+      ctx.ellipse(ox + o.w/2, o.y + o.h/2, o.w/2, o.h/2, 0, 0, Math.PI*2);
+      ctx.fill();
+      break;
+
+    case 'cone':
+      // Traffic cone
+      ctx.fillStyle = '#f97316';
+      ctx.beginPath();
+      ctx.moveTo(ox + o.w/2, o.y);
+      ctx.lineTo(ox + o.w, o.y + o.h);
+      ctx.lineTo(ox, o.y + o.h);
+      ctx.closePath();
+      ctx.fill();
+      ctx.fillStyle = '#fff';
+      ctx.fillRect(ox + o.w*0.2, o.y + o.h*0.35, o.w*0.6, o.h*0.12);
+      ctx.fillRect(ox + o.w*0.25, o.y + o.h*0.6,  o.w*0.5, o.h*0.12);
+      break;
+  }
+}
+
+function roundRect(ctx, x, y, w, h, r) {
+  r = Math.min(r, w/2, h/2);
+  ctx.moveTo(x+r, y);
+  ctx.lineTo(x+w-r, y);
+  ctx.arcTo(x+w, y, x+w, y+r, r);
+  ctx.lineTo(x+w, y+h-r);
+  ctx.arcTo(x+w, y+h, x+w-r, y+h, r);
+  ctx.lineTo(x+r, y+h);
+  ctx.arcTo(x, y+h, x, y+h-r, r);
+  ctx.lineTo(x, y+r);
+  ctx.arcTo(x, y, x+r, y, r);
+}
+
+/* ── HUD ── */
+function updateHUD() {
+  document.getElementById('scoreVal').textContent = score;
+  document.getElementById('bestVal').textContent  = bestScore;
+  const hearts = ['','❤️','❤️❤️','❤️❤️❤️'];
+  document.getElementById('lifeIcons').textContent = hearts[Math.max(0,lives)] || '💀';
+
+  // Offer progress (target: 3000)
+  const TARGET = 3000;
+  const pct = Math.min(score / TARGET * 100, 100);
+  document.getElementById('offerBarFill').style.width = pct + '%';
+  document.getElementById('progressPct').textContent  = Math.floor(pct) + '%';
+
+  // Unlock offer
+  if (score >= TARGET && !offerUnlocked) {
+    offerUnlocked = true;
+    document.getElementById('offerWonOverlay').classList.add('show');
+    showToast('🎉 Offer Unlocked! Check your reward!', false, true);
+  }
+}
+
+function dismissOffer() {
+  document.getElementById('offerWonOverlay').classList.remove('show');
+}
+
+/* ══════════════════════
+   GAME OVERLAY OPEN/CLOSE
+══════════════════════ */
+function openGame() {
+  resizeCanvas();
+  document.getElementById('gameOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  // Draw idle screen
+  drawIdleScreen();
+}
+function closeGame() {
+  if (gameRunning) { gameRunning = false; cancelAnimationFrame(frameId); }
+  document.getElementById('gameOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+  document.getElementById('btnStart').textContent = 'START';
+}
+function handleGameOverlayClick(e) {
+  if (e.target === document.getElementById('gameOverlay')) closeGame();
+}
+
+function drawIdleScreen() {
+  resizeCanvas();
+  const W = canvas.width, H = canvas.height;
+  ctx.fillStyle = '#1a1a1a';
+  ctx.fillRect(0, 0, W, H);
+  // Road
+  ctx.fillStyle = '#252525';
+  ctx.fillRect(0, 0, W, H);
+  const laneW = W / ROAD_LANES;
+  ctx.strokeStyle = '#3a3a3a'; ctx.lineWidth = 1.5; ctx.setLineDash([18,14]);
+  for (let i = 1; i < ROAD_LANES; i++) {
+    ctx.beginPath(); ctx.moveTo(i*laneW,0); ctx.lineTo(i*laneW,H); ctx.stroke();
+  }
+  ctx.setLineDash([]);
+  // Player car idle
+  drawPlayerCar(ctx, W/2 - 14, H - 60, 28, 44);
+  // Prompt
+  ctx.fillStyle = 'rgba(0,0,0,0.6)'; ctx.fillRect(0, H/2-28, W, 56);
+  ctx.fillStyle = '#d4a97a';
+  ctx.font = 'bold 14px DM Sans, sans-serif';
+  ctx.textAlign = 'center';
+  ctx.fillText('🏁 Tap START to Race', W/2, H/2 - 6);
+  ctx.fillStyle = '#666';
+  ctx.font = '10px DM Sans, sans-serif';
+  ctx.fillText('Reach 3000 pts · Unlock 10% off', W/2, H/2 + 14);
+  ctx.textAlign = 'left';
+}
+
+/* ══════════════════════
+   MENU LOGIC
+══════════════════════ */
 const MENU = {
   coffee:{label:'Coffee',emoji:'☕',subsections:{
     'Brewed & Black':[
@@ -800,10 +1088,10 @@ const MENU = {
       {name:'Iced Espresso',price:169,desc:'Chilled espresso shot poured over ice — bold and clean.'}
     ],
     'Slow Bar':[
-      {name:'V60 Pourover (Hot / Iced)',price:279,desc:'Precision brewed pour over coffee, highlighting the unique character of each bean.', tag:'bestseller'},
+      {name:'V60 Pourover (Hot / Iced)',price:279,desc:'Precision brewed pour over coffee, highlighting the unique character of each bean.',tag:'bestseller'},
       {name:'Aeropress (Hot / Iced)',price:279,desc:'Smooth, rich aeropress brew — full flavor with low acidity.'},
       {name:'French Press',price:279,desc:'Full-bodied traditional French press with rich, immersive texture.'},
-      {name:'Vietnamese Filter',price:239,desc:'Traditional Vietnamese drip coffee — strong, slow, and deeply satisfying.', tag:'bestseller'}
+      {name:'Vietnamese Filter',price:239,desc:'Traditional Vietnamese drip coffee — strong, slow, and deeply satisfying.',tag:'bestseller'}
     ],
     'Hot White Rituals':[
       {name:'Cortado',price:219,desc:'Espresso balanced with an equal part of warm, velvety milk.'},
@@ -816,18 +1104,18 @@ const MENU = {
       {name:'Sea Salt Mocha',price:329,desc:'Chocolate espresso with a delicate sea salt finish that elevates every sip.',tag:'musttry'},
       {name:'French Vanilla Latte',price:259,desc:'Smooth, aromatic vanilla infused throughout a classic latte.',tag:'musttry'},
       {name:'Sea Salt Latte',price:259,desc:'A smooth latte finished with a whisper of sea salt.'},
-      {name:'Honey Spiced Latte',price:329,desc:'Aromatic warming spices blended with natural honey sweetness.', tag:'bestseller'},
+      {name:'Honey Spiced Latte',price:329,desc:'Aromatic warming spices blended with natural honey sweetness.',tag:'bestseller'},
       {name:'Salted Caramel Latte',price:299,desc:'Sweet caramel latte kissed with a pinch of sea salt.'},
-      {name:'Biscoff Latte',price:319,desc:'Caramelised cookie butter blended into a comforting, warming latte.', tag:'bestseller'}
+      {name:'Biscoff Latte',price:319,desc:'Caramelised cookie butter blended into a comforting, warming latte.',tag:'bestseller'}
     ],
     'Froth on Ice':[
-      {name:'Iced Americano',price:179,desc:'Cold espresso with water poured over ice — refreshing and sharp.', tag:'bestseller'},
+      {name:'Iced Americano',price:179,desc:'Cold espresso with water poured over ice — refreshing and sharp.',tag:'bestseller'},
       {name:'Iced Cortado',price:229,desc:'Cold espresso with a perfect cold milk balance over ice.'},
       {name:'Iced Latte',price:259,desc:'Smooth espresso with cold milk poured over ice.'},
       {name:'Iced Caramel Latte',price:299,desc:'Sweet caramel with espresso and cold milk over ice.',tag:'musttry'},
       {name:'Iced Mocha',price:289,desc:'Chocolate and espresso chilled to perfection.'},
       {name:'Iced Caramelized Jaggery Latte',price:299,desc:'Traditional jaggery sweetness meets modern cold coffee.'},
-      {name:'Iced Kava Special',price:239,desc:'Our signature iced coffee creation — a house favourite.', tag:'bestseller'},
+      {name:'Iced Kava Special',price:239,desc:'Our signature iced coffee creation — a house favourite.',tag:'bestseller'},
       {name:'Espresso Tonic',price:299,desc:'Bold espresso floated over sparkling tonic water.'},
       {name:'Espresso Ginger Ale',price:299,desc:'Espresso with a spicy ginger ale sparkle — surprisingly bright.'}
     ],
@@ -837,14 +1125,14 @@ const MENU = {
       {name:'Lime-Lite',price:299,desc:'Sparkling lime refreshment — crisp and light.'},
       {name:'Modern Mojo',price:379,desc:'A contemporary twist on classic café flavors.'},
       {name:'Salted Caramel Paloma',price:339,desc:'Sweet and salty citrus delight — bold and complex.'},
-      {name:'Salted Cheese Vietnamese',price:299,desc:'Salted cheese foam crowned over Vietnamese-style cold coffee.', tag:'bestseller'},
-      {name:'Salted Coconut Vietnamese',price:299,desc:'Salted coconut cream layered over Vietnamese-style cold coffee.', tag:'bestseller'}
+      {name:'Salted Cheese Vietnamese',price:299,desc:'Salted cheese foam crowned over Vietnamese-style cold coffee.',tag:'bestseller'},
+      {name:'Salted Coconut Vietnamese',price:299,desc:'Salted coconut cream layered over Vietnamese-style cold coffee.',tag:'bestseller'}
     ]
   }},
   coldbrew:{label:'Cold Brew',emoji:'🧊',subsections:{
     'Slow-Steeped Signatures':[
-      {name:'Classic Cold Brew Melody',price:260,desc:'Our signature slow-steeped cold brew — smooth and rich with notes of dark chocolate, nuts, and caramel.', tag:'bestseller'},
-      {name:'Classic Cold Brew Whiskey Barrel',price:299,desc:'Cold brew aged with whiskey barrel notes for a bold, smoky finish.',addon:'Add Whiskey Barrel +₹55', tag:'bestseller'},
+      {name:'Classic Cold Brew Melody',price:260,desc:'Our signature slow-steeped cold brew — smooth and rich with notes of dark chocolate, nuts, and caramel.',tag:'bestseller'},
+      {name:'Classic Cold Brew Whiskey Barrel',price:299,desc:'Cold brew aged with whiskey barrel notes for a bold, smoky finish.',addon:'Add Whiskey Barrel +₹55',tag:'bestseller'},
       {name:'Cold Brew Tonic',price:299,desc:'Smooth cold brew floated over sparkling tonic water.'},
       {name:'Cold Brew Ginger Ale',price:299,desc:'Cold brew with a spicy ginger ale sparkle.'},
       {name:"Pankaj's Citrus Fire",price:299,desc:'A fiery citrus-forward cold brew creation crafted by our head barista Pankaj.',tag:'musttry'},
@@ -857,10 +1145,10 @@ const MENU = {
     'The Green Chalice':[
       {name:'Matcha Latte',price:349,desc:'Ceremonial grade Japanese matcha whisked with steamed milk — earthy and calming.'},
       {name:'Iced Matcha Latte',price:369,desc:'Chilled ceremonial matcha with cold milk over ice.'},
-      {name:'Coconut Cloud Matcha',price:389,desc:'Matcha topped with a dreamy coconut milk foam.', tag:'bestseller'},
+      {name:'Coconut Cloud Matcha',price:389,desc:'Matcha topped with a dreamy coconut milk foam.',tag:'bestseller'},
       {name:'Blueberry Coconut Matcha',price:389,desc:'Wild blueberry sweetness meets tropical coconut and earthy matcha.',tag:'musttry'},
       {name:'Orange Matcha Tonic',price:379,desc:'Refreshing citrus with sparkling matcha tonic — bright and zingy.'},
-      {name:'Strawberry Matcha Latte',price:379,desc:'Sweet strawberries layered with earthy ceremonial matcha.', tag:'bestseller'},
+      {name:'Strawberry Matcha Latte',price:379,desc:'Sweet strawberries layered with earthy ceremonial matcha.',tag:'bestseller'},
       {name:'Lemonade Iced Matcha',price:369,desc:'Zesty lemonade meets vibrant green matcha over ice.'},
       {name:'Passionfruit Matcha Spritzer',price:389,desc:'Tropical passionfruit with sparkling matcha — exotic and refreshing.',tag:'musttry'},
       {name:'Mango Matcha',price:349,desc:'Tropical mango blended with smooth matcha for a refreshing, energizing treat.'}
@@ -868,7 +1156,7 @@ const MENU = {
   }},
   shakes:{label:'Shakes',emoji:'🥤',subsections:{
     'The Frappe Bar':[
-      {name:'Classic Frappe',price:249,desc:'Traditional iced coffee frappe — smooth, cold, and energizing.', tag:'bestseller'},
+      {name:'Classic Frappe',price:249,desc:'Traditional iced coffee frappe — smooth, cold, and energizing.',tag:'bestseller'},
       {name:'Caramelized Frappe',price:279,desc:'Rich caramel blended with coffee for a sweet, silky frappe.'},
       {name:'Hazelnut Frappe',price:289,desc:'Nutty hazelnut meets iced coffee in a perfectly blended frappe.'},
       {name:'Espresso Brownie Frappe',price:390,desc:'Decadent chocolate brownie blended with espresso.',tag:'musttry'},
@@ -876,29 +1164,29 @@ const MENU = {
       {name:'Mocha Frappe',price:299,desc:'Rich chocolate and coffee blended over ice.'}
     ],
     'The Creamy Canvas':[
-      {name:'Biscoff Cheesecake Shake',price:329,desc:'Caramelised cookie butter blended with creamy cheesecake goodness.', tag:'bestseller'},
+      {name:'Biscoff Cheesecake Shake',price:329,desc:'Caramelised cookie butter blended with creamy cheesecake goodness.',tag:'bestseller'},
       {name:'Oreo Cookie Crumble Shake',price:299,desc:'Classic cookies and cream shake — generously crumbled.'},
-      {name:'Nutella Cheesecake Shake',price:349,desc:'Hazelnut chocolate meets silky cheesecake in every sip.', tag:'bestseller'},
+      {name:'Nutella Cheesecake Shake',price:349,desc:'Hazelnut chocolate meets silky cheesecake in every sip.',tag:'bestseller'},
       {name:'Choco Brownie Shake',price:380,desc:'Rich chocolate brownies blended into a thick, indulgent shake.',tag:'musttry'},
-      {name:'Blueberry Cheesecake Shake',price:329,desc:'Fresh blueberries with creamy cheesecake — fruity and rich.', tag:'bestseller'},
+      {name:'Blueberry Cheesecake Shake',price:329,desc:'Fresh blueberries with creamy cheesecake — fruity and rich.',tag:'bestseller'},
       {name:'Ferrero Rocher Shake',price:369,desc:'Luxurious hazelnut chocolate — dessert in a glass.',tag:'musttry'},
       {name:'Double Chocolate Shake',price:299,desc:'Double the chocolate, double the bliss.'}
     ]
   }},
   refreshers:{label:'Refreshers',emoji:'🍋',subsections:{
     'The Chill Bar':[
-      {name:'Classic Mint Mojito',price:249,desc:'Fresh mint, lime, and sparkling soda — the perfect cooler.', tag:'bestseller'},
+      {name:'Classic Mint Mojito',price:249,desc:'Fresh mint, lime, and sparkling soda — the perfect cooler.',tag:'bestseller'},
       {name:'Cranberry Mojito',price:279,desc:'Tart cranberry with fresh mint and lime sparkle.'},
-      {name:'Virgin Sangria',price:309,desc:'Mixed fruit mocktail with sparkling notes and fruity depth.', tag:'bestseller'},
+      {name:'Virgin Sangria',price:309,desc:'Mixed fruit mocktail with sparkling notes and fruity depth.',tag:'bestseller'},
       {name:'Kimazzo',price:299,desc:'Our refreshing specialty house blend.',tag:'musttry'},
-      {name:'Berry Spritzer',price:299,desc:'Mixed berries with sparkling water — light and vibrant.', tag:'bestseller'},
+      {name:'Berry Spritzer',price:299,desc:'Mixed berries with sparkling water — light and vibrant.',tag:'bestseller'},
       {name:'Lemon Iced Tea',price:279,desc:'Classic citrus iced tea — simple and refreshing.'},
       {name:'Peach Iced Tea',price:289,desc:'Sweet, ripe peach infused into chilled tea.',tag:'musttry'}
     ]
   }},
   hotchoc:{label:'Hot Choc',emoji:'🍫',subsections:{
     'Sweet Winter Sips':[
-      {name:'Classic Hot Chocolate',price:269,desc:'Rich, velvety hot chocolate made with premium cocoa.', tag:'bestseller'},
+      {name:'Classic Hot Chocolate',price:269,desc:'Rich, velvety hot chocolate made with premium cocoa.',tag:'bestseller'},
       {name:'Hazelnut Hot Chocolate',price:319,desc:'Creamy hot chocolate swirled with hazelnut indulgence.'},
       {name:'Strawberry Hot Chocolate',price:319,desc:'Fruity strawberry meets warm velvety chocolate.',tag:'musttry'},
       {name:'Coconut Hot Chocolate',price:299,desc:'Tropical coconut notes in a warm, comforting chocolate.'}
@@ -906,10 +1194,10 @@ const MENU = {
   }},
   starters:{label:'Starters',emoji:'🥗',subsections:{
     'Small Plates':[
-      {name:'Classic Tomato Bruschetta',price:379,desc:'Vine-ripened tomatoes and fresh basil pesto on toasted ciabatta.', tag:'bestseller'},
+      {name:'Classic Tomato Bruschetta',price:379,desc:'Vine-ripened tomatoes and fresh basil pesto on toasted ciabatta.',tag:'bestseller'},
       {name:'Peach & Cream Cheese Bruschetta',price:389,desc:'Sweet peaches with whipped cream cheese on grilled artisan bread.'},
-      {name:'Peri Peri Cottage Cheese',price:329,desc:'Spiced cottage cheese cubes with bold African peri peri marinade.', tag:'bestseller'},
-      {name:'Classic Hummus Platter',price:419,desc:'Creamy chickpea hummus drizzled with olive oil, served with warm pita bread.', tag:'bestseller'},
+      {name:'Peri Peri Cottage Cheese',price:329,desc:'Spiced cottage cheese cubes with bold African peri peri marinade.',tag:'bestseller'},
+      {name:'Classic Hummus Platter',price:419,desc:'Creamy chickpea hummus drizzled with olive oil, served with warm pita bread.',tag:'bestseller'},
       {name:'Vegetable Masa Harina Tacos',price:429,desc:'Authentic Mexican-style corn tacos with seasoned vegetables and condiments.'},
       {name:'Vietnamese Rice Paper Rolls',price:399,desc:'Fresh garden vegetables wrapped in delicate rice paper with dipping sauce.',tag:'musttry'},
       {name:'Cheese Garlic Bread',price:399,desc:'Toasted garlic bread loaded with generous melted cheese.'}
@@ -918,7 +1206,7 @@ const MENU = {
   soups:{label:'Soups',emoji:'🍲',subsections:{
     'Warm & Nourishing':[
       {name:'Creamy Broccoli Soup',price:229,desc:'Velvety broccoli soup with a hint of cream and fresh herbs.'},
-      {name:'Potato & Leek Soup',price:199,desc:'Classic French-inspired soup with tender potatoes and sweet leeks.', tag:'bestseller'},
+      {name:'Potato & Leek Soup',price:199,desc:'Classic French-inspired soup with tender potatoes and sweet leeks.',tag:'bestseller'},
       {name:'Mushroom Cappuccino',price:199,desc:'Frothy mushroom essence topped with micro herbs — elegant and earthy.'},
       {name:'Roasted Pumpkin Soup',price:199,desc:'Autumn-inspired roasted pumpkin with warm aromatic spices.'},
       {name:'Sweet Corn Velouté',price:199,desc:'Silky sweet corn soup with a touch of butter — simple and comforting.'}
@@ -927,27 +1215,27 @@ const MENU = {
   salads:{label:'Salads',emoji:'🥬',subsections:{
     'Fresh & Vibrant':[
       {name:'Mandarin Iceberg Salad',price:339,desc:'Crisp iceberg lettuce with mandarin segments and a bright citrus dressing.'},
-      {name:'Caprese Cottage Salad',price:439,desc:'Italian-style cottage cheese with vine tomatoes, fresh basil, and aged balsamic.', tag:'bestseller'},
+      {name:'Caprese Cottage Salad',price:439,desc:'Italian-style cottage cheese with vine tomatoes, fresh basil, and aged balsamic.',tag:'bestseller'},
       {name:'Som Tam (Thai Papaya Salad)',price:349,desc:'Shredded green papaya with Thai herbs, peanuts, and a tangy lime dressing.',tag:'musttry'}
     ]
   }},
   bowls:{label:'Bowls',emoji:'🍜',subsections:{
     'Global Flavors':[
       {name:'Italian Herb Rice Bowl',price:525,desc:'Herb-infused rice with romesco sauce and roasted Mediterranean vegetables.',tag:'musttry'},
-      {name:'Mexican Fiesta Bowl',price:549,desc:'Spiced kidney beans, saffron rice, salsa, guacamole, and Mexican condiments.', tag:'bestseller'},
-      {name:'Bangkok Red Curry Bowl',price:449,desc:'Aromatic Thai red curry with jasmine rice and seasonal vegetables.', tag:'bestseller'},
+      {name:'Mexican Fiesta Bowl',price:549,desc:'Spiced kidney beans, saffron rice, salsa, guacamole, and Mexican condiments.',tag:'bestseller'},
+      {name:'Bangkok Red Curry Bowl',price:449,desc:'Aromatic Thai red curry with jasmine rice and seasonal vegetables.',tag:'bestseller'},
       {name:'Thai Green Curry Bowl',price:449,desc:'Fragrant green curry with coconut milk, bamboo shoots, and fresh basil over rice.'}
     ]
   }},
   pasta:{label:'Pasta',emoji:'🍝',subsections:{
     'Artisan Italian':[
-      {name:'Aglio Olio Classic',price:369,desc:'Traditional garlic and olive oil pasta with red chili flakes and parsley.', tag:'bestseller'},
+      {name:'Aglio Olio Classic',price:369,desc:'Traditional garlic and olive oil pasta with red chili flakes and parsley.',tag:'bestseller'},
       {name:'Caramelised Onion Cream Pasta',price:499,desc:'Deeply sweet caramelised onions in a silky, rich cream sauce.'},
       {name:'Three Cheese Comfort Pasta',price:469,desc:'An indulgent blend of three premium cheeses in a creamy, velvety sauce.',tag:'musttry'},
-      {name:'Pesto Verde Italiano',price:519,desc:'Fresh basil pesto with toasted pine nuts and aged parmesan.', tag:'bestseller'},
+      {name:'Pesto Verde Italiano',price:519,desc:'Fresh basil pesto with toasted pine nuts and aged parmesan.',tag:'bestseller'},
       {name:'Arrabbiata Rosso',price:489,desc:'Fiery tomato sauce with garlic, red chilies, and fresh herbs.'},
       {name:'Béchamel Mornay Pasta',price:539,desc:'Classic French white sauce enriched with gruyere cheese — deeply comforting.'},
-      {name:"Fresh Ravioli – Chef's Signature",price:599,desc:"House-made ravioli with seasonal fillings and our chef's signature sauce.",addon:"Chef's special — ask for today's filling", tag:'bestseller'},
+      {name:"Fresh Ravioli – Chef's Signature",price:599,desc:"House-made ravioli with seasonal fillings and our chef's signature sauce.",addon:"Chef's special — ask for today's filling",tag:'bestseller'},
       {name:'Romesco Pasta',price:539,desc:'Fresh Roasted Sauce with a hint of chilli oil — experience the mediterranean soul in a plate.'}
     ]
   }},
@@ -964,354 +1252,159 @@ const MENU = {
   }},
   sandwich:{label:'Sandwich',emoji:'🥪',subsections:{
     'Artisan Grills':[
-      {name:'Charcoal Grilled Sandwich',price:485,desc:'Smoky charcoal-grilled sandwich with fresh seasonal fillings.', tag:'bestseller'},
+      {name:'Charcoal Grilled Sandwich',price:485,desc:'Smoky charcoal-grilled sandwich with fresh seasonal fillings.',tag:'bestseller'},
       {name:'Paneer Corn Sandwich',price:475,desc:'Soft paneer and sweet corn in a golden toasted sandwich.'},
       {name:'Chilli Paneer Sandwich',price:485,desc:'Indo-Chinese chilli paneer tucked into a grilled sandwich.',tag:'musttry'},
       {name:'Mushroom Cheese Sandwich',price:445,desc:'Sautéed mushrooms with generous melted cheese on toasted bread.',tag:'musttry'},
-      {name:'Pesto Sandwich',price:485,desc:'Fresh basil pesto with seasonal vegetables and creamy mozzarella.', tag:'bestseller'},
+      {name:'Pesto Sandwich',price:485,desc:'Fresh basil pesto with seasonal vegetables and creamy mozzarella.',tag:'bestseller'},
       {name:'Loaded Veg Grill Sandwich',price:485,desc:'Garden vegetables piled high and grilled until golden.'},
-      {name:'Paneer Tikka Sandwich',price:495,desc:'Tandoori-spiced paneer tikka in toasted bread with chutneys.', tag:'bestseller'},
+      {name:'Paneer Tikka Sandwich',price:495,desc:'Tandoori-spiced paneer tikka in toasted bread with chutneys.',tag:'bestseller'},
       {name:'Veg Loaded Sandwich',price:489,desc:'Stacked with fresh vegetables and our signature house sauces.'},
       {name:'Veg Cheese Sandwich',price:449,desc:'Classic cheese and vegetables on toasted bread — a reliable favourite.'},
-      {name:'Avocado Sandwich',price:489,desc:'Creamy fresh avocado spread with seasonal toppings.', tag:'bestseller'}
+      {name:'Avocado Sandwich',price:489,desc:'Creamy fresh avocado spread with seasonal toppings.',tag:'bestseller'}
     ]
   }},
   asian:{label:'Asian',emoji:'🥢',subsections:{
     'Bold & Aromatic':[
       {name:'Hakka Noodles',price:485,desc:'Stir-fried Hakka noodles tossed with seasonal vegetables in savoury Asian sauces.'},
       {name:'Chilli Garlic Noodles',price:485,desc:'Wok-tossed noodles with spicy garlic and fresh chillies.',tag:'musttry'},
-      {name:'Kung Pao Paneer Rice',price:499,desc:'Wok-tossed paneer in a bold, spicy kung pao sauce served over steamed rice.', tag:'bestseller'},
+      {name:'Kung Pao Paneer Rice',price:499,desc:'Wok-tossed paneer in a bold, spicy kung pao sauce served over steamed rice.',tag:'bestseller'},
       {name:'Kung Pao Paneer Noodles',price:499,desc:'Wok-tossed paneer in spicy kung pao sauce tossed through noodles.'}
     ]
   }}
 };
 
 const TODAYS_SPECIALS = [
-  { section:'coffee', name:'Strawberry Foam Americano',   specialBadge:'today',   price:249, desc:'Bold espresso topped with silky strawberry foam — smooth, refreshing and perfectly balanced.' },
-  { section:'coffee', name:'Pistachio Foam Americano',    specialBadge:'today',   price:259, desc:'Rich americano crowned with creamy pistachio foam — nutty, smooth and indulgently refreshing.' },
-  { section:'coffee', name:'Pine Espresso',               specialBadge:'limited', price:229, desc:'A bold fusion of rich espresso and refreshing pine notes, delivering a crisp, earthy twist in every sip.' },
-  { section:'coldbrew', name:'Old Fashioned',             specialBadge:'',    price:319, desc:'Zesty orange with cold brew.' },
-  { section:'matcha', name:'Strawberry Matcha Latte',     specialBadge:'today' },
-  { section:'matcha', name:'Mango Matcha',                specialBadge:'limited' },
-  { section:'shakes', name:'Blueberry Cheesecake Shake',  specialBadge:'today',   note:'A rich and creamy blend of luscious blueberries and velvety cheesecake, creating a decadent, dessert-style shake in every sip.' },
-  { section:'shakes', name:'Oreo Cookie Crumble Shake',   specialBadge:'limited', note:'A thick, creamy shake loaded with crunchy Oreo crumbles, delivering a rich chocolatey indulgence in every sip.' },
-  { section:'pasta', name:"Fresh Ravioli – Chef's Signature", specialBadge:'chef', note:'Today\'s filling: Ricotta & Sundried Tomato.' },
-  { section:'pasta', name:'Three Cheese Comfort Pasta',   specialBadge:'chef',   note:'Extra indulgent today — freshly blended cheese mix.' },
-  { section:'bowls', name:'Mexican Fiesta Bowl',          specialBadge:'chef',   note:'Freshly made guacamole and house salsa.' }
+  {section:'coffee',name:'Strawberry Foam Americano',specialBadge:'today',price:249,desc:'Bold espresso topped with silky strawberry foam — smooth, refreshing and perfectly balanced.'},
+  {section:'coffee',name:'Pistachio Foam Americano',specialBadge:'today',price:259,desc:'Rich americano crowned with creamy pistachio foam — nutty, smooth and indulgently refreshing.'},
+  {section:'coffee',name:'Pine Espresso',specialBadge:'limited',price:229,desc:'A bold fusion of rich espresso and refreshing pine notes, delivering a crisp, earthy twist in every sip.'},
+  {section:'coldbrew',name:'Old Fashioned',specialBadge:'',price:319,desc:'Zesty orange with cold brew.'},
+  {section:'matcha',name:'Strawberry Matcha Latte',specialBadge:'today'},
+  {section:'matcha',name:'Mango Matcha',specialBadge:'limited'},
+  {section:'shakes',name:'Blueberry Cheesecake Shake',specialBadge:'today',note:"A rich and creamy blend of luscious blueberries and velvety cheesecake, creating a decadent, dessert-style shake in every sip."},
+  {section:'shakes',name:'Oreo Cookie Crumble Shake',specialBadge:'limited',note:"A thick, creamy shake loaded with crunchy Oreo crumbles, delivering a rich chocolatey indulgence in every sip."},
+  {section:'pasta',name:"Fresh Ravioli – Chef's Signature",specialBadge:'chef',note:"Today's filling: Ricotta & Sundried Tomato."},
+  {section:'pasta',name:'Three Cheese Comfort Pasta',specialBadge:'chef',note:"Extra indulgent today — freshly blended cheese mix."},
+  {section:'bowls',name:'Mexican Fiesta Bowl',specialBadge:'chef',note:"Freshly made guacamole and house salsa."}
 ];
 
-function findItem(sectionKey, itemName) {
-  const sec = MENU[sectionKey];
-  if (!sec) return null;
-  const needle = itemName.trim().toLowerCase();
-  for (const items of Object.values(sec.subsections)) {
-    const found = items.find(i => i.name.trim().toLowerCase() === needle);
-    if (found) return { ...found, sectionLabel: sec.label, sectionEmoji: sec.emoji };
+function findItem(sk, nm) {
+  const sec = MENU[sk]; if(!sec) return null;
+  const n = nm.trim().toLowerCase();
+  for(const items of Object.values(sec.subsections)){
+    const f = items.find(i=>i.name.trim().toLowerCase()===n);
+    if(f) return {...f,sectionLabel:sec.label,sectionEmoji:sec.emoji};
   }
   return null;
 }
 
-function openSpecial() {
-  const overlay = document.getElementById('specialOverlay');
-  const list    = document.getElementById('specialList');
-  const datePill = document.getElementById('specialDatePill');
-  const now = new Date();
-  const dayStr = now.toLocaleDateString('en-IN', { weekday:'long', day:'numeric', month:'long', year:'numeric' });
-  datePill.innerHTML = `📅 ${dayStr}`;
-  const grouped = {};
-  TODAYS_SPECIALS.forEach(sp => {
-    const found = findItem(sp.section, sp.name);
-    const sec = MENU[sp.section];
-    if (!sec) return;
-    const item = found
-      ? { ...found }
-      : { name: sp.name, price: sp.price || '—', desc: sp.desc || '', tag: '', addon: '', sectionLabel: sec.label, sectionEmoji: sec.emoji };
-    const key = sp.section;
-    if (!grouped[key]) grouped[key] = { label: item.sectionLabel, emoji: item.sectionEmoji, items: [] };
-    grouped[key].items.push({ ...item, specialBadge: sp.specialBadge, note: sp.note || sp.desc || item.desc });
+function openSpecial(){
+  const overlay=document.getElementById('specialOverlay');
+  const list=document.getElementById('specialList');
+  const datePill=document.getElementById('specialDatePill');
+  const now=new Date();
+  datePill.innerHTML=`📅 ${now.toLocaleDateString('en-IN',{weekday:'long',day:'numeric',month:'long',year:'numeric'})}`;
+  const grouped={};
+  TODAYS_SPECIALS.forEach(sp=>{
+    const found=findItem(sp.section,sp.name);
+    const sec=MENU[sp.section]; if(!sec)return;
+    const item=found?{...found}:{name:sp.name,price:sp.price||'—',desc:sp.desc||'',tag:'',addon:'',sectionLabel:sec.label,sectionEmoji:sec.emoji};
+    const key=sp.section;
+    if(!grouped[key])grouped[key]={label:item.sectionLabel,emoji:item.sectionEmoji,items:[]};
+    grouped[key].items.push({...item,specialBadge:sp.specialBadge,note:sp.note||sp.desc||item.desc});
   });
-  let html = '';
-  Object.values(grouped).forEach(group => {
-    html += `<div class="special-cat-label">${group.emoji} ${group.label}</div>`;
-    group.items.forEach(item => {
-      const badgeLabel = item.specialBadge === 'chef' ? "✦ Chef's Pick" : item.specialBadge === 'limited' ? '⏳ Limited' : '★ Today Only';
-      const badgeClass = item.specialBadge === 'chef' ? 'badge-chef' : item.specialBadge === 'limited' ? 'badge-limited' : 'badge-today';
-      const tagBadge = item.tag === 'bestseller'
-        ? '<span class="best-icon">⭐ Bestseller</span>'
-        : item.tag === 'musttry'
-        ? '<span class="must-icon">🔥 MustTry</span>'
-        : '';
-      html += `<div class="special-item">
-        <div class="special-item-row">
-          <div class="special-item-left">
-            <div class="special-item-name">
-              <span class="special-veg"></span>
-              ${item.name}${tagBadge}
-            </div>
-            <div class="special-item-desc">${item.note || item.desc}</div>
-            ${item.addon ? `<div class="addon-pill" style="margin-top:6px;">✦ ${item.addon}</div>` : ''}
-          </div>
-          <div class="special-item-right">
-            <span class="special-item-price">₹${item.price}</span>
-            <span class="special-badge ${badgeClass}">${badgeLabel}</span>
-          </div>
-        </div>
-      </div>`;
+  let html='';
+  Object.values(grouped).forEach(group=>{
+    html+=`<div class="special-cat-label">${group.emoji} ${group.label}</div>`;
+    group.items.forEach(item=>{
+      const bl=item.specialBadge==='chef'?"✦ Chef's Pick":item.specialBadge==='limited'?'⏳ Limited':'★ Today Only';
+      const bc=item.specialBadge==='chef'?'badge-chef':item.specialBadge==='limited'?'badge-limited':'badge-today';
+      const tb=item.tag==='bestseller'?'<span class="best-icon">⭐ Bestseller</span>':item.tag==='musttry'?'<span class="must-icon">🔥 MustTry</span>':'';
+      html+=`<div class="special-item"><div class="special-item-row"><div class="special-item-left"><div class="special-item-name"><span class="special-veg"></span>${item.name}${tb}</div><div class="special-item-desc">${item.note||item.desc}</div>${item.addon?`<div class="addon-pill" style="margin-top:6px;">✦ ${item.addon}</div>`:''}</div><div class="special-item-right"><span class="special-item-price">₹${item.price}</span><span class="special-badge ${bc}">${bl}</span></div></div></div>`;
     });
   });
-  list.innerHTML = html;
+  list.innerHTML=html;
   overlay.classList.add('open');
-  document.body.style.overflow = 'hidden';
+  document.body.style.overflow='hidden';
 }
+function closeSpecial(){document.getElementById('specialOverlay').classList.remove('open');document.body.style.overflow='';}
+function handleOverlayClick(e){if(e.target===document.getElementById('specialOverlay'))closeSpecial();}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeSpecial();closeGame();}});
 
-function closeSpecial() {
-  document.getElementById('specialOverlay').classList.remove('open');
-  document.body.style.overflow = '';
-}
-
-function handleOverlayClick(e) {
-  if (e.target === document.getElementById('specialOverlay')) closeSpecial();
-}
-
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeSpecial(); });
-
-let currentSection = 'coffee';
-let searchQuery = '';
-let expanded = new Set();
-
-function getFavs() {
-  try { return JSON.parse(localStorage.getItem('kava_favs') || '[]'); }
-  catch(e) { return []; }
-}
-function saveFavs(arr) {
-  localStorage.setItem('kava_favs', JSON.stringify(arr));
-}
-function isFaved(name) {
-  return getFavs().some(f => f.name === name);
-}
-function toggleFav(e, itemName, itemPrice, itemDesc, itemTag, itemAddon) {
+let currentSection='coffee',searchQuery='',expanded=new Set();
+function getFavs(){try{return JSON.parse(localStorage.getItem('kava_favs')||'[]');}catch(e){return[];}}
+function saveFavs(arr){localStorage.setItem('kava_favs',JSON.stringify(arr));}
+function isFaved(name){return getFavs().some(f=>f.name===name);}
+function toggleFav(e,n,p,d,t,a){
   e.stopPropagation();
-  let favs = getFavs();
-  const idx = favs.findIndex(f => f.name === itemName);
-  if (idx >= 0) {
-    favs.splice(idx, 1);
-    saveFavs(favs);
-    showToast('Removed from favourites', true);
-  } else {
-    favs.push({ name: itemName, price: itemPrice, desc: itemDesc, tag: itemTag || '', addon: itemAddon || '' });
-    saveFavs(favs);
-    showToast('❤️ Added to favourites!');
-  }
-  document.querySelectorAll(`.fav-icon[data-name="${CSS.escape(itemName)}"]`).forEach(el => {
-    el.classList.toggle('faved', isFaved(itemName));
-    el.textContent = isFaved(itemName) ? '❤️' : '♡';
-  });
-  updateFavBadge();
-  updateFavBanner();
-  if (currentSection === 'favorites') render();
+  let f=getFavs();const i=f.findIndex(x=>x.name===n);
+  if(i>=0){f.splice(i,1);saveFavs(f);showToast('Removed from favourites',true);}
+  else{f.push({name:n,price:p,desc:d,tag:t||'',addon:a||''});saveFavs(f);showToast('❤️ Added to favourites!');}
+  document.querySelectorAll(`.fav-icon[data-name="${CSS.escape(n)}"]`).forEach(el=>{el.classList.toggle('faved',isFaved(n));el.textContent=isFaved(n)?'❤️':'♡';});
+  updateFavBadge();updateFavBanner();
+  if(currentSection==='favorites')render();
 }
-function clearAllFavs() {
-  saveFavs([]);
-  updateFavBadge();
-  updateFavBanner();
-  render();
-  showToast('Favourites cleared');
-}
-function updateFavBadge() {
-  const count = getFavs().length;
-  const badge = document.getElementById('fav-badge');
-  if (badge) {
-    badge.textContent = count;
-    badge.style.display = count > 0 ? 'inline-flex' : 'none';
-  }
-}
-function updateFavBanner() {
-  const banner = document.getElementById('fav-quick-banner');
-  if (!banner) return;
-  const count = getFavs().length;
-  const subEl = banner.querySelector('.fav-banner-sub');
-  if (subEl) {
-    subEl.innerHTML = count > 0
-      ? `<strong>${count} item${count !== 1 ? 's' : ''} saved</strong> — tap to view your list`
-      : 'Tap ♡ on any item to save your picks';
-  }
-}
-
+function clearAllFavs(){saveFavs([]);updateFavBadge();updateFavBanner();render();showToast('Favourites cleared');}
+function updateFavBadge(){const c=getFavs().length;const b=document.getElementById('fav-badge');if(b){b.textContent=c;b.style.display=c>0?'inline-flex':'none';}}
+function updateFavBanner(){const b=document.getElementById('fav-quick-banner');if(!b)return;const c=getFavs().length;const s=b.querySelector('.fav-banner-sub');if(s)s.innerHTML=c>0?`<strong>${c} item${c!==1?'s':''} saved</strong> — tap to view your list`:'Tap ♡ on any item to save your picks';}
 let toastTimer;
-function showToast(msg, isRed) {
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.className = 'toast show' + (isRed ? ' red' : '');
+function showToast(msg,isRed,isGreen){
+  const t=document.getElementById('toast');
+  t.textContent=msg;
+  t.className='toast show'+(isRed?' red':isGreen?' green':'');
   clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => { t.className = 'toast'; }, 2200);
+  toastTimer=setTimeout(()=>{t.className='toast';},2600);
 }
-
-function buildNav() {
-  const favCount = getFavs().length;
-  const favBtn = `<button class="nav-btn fav-nav-btn${currentSection==='favorites'?' active':''}" onclick="setSection('favorites')">
-    <span class="n-emoji">❤️</span>Favourites
-    <span class="fav-badge" id="fav-badge" style="display:${favCount>0?'inline-flex':'none'}">${favCount}</span>
-  </button>`;
-  document.getElementById('navScroll').innerHTML =
-    favBtn +
-    Object.entries(MENU).map(([k,v]) =>
-      `<button class="nav-btn${k===currentSection?' active':''}" onclick="setSection('${k}')"><span class="n-emoji">${v.emoji}</span>${v.label}</button>`
-    ).join('');
+function buildNav(){
+  const fc=getFavs().length;
+  const fb=`<button class="nav-btn fav-nav-btn${currentSection==='favorites'?' active':''}" onclick="setSection('favorites')"><span class="n-emoji">❤️</span>Favourites<span class="fav-badge" id="fav-badge" style="display:${fc>0?'inline-flex':'none'}">${fc}</span></button>`;
+  document.getElementById('navScroll').innerHTML=fb+Object.entries(MENU).map(([k,v])=>`<button class="nav-btn${k===currentSection?' active':''}" onclick="setSection('${k}')"><span class="n-emoji">${v.emoji}</span>${v.label}</button>`).join('');
 }
-
-function setSection(key) {
-  currentSection = key;
-  if (searchQuery) { clearSearch(); return; }
-  expanded = new Set();
-  buildNav();
-  render();
-  window.scrollTo({ top: document.querySelector('.sticky-top').offsetHeight, behavior:'smooth' });
+function setSection(key){currentSection=key;if(searchQuery){clearSearch();return;}expanded=new Set();buildNav();render();window.scrollTo({top:document.querySelector('.sticky-top').offsetHeight,behavior:'smooth'});}
+function handleSearch(val){searchQuery=val.toLowerCase().trim();document.getElementById('clearBtn').style.display=searchQuery?'flex':'none';expanded=new Set();render();}
+function clearSearch(){searchQuery='';document.getElementById('searchInput').value='';document.getElementById('clearBtn').style.display='none';expanded=new Set();render();}
+function toggle(id){expanded.has(id)?expanded.delete(id):expanded.add(id);const c=document.getElementById(id);if(!c)return;c.classList.toggle('expanded',expanded.has(id));}
+function hl(text,q){if(!q)return text;return text.replace(new RegExp(`(${q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')})`,'gi'),'<mark>$1</mark>');}
+function itemHTML(item,id){
+  const isExp=expanded.has(id),q=searchQuery,faved=isFaved(item.name);
+  return `<div class="item-card${isExp?' expanded':''}" id="${id}" onclick="toggle('${id}')"><div class="item-row"><div class="item-left"><span class="veg-dot"></span><span class="fav-icon${faved?' faved':''}" data-name="${item.name.replace(/"/g,'&quot;')}" onclick="toggleFav(event,'${item.name.replace(/'/g,"\\'")}',${item.price},'${(item.desc||'').replace(/'/g,"\\'")}','${item.tag||''}','${(item.addon||'').replace(/'/g,"\\'")}')">${faved?'❤️':'♡'}</span><span class="item-name">${hl(item.name,q)}${item.tag==='bestseller'?'<span class="best-icon">⭐ Bestseller</span>':''}${item.tag==='musttry'?'<span class="must-icon">🔥 MustTry</span>':''}</span></div><div class="item-right"><span class="item-price">₹${item.price}</span><span class="chevron">▾</span></div></div><div class="item-desc">${hl(item.desc,q)}${item.addon?`<div class="addon-pill">✦ ${item.addon}</div>`:''}</div></div>`;
 }
-
-function handleSearch(val) {
-  searchQuery = val.toLowerCase().trim();
-  document.getElementById('clearBtn').style.display = searchQuery ? 'flex' : 'none';
-  expanded = new Set();
-  render();
+function favBannerHTML(){
+  const c=getFavs().length;
+  const s=c>0?`<strong>${c} item${c!==1?'s':''} saved</strong> — tap to view your list`:'Tap ♡ on any item to save your picks';
+  return `<div class="fav-quick-banner" id="fav-quick-banner" onclick="setSection('favorites')"><div class="fav-quick-banner-left"><div class="fav-quick-banner-icon">❤️</div><div class="fav-quick-banner-text"><h3>Your Favourites</h3><p class="fav-banner-sub">${s}</p></div></div><div class="fav-quick-banner-arrow">›</div></div>`;
 }
-function clearSearch() {
-  searchQuery = '';
-  document.getElementById('searchInput').value = '';
-  document.getElementById('clearBtn').style.display = 'none';
-  expanded = new Set();
-  render();
-}
-function toggle(id) {
-  expanded.has(id) ? expanded.delete(id) : expanded.add(id);
-  const card = document.getElementById(id);
-  if (!card) return;
-  card.classList.toggle('expanded', expanded.has(id));
-}
-function hl(text, q) {
-  if (!q) return text;
-  return text.replace(new RegExp(`(${q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')})`,'gi'),'<mark>$1</mark>');
-}
-
-function itemHTML(item, id) {
-  const isExp = expanded.has(id);
-  const q = searchQuery;
-  const faved = isFaved(item.name);
-  return `<div class="item-card${isExp?' expanded':''}" id="${id}" onclick="toggle('${id}')">
-    <div class="item-row">
-      <div class="item-left">
-        <span class="veg-dot"></span>
-        <span class="fav-icon${faved?' faved':''}" data-name="${item.name.replace(/"/g,'&quot;')}"
-          onclick="toggleFav(event,'${item.name.replace(/'/g,"\\'")}',${item.price},'${(item.desc||'').replace(/'/g,"\\'")}','${item.tag||''}','${(item.addon||'').replace(/'/g,"\\'")}')"
-        >${faved?'❤️':'♡'}</span>
-        <span class="item-name">
-          ${hl(item.name,q)}
-          ${item.tag==='bestseller'?'<span class="best-icon">⭐ Bestseller</span>':''}
-          ${item.tag==='musttry'?'<span class="must-icon">🔥 MustTry</span>':''}
-        </span>
-      </div>
-      <div class="item-right"><span class="item-price">₹${item.price}</span><span class="chevron">▾</span></div>
-    </div>
-    <div class="item-desc">
-      ${hl(item.desc,q)}
-      ${item.addon?`<div class="addon-pill">✦ ${item.addon}</div>`:''}
-    </div>
-  </div>`;
-}
-
-function favBannerHTML() {
-  const count = getFavs().length;
-  const subText = count > 0
-    ? `<strong>${count} item${count !== 1 ? 's' : ''} saved</strong> — tap to view your list`
-    : 'Tap ♡ on any item to save your picks';
-  return `<div class="fav-quick-banner" id="fav-quick-banner" onclick="setSection('favorites')">
-    <div class="fav-quick-banner-left">
-      <div class="fav-quick-banner-icon">❤️</div>
-      <div class="fav-quick-banner-text">
-        <h3>Your Favourites</h3>
-        <p class="fav-banner-sub">${subText}</p>
-      </div>
-    </div>
-    <div class="fav-quick-banner-arrow">›</div>
-  </div>`;
-}
-
-function render() {
-  const c = document.getElementById('content');
-
-  if (currentSection === 'favorites' && !searchQuery) {
-    const favs = getFavs();
-    if (!favs.length) {
-      c.innerHTML = `
-        <div class="gap-lg"></div>
-        <div class="fav-section" style="margin:16px 12px;">
-          <div class="fav-section-head">
-            <h2>❤️ Your Favourites</h2>
-          </div>
-          <div class="fav-empty">
-            <span>🫶</span>
-            Tap ♡ on any item to save it here.<br>
-            <small style="color:var(--text3)">Your wishlist lives across visits!</small>
-          </div>
-        </div>`;
-      return;
-    }
-    let html = `<div class="gap-lg"></div>
-      <div class="fav-section">
-        <div class="fav-section-head">
-          <h2>❤️ Your Favourites</h2>
-          <div style="display:flex;align-items:center;gap:8px;">
-            <span class="item-count">${favs.length} item${favs.length!==1?'s':''}</span>
-            <button class="fav-clear-btn" onclick="clearAllFavs()">Clear all</button>
-          </div>
-        </div>
-        <div class="items-list" style="padding:0 10px;">
-          ${favs.map((item,i) => itemHTML(item, `fav-${i}`)).join('')}
-        </div>
-        <div class="gap"></div>
-      </div>`;
-    c.innerHTML = html;
+function render(){
+  const c=document.getElementById('content');
+  if(currentSection==='favorites'&&!searchQuery){
+    const favs=getFavs();
+    if(!favs.length){c.innerHTML=`<div class="gap-lg"></div><div class="fav-section" style="margin:16px 12px;"><div class="fav-section-head"><h2>❤️ Your Favourites</h2></div><div class="fav-empty"><span>🫶</span>Tap ♡ on any item to save it here.<br><small style="color:var(--text3)">Your wishlist lives across visits!</small></div></div>`;return;}
+    c.innerHTML=`<div class="gap-lg"></div><div class="fav-section"><div class="fav-section-head"><h2>❤️ Your Favourites</h2><div style="display:flex;align-items:center;gap:8px;"><span class="item-count">${favs.length} item${favs.length!==1?'s':''}</span><button class="fav-clear-btn" onclick="clearAllFavs()">Clear all</button></div></div><div class="items-list" style="padding:0 10px;">${favs.map((item,i)=>itemHTML(item,`fav-${i}`)).join('')}</div><div class="gap"></div></div>`;
     return;
   }
-
-  if (searchQuery) {
-    let html = `<div class="search-result-header">Results for "${searchQuery}"</div>`;
-    let found = 0;
-    Object.entries(MENU).forEach(([sk,sv]) => {
-      let secItems = '';
-      Object.entries(sv.subsections).forEach(([sub,items]) => {
-        items.forEach((item,i) => {
-          if (item.name.toLowerCase().includes(searchQuery) || item.desc.toLowerCase().includes(searchQuery)) {
-            const id = `s-${sk}-${i}-${sub.replace(/\W/g,'')}`;
-            secItems += itemHTML(item, id);
-            found++;
-          }
-        });
-      });
-      if (secItems) {
-        html += `<div class="search-result-category">${sv.emoji} ${sv.label}</div><div class="items-list">${secItems}</div><div class="gap"></div>`;
-      }
+  if(searchQuery){
+    let html=`<div class="search-result-header">Results for "${searchQuery}"</div>`;let found=0;
+    Object.entries(MENU).forEach(([sk,sv])=>{
+      let si='';
+      Object.entries(sv.subsections).forEach(([sub,items])=>{items.forEach((item,i)=>{if(item.name.toLowerCase().includes(searchQuery)||item.desc.toLowerCase().includes(searchQuery)){const id=`s-${sk}-${i}-${sub.replace(/\W/g,'')}`;si+=itemHTML(item,id);found++;}});});
+      if(si)html+=`<div class="search-result-category">${sv.emoji} ${sv.label}</div><div class="items-list">${si}</div><div class="gap"></div>`;
     });
-    if (!found) html = `<div class="no-results"><span>🔍</span>Nothing found for "<strong>${searchQuery}</strong>"<br><small style="color:var(--text3)">Try a different keyword</small></div>`;
-    c.innerHTML = html;
-    return;
+    if(!found)html=`<div class="no-results"><span>🔍</span>Nothing found for "<strong>${searchQuery}</strong>"<br><small style="color:var(--text3)">Try a different keyword</small></div>`;
+    c.innerHTML=html;return;
   }
-
-  const sec = MENU[currentSection];
-  const total = Object.values(sec.subsections).reduce((a,b) => a+b.length, 0);
-  let html = `<div class="gap-lg"></div>`;
-  html += favBannerHTML();
-  html += `<div class="section-head"><h2>${sec.emoji} ${sec.label}</h2><span class="item-count">${total} items</span></div>`;
-  const subs = Object.entries(sec.subsections);
-  subs.forEach(([sub,items]) => {
-    if (subs.length > 1) html += `<div class="subsec-label">${sub}</div>`;
-    html += `<div class="items-list">`;
-    items.forEach((item,i) => {
-      const id = `${currentSection}-${sub.replace(/\W/g,'')}-${i}`;
-      html += itemHTML(item, id);
-    });
-    html += `</div><div class="gap"></div>`;
+  const sec=MENU[currentSection];
+  const total=Object.values(sec.subsections).reduce((a,b)=>a+b.length,0);
+  let html=`<div class="gap-lg"></div>`;
+  html+=favBannerHTML();
+  html+=`<div class="section-head"><h2>${sec.emoji} ${sec.label}</h2><span class="item-count">${total} items</span></div>`;
+  const subs=Object.entries(sec.subsections);
+  subs.forEach(([sub,items])=>{
+    if(subs.length>1)html+=`<div class="subsec-label">${sub}</div>`;
+    html+=`<div class="items-list">`;
+    items.forEach((item,i)=>{const id=`${currentSection}-${sub.replace(/\W/g,'')}-${i}`;html+=itemHTML(item,id);});
+    html+=`</div><div class="gap"></div>`;
   });
-  c.innerHTML = html;
+  c.innerHTML=html;
 }
 
 buildNav();

@@ -33,160 +33,33 @@
 html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;}
 body{font-family:'DM Sans',sans-serif;background:var(--bg-page);color:var(--text);min-height:100vh;overflow-x:hidden;}
 
-/* ══════════════════════════════════════
-   SPLASH SCREEN
-══════════════════════════════════════ */
-#splash{
-  position:fixed;
-  inset:0;
-  z-index:9999;
-  background:var(--brown);
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  gap:0;
-  transition:opacity 0.7s ease, visibility 0.7s ease;
-}
-#splash.hide{
-  opacity:0;
-  visibility:hidden;
-  pointer-events:none;
-}
-
-/* Steam animation above cup */
-.splash-steam{
-  display:flex;
-  gap:8px;
-  margin-bottom:10px;
-  height:32px;
-  align-items:flex-end;
-}
-.steam-line{
-  width:3px;
-  border-radius:2px;
-  background:rgba(255,255,255,0.25);
-  transform-origin:bottom center;
-  animation:steamRise 1.6s ease-in-out infinite;
-}
-.steam-line:nth-child(1){ height:18px; animation-delay:0s; }
-.steam-line:nth-child(2){ height:26px; animation-delay:0.25s; }
-.steam-line:nth-child(3){ height:14px; animation-delay:0.5s; }
-@keyframes steamRise{
-  0%,100%{ opacity:0.15; transform:scaleY(0.7) translateY(4px); }
-  50%{ opacity:0.5; transform:scaleY(1) translateY(-4px); }
-}
-
-/* Cup icon */
-.splash-cup{
-  font-size:52px;
-  line-height:1;
-  margin-bottom:22px;
-  animation:cupPulse 2s ease-in-out infinite;
-  filter:drop-shadow(0 4px 16px rgba(0,0,0,0.25));
-}
-@keyframes cupPulse{
-  0%,100%{ transform:scale(1); }
-  50%{ transform:scale(1.04); }
-}
-
-/* Greeting */
-.splash-greeting{
-  font-family:'DM Sans',sans-serif;
-  font-size:11px;
-  font-weight:500;
-  letter-spacing:3px;
-  text-transform:uppercase;
-  color:rgba(255,255,255,0.55);
-  margin-bottom:10px;
-  animation:fadeInUp 0.6s ease both;
-  animation-delay:0.1s;
-}
-
-/* Main title */
-.splash-title{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(26px,7vw,42px);
-  font-weight:600;
-  color:#fff;
-  letter-spacing:2px;
-  text-align:center;
-  line-height:1.15;
-  margin-bottom:6px;
-  animation:fadeInUp 0.6s ease both;
-  animation-delay:0.2s;
-}
-
-/* Divider line */
-.splash-line{
-  width:40px;
-  height:1.5px;
-  background:rgba(255,255,255,0.3);
-  border-radius:2px;
-  margin:14px auto 14px;
-  animation:fadeInUp 0.6s ease both;
-  animation-delay:0.3s;
-}
-
-/* Welcome sub */
-.splash-sub{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(14px,3.5vw,18px);
-  font-style:italic;
-  color:rgba(255,255,255,0.75);
-  letter-spacing:0.5px;
-  text-align:center;
-  animation:fadeInUp 0.6s ease both;
-  animation-delay:0.4s;
-}
-
-/* Loading dots */
-.splash-dots{
-  display:flex;
-  gap:7px;
-  margin-top:44px;
-  animation:fadeInUp 0.6s ease both;
-  animation-delay:0.6s;
-}
-.splash-dot{
-  width:7px;
-  height:7px;
-  border-radius:50%;
-  background:rgba(255,255,255,0.3);
-  animation:dotBounce 1.2s ease-in-out infinite;
-}
-.splash-dot:nth-child(1){ animation-delay:0s; }
-.splash-dot:nth-child(2){ animation-delay:0.2s; }
-.splash-dot:nth-child(3){ animation-delay:0.4s; }
-@keyframes dotBounce{
-  0%,80%,100%{ transform:scale(0.7); background:rgba(255,255,255,0.25); }
-  40%{ transform:scale(1.15); background:rgba(255,255,255,0.7); }
-}
-
-@keyframes fadeInUp{
-  from{ opacity:0; transform:translateY(14px); }
-  to{ opacity:1; transform:translateY(0); }
-}
+/* ══ SPLASH ══ */
+#splash{position:fixed;inset:0;z-index:9999;background:var(--brown);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;transition:opacity 0.7s ease,visibility 0.7s ease;}
+#splash.hide{opacity:0;visibility:hidden;pointer-events:none;}
+.splash-steam{display:flex;gap:8px;margin-bottom:10px;height:32px;align-items:flex-end;}
+.steam-line{width:3px;border-radius:2px;background:rgba(255,255,255,0.25);transform-origin:bottom center;animation:steamRise 1.6s ease-in-out infinite;}
+.steam-line:nth-child(1){height:18px;animation-delay:0s;}
+.steam-line:nth-child(2){height:26px;animation-delay:0.25s;}
+.steam-line:nth-child(3){height:14px;animation-delay:0.5s;}
+@keyframes steamRise{0%,100%{opacity:0.15;transform:scaleY(0.7) translateY(4px);}50%{opacity:0.5;transform:scaleY(1) translateY(-4px);}}
+.splash-cup{font-size:52px;line-height:1;margin-bottom:22px;animation:cupPulse 2s ease-in-out infinite;filter:drop-shadow(0 4px 16px rgba(0,0,0,0.25));}
+@keyframes cupPulse{0%,100%{transform:scale(1);}50%{transform:scale(1.04);}}
+.splash-greeting{font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:10px;animation:fadeInUp 0.6s ease both;animation-delay:0.1s;}
+.splash-title{font-family:'Playfair Display',serif;font-size:clamp(26px,7vw,42px);font-weight:600;color:#fff;letter-spacing:2px;text-align:center;line-height:1.15;margin-bottom:6px;animation:fadeInUp 0.6s ease both;animation-delay:0.2s;}
+.splash-line{width:40px;height:1.5px;background:rgba(255,255,255,0.3);border-radius:2px;margin:14px auto 14px;animation:fadeInUp 0.6s ease both;animation-delay:0.3s;}
+.splash-sub{font-family:'Playfair Display',serif;font-size:clamp(14px,3.5vw,18px);font-style:italic;color:rgba(255,255,255,0.75);letter-spacing:0.5px;text-align:center;animation:fadeInUp 0.6s ease both;animation-delay:0.4s;}
+.splash-dots{display:flex;gap:7px;margin-top:44px;animation:fadeInUp 0.6s ease both;animation-delay:0.6s;}
+.splash-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,0.3);animation:dotBounce 1.2s ease-in-out infinite;}
+.splash-dot:nth-child(1){animation-delay:0s;}
+.splash-dot:nth-child(2){animation-delay:0.2s;}
+.splash-dot:nth-child(3){animation-delay:0.4s;}
+@keyframes dotBounce{0%,80%,100%{transform:scale(0.7);background:rgba(255,255,255,0.25);}40%{transform:scale(1.15);background:rgba(255,255,255,0.7);}}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
 
 /* ── HEADER ── */
-.header{
-  background:var(--brown);
-  padding:34px 20px 24px;
-  text-align:center;
-  position:relative;
-  overflow:hidden;
-}
-.header::before{
-  content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse 80% 60% at 50% 100%, rgba(255,255,255,0.06) 0%, transparent 70%);
-  pointer-events:none;
-}
-.header h1{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(20px,5vw,34px);
-  font-weight:600;color:#fff;
-  letter-spacing:3px;margin-bottom:6px;
-}
+.header{background:var(--brown);padding:34px 20px 24px;text-align:center;position:relative;overflow:hidden;}
+.header::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 100%,rgba(255,255,255,0.06) 0%,transparent 70%);pointer-events:none;}
+.header h1{font-family:'Playfair Display',serif;font-size:clamp(20px,5vw,34px);font-weight:600;color:#fff;letter-spacing:3px;margin-bottom:6px;}
 .header-sub{font-size:11px;color:rgba(255,255,255,0.55);letter-spacing:2px;text-transform:uppercase;font-weight:400;}
 .header-line{width:36px;height:1.5px;background:rgba(255,255,255,0.3);margin:12px auto 0;border-radius:2px;}
 
@@ -196,100 +69,35 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg-page);color:var(--text
 /* ── SEARCH ── */
 .search-wrap{padding:12px 16px;position:relative;}
 .search-icon{position:absolute;left:28px;top:50%;transform:translateY(-50%);color:var(--text3);font-size:15px;pointer-events:none;}
-.search-box{
-  width:100%;background:var(--surface);
-  border:1.5px solid var(--border);border-radius:24px;
-  padding:10px 36px 10px 40px;
-  color:var(--text);font-size:13px;
-  font-family:'DM Sans',sans-serif;outline:none;
-  transition:border 0.2s,background 0.2s;
-}
+.search-box{width:100%;background:var(--surface);border:1.5px solid var(--border);border-radius:24px;padding:10px 36px 10px 40px;color:var(--text);font-size:13px;font-family:'DM Sans',sans-serif;outline:none;transition:border 0.2s,background 0.2s;}
 .search-box::placeholder{color:var(--text3);}
 .search-box:focus{border-color:var(--brown-mid);background:#fff;}
-.search-clear{
-  position:absolute;right:28px;top:50%;transform:translateY(-50%);
-  background:var(--surface3);border:none;color:var(--text2);
-  width:20px;height:20px;border-radius:50%;font-size:11px;
-  cursor:pointer;display:none;align-items:center;justify-content:center;
-}
+.search-clear{position:absolute;right:28px;top:50%;transform:translateY(-50%);background:var(--surface3);border:none;color:var(--text2);width:20px;height:20px;border-radius:50%;font-size:11px;cursor:pointer;display:none;align-items:center;justify-content:center;}
 
 /* ── NAV ── */
 .nav-scroll{display:flex;gap:6px;padding:0 16px 12px;overflow-x:auto;scrollbar-width:none;}
 .nav-scroll::-webkit-scrollbar{display:none;}
-.nav-btn{
-  flex-shrink:0;padding:7px 15px;
-  border-radius:20px;border:1.5px solid var(--border);
-  background:transparent;color:var(--text2);
-  font-size:11px;font-weight:500;letter-spacing:0.5px;
-  text-transform:uppercase;cursor:pointer;
-  transition:all 0.2s;font-family:'DM Sans',sans-serif;
-  white-space:nowrap;display:flex;align-items:center;gap:5px;
-  -webkit-tap-highlight-color:transparent;
-}
+.nav-btn{flex-shrink:0;padding:7px 15px;border-radius:20px;border:1.5px solid var(--border);background:transparent;color:var(--text2);font-size:11px;font-weight:500;letter-spacing:0.5px;text-transform:uppercase;cursor:pointer;transition:all 0.2s;font-family:'DM Sans',sans-serif;white-space:nowrap;display:flex;align-items:center;gap:5px;-webkit-tap-highlight-color:transparent;}
 .nav-btn:hover{border-color:var(--brown-mid);color:var(--brown);}
 .nav-btn.active{background:var(--brown);border-color:var(--brown);color:#fff;font-weight:600;}
 .nav-btn .n-emoji{font-size:13px;line-height:1;}
+.nav-btn.fav-nav-btn{border-color:rgba(231,76,60,0.3);color:#c0392b;background:rgba(231,76,60,0.05);}
+.nav-btn.fav-nav-btn:hover{border-color:#e74c3c;background:rgba(231,76,60,0.1);}
+.nav-btn.fav-nav-btn.active{background:#c0392b;border-color:#c0392b;color:#fff;}
+.fav-badge{background:#e74c3c;color:#fff;font-size:9px;font-weight:700;border-radius:50%;width:16px;height:16px;display:inline-flex;align-items:center;justify-content:center;margin-left:2px;line-height:1;}
+.member-nav-btn{flex-shrink:0;padding:7px 15px;border-radius:20px;border:1.5px solid rgba(107,66,38,0.4);background:rgba(107,66,38,0.06);color:var(--brown);font-size:11px;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;cursor:pointer;transition:all 0.2s;font-family:'DM Sans',sans-serif;white-space:nowrap;display:flex;align-items:center;gap:5px;-webkit-tap-highlight-color:transparent;}
+.member-nav-btn:hover{background:var(--brown);color:#fff;border-color:var(--brown);}
+.member-nav-btn.active-member{background:var(--brown);border-color:var(--brown);color:#fff;}
 
-.nav-btn.fav-nav-btn{
-  border-color:rgba(231,76,60,0.3);
-  color:#c0392b;
-  background:rgba(231,76,60,0.05);
-}
-.nav-btn.fav-nav-btn:hover{
-  border-color:#e74c3c;
-  background:rgba(231,76,60,0.1);
-}
-.nav-btn.fav-nav-btn.active{
-  background:#c0392b;
-  border-color:#c0392b;
-  color:#fff;
-}
-
-.fav-badge{
-  background:#e74c3c;color:#fff;
-  font-size:9px;font-weight:700;
-  border-radius:50%;width:16px;height:16px;
-  display:inline-flex;align-items:center;justify-content:center;
-  margin-left:2px;line-height:1;
-}
-
-/* ── FAVOURITES QUICK ACCESS BANNER ── */
-.fav-quick-banner{
-  margin:16px 12px 0;
-  background:linear-gradient(135deg, #fff5f5 0%, #fff9f5 100%);
-  border:1.5px solid rgba(231,76,60,0.2);
-  border-radius:var(--radius);
-  padding:14px 16px;
-  display:flex;align-items:center;justify-content:space-between;
-  cursor:pointer;
-  transition:all 0.2s;
-  -webkit-tap-highlight-color:transparent;
-}
-.fav-quick-banner:hover{
-  border-color:rgba(231,76,60,0.4);
-  background:linear-gradient(135deg,#ffeeee 0%,#fff5ef 100%);
-}
+/* ── FAV BANNER ── */
+.fav-quick-banner{margin:10px 12px 0;background:linear-gradient(135deg,#fff5f5 0%,#fff9f5 100%);border:1.5px solid rgba(231,76,60,0.2);border-radius:var(--radius);padding:14px 16px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;transition:all 0.2s;-webkit-tap-highlight-color:transparent;}
+.fav-quick-banner:hover{border-color:rgba(231,76,60,0.4);background:linear-gradient(135deg,#ffeeee 0%,#fff5ef 100%);}
 .fav-quick-banner-left{display:flex;align-items:center;gap:12px;}
-.fav-quick-banner-icon{
-  width:40px;height:40px;border-radius:50%;
-  background:rgba(231,76,60,0.1);
-  display:flex;align-items:center;justify-content:center;
-  font-size:18px;flex-shrink:0;
-}
-.fav-quick-banner-text h3{
-  font-family:'Playfair Display',serif;
-  font-size:15px;font-weight:600;color:#c0392b;
-  margin-bottom:2px;
-}
-.fav-quick-banner-text p{
-  font-size:11.5px;color:var(--text3);font-weight:400;
-}
-.fav-quick-banner-text p strong{
-  color:var(--brown);font-weight:600;
-}
-.fav-quick-banner-arrow{
-  color:rgba(192,57,43,0.5);font-size:18px;flex-shrink:0;
-}
+.fav-quick-banner-icon{width:40px;height:40px;border-radius:50%;background:rgba(231,76,60,0.1);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.fav-quick-banner-text h3{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:#c0392b;margin-bottom:2px;}
+.fav-quick-banner-text p{font-size:11.5px;color:var(--text3);font-weight:400;}
+.fav-quick-banner-text p strong{color:var(--brown);font-weight:600;}
+.fav-quick-banner-arrow{color:rgba(192,57,43,0.5);font-size:18px;flex-shrink:0;}
 
 /* ── CONTENT ── */
 .content{padding:0 0 100px;}
@@ -300,30 +108,13 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg-page);color:var(--text
 .section-head .item-count{font-size:11px;color:var(--text3);letter-spacing:0.5px;}
 
 /* ── SUBSECTION LABEL ── */
-.subsec-label{
-  font-size:9.5px;font-weight:500;letter-spacing:1.8px;
-  text-transform:uppercase;color:var(--text3);
-  padding:14px 18px 8px;
-  display:flex;align-items:center;gap:10px;
-}
+.subsec-label{font-size:9.5px;font-weight:500;letter-spacing:1.8px;text-transform:uppercase;color:var(--text3);padding:14px 18px 8px;display:flex;align-items:center;gap:10px;}
 .subsec-label::after{content:'';flex:1;height:1px;background:var(--border);}
 
 /* ── ITEMS ── */
 .items-list{padding:0 12px;display:flex;flex-direction:column;gap:3px;}
-.item-card{
-  background:#fff;border:1.5px solid var(--border);
-  border-radius:var(--radius-sm);padding:13px 15px;
-  cursor:pointer;transition:all 0.15s;
-  position:relative;overflow:hidden;
-  -webkit-tap-highlight-color:transparent;
-  user-select:none;
-}
-.item-card::after{
-  content:'';position:absolute;
-  left:0;top:12%;bottom:12%;width:3px;
-  background:transparent;border-radius:0 2px 2px 0;
-  transition:background 0.15s;
-}
+.item-card{background:#fff;border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:13px 15px;cursor:pointer;transition:all 0.15s;position:relative;overflow:hidden;-webkit-tap-highlight-color:transparent;user-select:none;}
+.item-card::after{content:'';position:absolute;left:0;top:12%;bottom:12%;width:3px;background:transparent;border-radius:0 2px 2px 0;transition:background 0.15s;}
 .item-card:hover{border-color:var(--border2);background:var(--surface);}
 .item-card.expanded{border-color:var(--brown-border2);background:var(--surface);}
 .item-card.expanded::after{background:var(--brown);}
@@ -336,88 +127,33 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg-page);color:var(--text
 .item-price{font-size:14px;font-weight:600;color:var(--brown);}
 .chevron{color:var(--text3);font-size:9px;transition:transform 0.25s;display:inline-block;}
 .item-card.expanded .chevron{transform:rotate(180deg);}
-.item-desc{
-  font-size:12.5px;color:var(--text2);line-height:1.65;
-  margin-top:10px;padding-top:10px;
-  border-top:1px solid var(--border);
-  display:none;animation:fd 0.2s ease;
-}
+.item-desc{font-size:12.5px;color:var(--text2);line-height:1.65;margin-top:10px;padding-top:10px;border-top:1px solid var(--border);display:none;animation:fd 0.2s ease;}
 .item-card.expanded .item-desc{display:block;}
 @keyframes fd{from{opacity:0;transform:translateY(-4px);}to{opacity:1;transform:translateY(0);}}
-.addon-pill{
-  display:inline-flex;align-items:center;gap:4px;
-  margin-top:8px;font-size:11px;color:var(--brown);
-  background:var(--brown-dim);border:1px solid var(--brown-border);
-  border-radius:20px;padding:3px 10px;font-weight:500;
-}
+.addon-pill{display:inline-flex;align-items:center;gap:4px;margin-top:8px;font-size:11px;color:var(--brown);background:var(--brown-dim);border:1px solid var(--brown-border);border-radius:20px;padding:3px 10px;font-weight:500;}
 
-/* ── FAV HEART BUTTON ── */
-.fav-icon{
-  font-size:15px;
-  cursor:pointer;
-  flex-shrink:0;
-  transition:transform 0.2s, color 0.2s;
-  color:var(--text3);
-  line-height:1;
-  -webkit-tap-highlight-color:transparent;
-  z-index:2;
-}
+/* ── FAV HEART ── */
+.fav-icon{font-size:15px;cursor:pointer;flex-shrink:0;transition:transform 0.2s,color 0.2s;color:var(--text3);line-height:1;-webkit-tap-highlight-color:transparent;z-index:2;}
 .fav-icon:hover{transform:scale(1.2);}
 .fav-icon.faved{color:#e74c3c;animation:heartPop 0.3s ease;}
-@keyframes heartPop{
-  0%{transform:scale(1);}
-  50%{transform:scale(1.4);}
-  100%{transform:scale(1);}
-}
+@keyframes heartPop{0%{transform:scale(1);}50%{transform:scale(1.4);}100%{transform:scale(1);}}
 
 /* ── FAVORITES SECTION ── */
-.fav-section{
-  background:linear-gradient(135deg, rgba(231,76,60,0.04) 0%, rgba(107,66,38,0.04) 100%);
-  border:1.5px solid rgba(231,76,60,0.15);
-  border-radius:var(--radius);
-  margin:16px 12px 0;
-  padding-bottom:6px;
-  overflow:hidden;
-}
-.fav-section-head{
-  padding:14px 16px 8px;
-  display:flex;align-items:center;justify-content:space-between;
-}
-.fav-section-head h2{
-  font-family:'Playfair Display',serif;
-  font-size:18px;font-weight:600;
-  color:#c0392b;
-  display:flex;align-items:center;gap:8px;
-}
+.fav-section{background:linear-gradient(135deg,rgba(231,76,60,0.04) 0%,rgba(107,66,38,0.04) 100%);border:1.5px solid rgba(231,76,60,0.15);border-radius:var(--radius);margin:16px 12px 0;padding-bottom:6px;overflow:hidden;}
+.fav-section-head{padding:14px 16px 8px;display:flex;align-items:center;justify-content:space-between;}
+.fav-section-head h2{font-family:'Playfair Display',serif;font-size:18px;font-weight:600;color:#c0392b;display:flex;align-items:center;gap:8px;}
 .fav-section-head .item-count{font-size:11px;color:var(--text3);}
-.fav-clear-btn{
-  font-size:10px;color:var(--text3);
-  background:none;border:1px solid var(--border);
-  border-radius:12px;padding:3px 10px;cursor:pointer;
-  font-family:'DM Sans',sans-serif;letter-spacing:0.5px;
-  transition:all 0.2s;
-}
+.fav-clear-btn{font-size:10px;color:var(--text3);background:none;border:1px solid var(--border);border-radius:12px;padding:3px 10px;cursor:pointer;font-family:'DM Sans',sans-serif;letter-spacing:0.5px;transition:all 0.2s;}
 .fav-clear-btn:hover{border-color:#e74c3c;color:#e74c3c;}
-.fav-empty{
-  padding:20px;text-align:center;
-  color:var(--text3);font-size:13px;line-height:1.8;
-}
+.fav-empty{padding:20px;text-align:center;color:var(--text3);font-size:13px;line-height:1.8;}
 .fav-empty span{font-size:26px;display:block;margin-bottom:6px;}
 
 /* ── TOAST ── */
-.toast{
-  position:fixed;bottom:90px;left:50%;transform:translateX(-50%) translateY(80px);
-  background:var(--brown);color:#fff;
-  font-size:12.5px;font-weight:500;
-  padding:10px 20px;border-radius:24px;
-  box-shadow:0 4px 20px rgba(107,66,38,0.3);
-  z-index:999;transition:transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
-  white-space:nowrap;pointer-events:none;
-}
+.toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--brown);color:#fff;font-size:12.5px;font-weight:500;padding:10px 20px;border-radius:24px;box-shadow:0 4px 20px rgba(107,66,38,0.3);z-index:999;transition:transform 0.3s cubic-bezier(0.34,1.56,0.64,1);white-space:nowrap;pointer-events:none;}
 .toast.show{transform:translateX(-50%) translateY(0);}
 .toast.red{background:#c0392b;}
 
-/* ── SEARCH RESULTS ── */
+/* ── SEARCH ── */
 .search-result-header{padding:14px 18px 4px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text3);font-weight:500;}
 .search-result-category{font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:var(--brown);opacity:0.8;padding:12px 18px 6px;}
 .no-results{padding:50px 20px;text-align:center;color:var(--text3);font-size:13px;line-height:1.8;}
@@ -429,291 +165,179 @@ mark{background:rgba(107,66,38,0.12);color:var(--brown);border-radius:3px;paddin
 .gap-lg{height:20px;}
 
 /* ── FOOTER ── */
-footer{
-  text-align:center;padding:28px 20px;
-  border-top:1px solid var(--border);
-  font-size:12px;color:var(--text3);font-weight:300;
-  background:#fff;
-}
+footer{text-align:center;padding:28px 20px;border-top:1px solid var(--border);font-size:12px;color:var(--text3);font-weight:300;background:#fff;}
 footer strong{color:var(--brown);font-weight:500;}
 
 /* ── MOBILE ── */
-.swipe-hint{
-  font-size:11px;font-weight:500;letter-spacing:0.4px;
-  text-align:center;padding:6px 16px 4px;display:none;
-  color:var(--brown);
-  background:linear-gradient(90deg,transparent,rgba(107,66,38,0.07),transparent);
-  border-top:1px solid var(--border);
-  animation:swipePulse 2.5s ease-in-out infinite;
-}
+.swipe-hint{font-size:11px;font-weight:500;letter-spacing:0.4px;text-align:center;padding:6px 16px 4px;display:none;color:var(--brown);background:linear-gradient(90deg,transparent,rgba(107,66,38,0.07),transparent);border-top:1px solid var(--border);animation:swipePulse 2.5s ease-in-out infinite;}
 .swipe-hint::before{content:'⟵ ';}
 .swipe-hint::after{content:' ⟶';}
-@keyframes swipePulse{
-  0%,100%{opacity:0.6;}
-  50%{opacity:1;}
-}
-@media(max-width:600px){
-  .swipe-hint{display:block;}
-  .item-name{font-size:13px;}
-}
-@media(max-width:400px){
-  .header h1{letter-spacing:1px;}
-  .items-list{padding:0 8px;}
-  .item-card{padding:12px 12px;}
-}
+@keyframes swipePulse{0%,100%{opacity:0.6;}50%{opacity:1;}}
+@media(max-width:600px){.swipe-hint{display:block;}.item-name{font-size:13px;}}
+@media(max-width:400px){.header h1{letter-spacing:1px;}.items-list{padding:0 8px;}.item-card{padding:12px 12px;}}
 
-.best-icon{
-  margin-left:8px;font-size:10px;font-weight:600;
-  color:#6b4226;background:rgba(107,66,38,0.08);
-  padding:2px 6px;border-radius:10px;
-}
-.must-icon{
-  margin-left:8px;font-size:11px;font-weight:600;
-  color:#c2410c;background:rgba(194,65,12,0.08);
-  padding:2px 6px;border-radius:10px;letter-spacing:0.3px;
-}
+.best-icon{margin-left:8px;font-size:10px;font-weight:600;color:#6b4226;background:rgba(107,66,38,0.08);padding:2px 6px;border-radius:10px;}
+.must-icon{margin-left:8px;font-size:11px;font-weight:600;color:#c2410c;background:rgba(194,65,12,0.08);padding:2px 6px;border-radius:10px;letter-spacing:0.3px;}
 
-/* ══════════════════════════════════════
-   TODAY'S SPECIAL — FLOATING BUTTON
-══════════════════════════════════════ */
-.special-fab{
-  position:fixed;
-  bottom:24px;
-  left:50%;
-  transform:translateX(-50%);
-  z-index:400;
-  display:flex;
-  align-items:center;
-  gap:8px;
-  background:var(--brown);
-  color:#fff;
-  border:none;
-  border-radius:30px;
-  padding:13px 22px;
-  font-family:'DM Sans',sans-serif;
-  font-size:13px;
-  font-weight:600;
-  letter-spacing:0.4px;
-  cursor:pointer;
-  box-shadow:0 4px 20px rgba(107,66,38,0.45), 0 2px 8px rgba(107,66,38,0.3);
-  transition:transform 0.2s, box-shadow 0.2s, background 0.2s;
-  white-space:nowrap;
-  -webkit-tap-highlight-color:transparent;
-  animation:fabEntrance 0.5s cubic-bezier(0.34,1.56,0.64,1) both;
-}
-.special-fab:hover{
-  background:var(--brown-mid);
-  transform:translateX(-50%) translateY(-2px);
-  box-shadow:0 8px 28px rgba(107,66,38,0.5), 0 3px 10px rgba(107,66,38,0.35);
-}
-.special-fab:active{
-  transform:translateX(-50%) scale(0.96);
-}
-.special-fab-star{
-  font-size:16px;
-  animation:starSpin 3s ease-in-out infinite;
-}
-@keyframes starSpin{
-  0%,100%{transform:rotate(0deg) scale(1);}
-  50%{transform:rotate(15deg) scale(1.15);}
-}
-@keyframes fabEntrance{
-  from{opacity:0;transform:translateX(-50%) translateY(30px);}
-  to{opacity:1;transform:translateX(-50%) translateY(0);}
-}
+/* ══ TODAY'S SPECIAL FAB ══ */
+.special-fab{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:400;display:flex;align-items:center;gap:8px;background:var(--brown);color:#fff;border:none;border-radius:30px;padding:13px 22px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;letter-spacing:0.4px;cursor:pointer;box-shadow:0 4px 20px rgba(107,66,38,0.45),0 2px 8px rgba(107,66,38,0.3);transition:transform 0.2s,box-shadow 0.2s,background 0.2s;white-space:nowrap;-webkit-tap-highlight-color:transparent;animation:fabEntrance 0.5s cubic-bezier(0.34,1.56,0.64,1) both;}
+.special-fab:hover{background:var(--brown-mid);transform:translateX(-50%) translateY(-2px);box-shadow:0 8px 28px rgba(107,66,38,0.5),0 3px 10px rgba(107,66,38,0.35);}
+.special-fab:active{transform:translateX(-50%) scale(0.96);}
+.special-fab-star{font-size:16px;animation:starSpin 3s ease-in-out infinite;}
+@keyframes starSpin{0%,100%{transform:rotate(0deg) scale(1);}50%{transform:rotate(15deg) scale(1.15);}}
+@keyframes fabEntrance{from{opacity:0;transform:translateX(-50%) translateY(30px);}to{opacity:1;transform:translateX(-50%) translateY(0);}}
 
-/* ── TODAY'S SPECIAL OVERLAY ── */
-.special-overlay{
-  position:fixed;
-  inset:0;
-  background:rgba(42,31,22,0.6);
-  z-index:500;
-  display:flex;
-  align-items:flex-end;
-  justify-content:center;
-  opacity:0;
-  pointer-events:none;
-  transition:opacity 0.3s ease;
-  backdrop-filter:blur(2px);
-  -webkit-backdrop-filter:blur(2px);
-}
-.special-overlay.open{
-  opacity:1;
-  pointer-events:auto;
-}
-.special-sheet{
-  background:var(--bg-page);
-  width:100%;
-  max-width:600px;
-  max-height:88vh;
-  border-radius:24px 24px 0 0;
-  overflow:hidden;
-  display:flex;
-  flex-direction:column;
-  transform:translateY(100%);
-  transition:transform 0.38s cubic-bezier(0.32,0.72,0,1);
-  box-shadow:0 -8px 40px rgba(107,66,38,0.25);
-}
-.special-overlay.open .special-sheet{
-  transform:translateY(0);
-}
-
-.special-handle{
-  width:36px;height:4px;
-  background:var(--surface3);
-  border-radius:2px;
-  margin:12px auto 0;
-  flex-shrink:0;
-}
-
-.special-header{
-  padding:16px 20px 14px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  border-bottom:1px solid var(--border);
-  flex-shrink:0;
-}
+/* ── SPECIAL OVERLAY ── */
+.special-overlay{position:fixed;inset:0;background:rgba(42,31,22,0.6);z-index:500;display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.3s ease;backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);}
+.special-overlay.open{opacity:1;pointer-events:auto;}
+.special-sheet{background:var(--bg-page);width:100%;max-width:600px;max-height:88vh;border-radius:24px 24px 0 0;overflow:hidden;display:flex;flex-direction:column;transform:translateY(100%);transition:transform 0.38s cubic-bezier(0.32,0.72,0,1);box-shadow:0 -8px 40px rgba(107,66,38,0.25);}
+.special-overlay.open .special-sheet{transform:translateY(0);}
+.special-handle{width:36px;height:4px;background:var(--surface3);border-radius:2px;margin:12px auto 0;flex-shrink:0;}
+.special-header{padding:16px 20px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);flex-shrink:0;}
 .special-header-left{display:flex;align-items:center;gap:12px;}
-.special-header-icon{
-  width:44px;height:44px;
-  border-radius:50%;
-  background:linear-gradient(135deg, var(--brown) 0%, var(--brown-mid) 100%);
-  display:flex;align-items:center;justify-content:center;
-  font-size:20px;flex-shrink:0;
-}
-.special-header-text h2{
-  font-family:'Playfair Display',serif;
-  font-size:18px;font-weight:600;color:var(--brown);
-  margin-bottom:2px;
-}
-.special-header-text p{
-  font-size:11px;color:var(--text3);letter-spacing:0.5px;
-  text-transform:uppercase;
-}
-.special-close{
-  width:32px;height:32px;border-radius:50%;
-  background:var(--surface);border:1.5px solid var(--border);
-  display:flex;align-items:center;justify-content:center;
-  cursor:pointer;font-size:14px;color:var(--text2);
-  transition:all 0.2s;flex-shrink:0;
-  -webkit-tap-highlight-color:transparent;
-}
+.special-header-icon{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--brown) 0%,var(--brown-mid) 100%);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+.special-header-text h2{font-family:'Playfair Display',serif;font-size:18px;font-weight:600;color:var(--brown);margin-bottom:2px;}
+.special-header-text p{font-size:11px;color:var(--text3);letter-spacing:0.5px;text-transform:uppercase;}
+.special-close{width:32px;height:32px;border-radius:50%;background:var(--surface);border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:14px;color:var(--text2);transition:all 0.2s;flex-shrink:0;-webkit-tap-highlight-color:transparent;}
 .special-close:hover{background:var(--surface2);border-color:var(--border2);}
-
-.special-date-badge{
-  display:flex;align-items:center;gap:8px;
-  padding:10px 20px 8px;
-  flex-shrink:0;
-}
-.special-date-pill{
-  display:inline-flex;align-items:center;gap:5px;
-  font-size:11px;font-weight:500;color:var(--brown);
-  background:var(--brown-dim);border:1px solid var(--brown-border);
-  border-radius:20px;padding:4px 12px;
-  letter-spacing:0.3px;
-}
-
-.special-list{
-  overflow-y:auto;
-  padding:4px 0 20px;
-  flex:1;
-  -webkit-overflow-scrolling:touch;
-  scrollbar-width:thin;
-  scrollbar-color:var(--surface3) transparent;
-}
+.special-date-badge{display:flex;align-items:center;gap:8px;padding:10px 20px 8px;flex-shrink:0;}
+.special-date-pill{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:500;color:var(--brown);background:var(--brown-dim);border:1px solid var(--brown-border);border-radius:20px;padding:4px 12px;letter-spacing:0.3px;}
+.special-list{overflow-y:auto;padding:4px 0 20px;flex:1;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:var(--surface3) transparent;}
 .special-list::-webkit-scrollbar{width:4px;}
 .special-list::-webkit-scrollbar-thumb{background:var(--surface3);border-radius:2px;}
-
-.special-cat-label{
-  font-size:9px;font-weight:600;letter-spacing:2px;
-  text-transform:uppercase;color:var(--text3);
-  padding:12px 20px 6px;
-  display:flex;align-items:center;gap:10px;
-}
+.special-cat-label{font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--text3);padding:12px 20px 6px;display:flex;align-items:center;gap:10px;}
 .special-cat-label::after{content:'';flex:1;height:1px;background:var(--border);}
-
-.special-item{
-  margin:0 12px 6px;
-  background:#fff;
-  border:1.5px solid var(--border);
-  border-radius:var(--radius-sm);
-  padding:13px 15px;
-  position:relative;
-  overflow:hidden;
-  cursor:pointer;
-  transition:all 0.15s;
-  -webkit-tap-highlight-color:transparent;
-}
-.special-item::before{
-  content:'';
-  position:absolute;
-  left:0;top:0;bottom:0;width:3px;
-  background:linear-gradient(to bottom, var(--brown), var(--brown-pale));
-  border-radius:0 2px 2px 0;
-}
+.special-item{margin:0 12px 6px;background:#fff;border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:13px 15px;position:relative;overflow:hidden;cursor:pointer;transition:all 0.15s;-webkit-tap-highlight-color:transparent;}
+.special-item::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(to bottom,var(--brown),var(--brown-pale));border-radius:0 2px 2px 0;}
 .special-item:hover{border-color:var(--border2);background:var(--surface);}
 .special-item-row{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;}
 .special-item-left{flex:1;min-width:0;padding-left:4px;}
-.special-item-name{
-  font-size:13.5px;font-weight:500;color:var(--text);
-  margin-bottom:4px;line-height:1.3;
-  display:flex;align-items:center;flex-wrap:wrap;gap:4px;
-}
+.special-item-name{font-size:13.5px;font-weight:500;color:var(--text);margin-bottom:4px;line-height:1.3;display:flex;align-items:center;flex-wrap:wrap;gap:4px;}
 .special-item-desc{font-size:12px;color:var(--text2);line-height:1.55;}
-.special-item-right{
-  display:flex;flex-direction:column;align-items:flex-end;gap:5px;flex-shrink:0;
-}
-.special-item-price{
-  font-size:14px;font-weight:700;color:var(--brown);
-}
-.special-badge{
-  font-size:9.5px;font-weight:600;letter-spacing:0.3px;
-  padding:2px 8px;border-radius:10px;white-space:nowrap;
-}
-.badge-today{
-  color:#fff;
-  background:var(--brown);
-}
-.badge-chef{
-  color:#c2410c;
-  background:rgba(194,65,12,0.1);
-  border:1px solid rgba(194,65,12,0.2);
-}
-.badge-limited{
-  color:#6b21a8;
-  background:rgba(107,33,168,0.08);
-  border:1px solid rgba(107,33,168,0.2);
-}
+.special-item-right{display:flex;flex-direction:column;align-items:flex-end;gap:5px;flex-shrink:0;}
+.special-item-price{font-size:14px;font-weight:700;color:var(--brown);}
+.special-badge{font-size:9.5px;font-weight:600;letter-spacing:0.3px;padding:2px 8px;border-radius:10px;white-space:nowrap;}
+.badge-today{color:#fff;background:var(--brown);}
+.badge-chef{color:#c2410c;background:rgba(194,65,12,0.1);border:1px solid rgba(194,65,12,0.2);}
+.badge-limited{color:#6b21a8;background:rgba(107,33,168,0.08);border:1px solid rgba(107,33,168,0.2);}
+.special-veg{width:10px;height:10px;flex-shrink:0;border:1.5px solid var(--green);border-radius:2px;position:relative;display:inline-block;vertical-align:middle;margin-right:2px;}
+.special-veg::after{content:'';position:absolute;top:1.5px;left:1.5px;width:4px;height:4px;background:var(--green);border-radius:50%;}
+.special-note{margin:10px 20px 0;padding:12px 14px;background:var(--brown-dim);border:1px solid var(--brown-border);border-radius:var(--radius-sm);font-size:11.5px;color:var(--text2);line-height:1.55;text-align:center;flex-shrink:0;}
 
-.special-veg{
-  width:10px;height:10px;flex-shrink:0;
-  border:1.5px solid var(--green);border-radius:2px;
-  position:relative;display:inline-block;vertical-align:middle;
-  margin-right:2px;
-}
-.special-veg::after{
-  content:'';position:absolute;
-  top:1.5px;left:1.5px;
-  width:4px;height:4px;
-  background:var(--green);border-radius:50%;
-}
+/* ══ MEMBERSHIP ══ */
+.member-card{margin:16px 12px 0;border-radius:var(--radius);padding:18px;position:relative;overflow:hidden;color:#fff;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:opacity 0.2s;}
+.member-card:active{opacity:0.9;}
+.member-card.brew{background:linear-gradient(135deg,#7c5535 0%,#b8835a 100%);}
+.member-card.reserve{background:linear-gradient(135deg,#2a1f16 0%,#6b4226 60%,#b8835a 100%);}
+.member-card.promo{background:linear-gradient(135deg,#6b4226 0%,#8a5a38 50%,#b8835a 100%);}
+.member-card-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;}
+.member-card-brand{font-size:10px;font-weight:600;letter-spacing:2px;opacity:0.65;text-transform:uppercase;}
+.member-verified-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,0.2);padding:3px 10px;border-radius:20px;font-size:10px;font-weight:700;letter-spacing:0.5px;}
+.member-verified-badge.gold-badge{background:rgba(255,215,0,0.25);color:#ffd700;}
+.member-card-name{font-size:18px;font-weight:700;letter-spacing:0.5px;margin-bottom:2px;}
+.member-card-sub{font-size:11px;opacity:0.6;margin-bottom:12px;}
+.member-perks-row{display:flex;gap:8px;flex-wrap:wrap;}
+.member-perk-chip{background:rgba(255,255,255,0.15);border-radius:20px;padding:4px 10px;font-size:11px;font-weight:500;}
+.member-expiry{margin-top:10px;font-size:10px;opacity:0.5;letter-spacing:0.3px;}
+.member-discount-tag{display:inline-flex;align-items:center;gap:3px;font-size:9.5px;font-weight:700;color:#4a8c5c;background:rgba(74,140,92,0.1);border:1px solid rgba(74,140,92,0.25);border-radius:10px;padding:1px 6px;margin-left:6px;vertical-align:middle;}
 
-.special-note{
-  margin:10px 20px 0;
-  padding:12px 14px;
-  background:var(--brown-dim);
-  border:1px solid var(--brown-border);
-  border-radius:var(--radius-sm);
-  font-size:11.5px;color:var(--text2);
-  line-height:1.55;text-align:center;
-  flex-shrink:0;
-}
+/* ── MEMBERSHIP OVERLAY ── */
+.membership-overlay{position:fixed;inset:0;background:rgba(42,31,22,0.65);z-index:600;display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.3s ease;backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);}
+.membership-overlay.open{opacity:1;pointer-events:auto;}
+.membership-sheet{background:var(--bg-page);width:100%;max-width:600px;max-height:92vh;border-radius:24px 24px 0 0;overflow:hidden;display:flex;flex-direction:column;transform:translateY(100%);transition:transform 0.38s cubic-bezier(0.32,0.72,0,1);box-shadow:0 -8px 40px rgba(107,66,38,0.25);}
+.membership-overlay.open .membership-sheet{transform:translateY(0);}
+.ms-handle{width:36px;height:4px;background:var(--surface3);border-radius:2px;margin:12px auto 0;flex-shrink:0;}
+.ms-header{padding:16px 20px 14px;border-bottom:1px solid var(--border);flex-shrink:0;display:flex;align-items:center;justify-content:space-between;}
+.ms-header h2{font-family:'Playfair Display',serif;font-size:18px;font-weight:600;color:var(--brown);}
+.ms-close{width:32px;height:32px;border-radius:50%;background:var(--surface);border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:14px;color:var(--text2);-webkit-tap-highlight-color:transparent;transition:all 0.2s;}
+.ms-close:hover{background:var(--surface2);}
+.ms-body{overflow-y:auto;padding:16px 14px 32px;flex:1;-webkit-overflow-scrolling:touch;}
+.ms-intro{font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:16px;}
+.ms-plan-card{border-radius:var(--radius);padding:18px;margin-bottom:12px;cursor:pointer;border:2.5px solid transparent;transition:all 0.2s;position:relative;-webkit-tap-highlight-color:transparent;}
+.ms-plan-card.brew{background:linear-gradient(135deg,#7c5535 0%,#b8835a 100%);color:#fff;}
+.ms-plan-card.reserve{background:linear-gradient(135deg,#2a1f16 0%,#6b4226 60%,#b8835a 100%);color:#fff;}
+.ms-plan-card.selected{border-color:#ffd700;box-shadow:0 0 0 3px rgba(255,215,0,0.2);}
+.ms-plan-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
+.ms-plan-name{font-size:17px;font-weight:700;letter-spacing:0.3px;}
+.ms-plan-badge{font-size:9.5px;font-weight:700;letter-spacing:0.5px;padding:3px 9px;border-radius:12px;text-transform:uppercase;}
+.ms-plan-badge.value{background:rgba(255,215,0,0.25);color:#ffd700;}
+.ms-plan-badge.monthly{background:rgba(255,255,255,0.18);color:rgba(255,255,255,0.85);}
+.ms-plan-price{font-size:28px;font-weight:700;margin-bottom:2px;}
+.ms-plan-price small{font-size:13px;font-weight:400;opacity:0.7;}
+.ms-plan-saving{font-size:11px;opacity:0.65;margin-bottom:12px;}
+.ms-plan-perks{display:flex;flex-direction:column;gap:5px;}
+.ms-perk{font-size:12px;opacity:0.9;display:flex;align-items:flex-start;gap:7px;line-height:1.4;}
+.ms-perk::before{content:'✓';font-size:10px;font-weight:700;opacity:0.7;flex-shrink:0;margin-top:1px;}
+.ms-select-btn{margin-top:12px;background:rgba(255,255,255,0.18);border:1.5px solid rgba(255,255,255,0.35);color:#fff;border-radius:20px;padding:7px 20px;font-size:12px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;letter-spacing:0.5px;transition:all 0.2s;-webkit-tap-highlight-color:transparent;}
+.ms-plan-card.selected .ms-select-btn{background:rgba(255,215,0,0.3);border-color:#ffd700;color:#ffd700;}
+.ms-payment-section{background:#fff;border:1.5px solid var(--border);border-radius:var(--radius);padding:16px;margin-bottom:12px;}
+.ms-payment-section h3{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--brown);margin-bottom:12px;}
+.ms-input{width:100%;background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:11px 14px;font-size:13px;font-family:'DM Sans',sans-serif;color:var(--text);outline:none;transition:border 0.2s;margin-bottom:8px;}
+.ms-input:focus{border-color:var(--brown-mid);background:#fff;}
+.ms-input:last-of-type{margin-bottom:0;}
+.ms-order-summary{background:var(--surface);border-radius:var(--radius-sm);padding:12px 14px;margin:10px 0;display:flex;justify-content:space-between;align-items:center;}
+.ms-order-summary span{font-size:13px;color:var(--text2);}
+.ms-order-summary strong{font-size:15px;font-weight:700;color:var(--brown);}
+.ms-pay-btn{width:100%;background:var(--brown);color:#fff;border:none;border-radius:var(--radius-sm);padding:14px;font-size:14px;font-weight:600;font-family:'DM Sans',sans-serif;letter-spacing:0.5px;cursor:pointer;transition:all 0.2s;margin-top:10px;-webkit-tap-highlight-color:transparent;}
+.ms-pay-btn:hover{background:var(--brown-mid);}
+.ms-pay-btn:disabled{opacity:0.6;cursor:not-allowed;}
+.ms-note{font-size:11px;color:var(--text3);text-align:center;margin-top:10px;line-height:1.6;}
+.ms-success{text-align:center;padding:28px 16px;}
+.ms-success-icon{font-size:56px;margin-bottom:14px;}
+.ms-success h3{font-family:'Playfair Display',serif;font-size:21px;font-weight:600;color:var(--brown);margin-bottom:8px;}
+.ms-success p{font-size:13px;color:var(--text2);line-height:1.75;}
+.ms-success p strong{color:var(--brown);}
+.ms-success-close{margin-top:20px;background:var(--brown);color:#fff;border:none;border-radius:var(--radius-sm);padding:13px 36px;font-size:13px;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;-webkit-tap-highlight-color:transparent;}
+.ms-active-perks{background:#fff;border:1.5px solid var(--border);border-radius:var(--radius);padding:16px;margin-top:12px;}
+.ms-active-perks h3{font-family:'Playfair Display',serif;font-size:14px;font-weight:600;color:var(--brown);margin-bottom:10px;}
+.ms-active-perk-row{display:flex;align-items:center;gap:8px;padding:5px 0;font-size:12.5px;color:var(--text2);border-bottom:1px solid var(--border);}
+.ms-active-perk-row:last-child{border-bottom:none;}
+.ms-active-perk-row::before{content:'✓';color:var(--green);font-weight:700;font-size:11px;flex-shrink:0;}
+.ms-cancel-btn{display:block;margin:14px auto 0;font-size:11px;color:var(--text3);background:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;text-decoration:underline;padding:6px;}
+
+/* ══ QR PAYMENT SCREEN ══ */
+.qr-screen{animation:fd 0.3s ease;}
+.qr-back-btn{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--text3);background:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;padding:0 0 14px 0;-webkit-tap-highlight-color:transparent;transition:color 0.2s;}
+.qr-back-btn:hover{color:var(--brown);}
+.qr-amount-card{background:linear-gradient(135deg,#2a1f16 0%,#6b4226 60%,#b8835a 100%);border-radius:var(--radius);padding:16px 20px;margin-bottom:16px;color:#fff;display:flex;align-items:center;justify-content:space-between;}
+.qr-amount-left{}
+.qr-amount-label{font-size:10px;font-weight:500;letter-spacing:2px;text-transform:uppercase;opacity:0.6;margin-bottom:4px;}
+.qr-amount-plan{font-size:13px;font-weight:600;opacity:0.85;margin-bottom:2px;}
+.qr-amount-value{font-size:30px;font-weight:700;letter-spacing:-0.5px;line-height:1;}
+.qr-amount-right{text-align:right;}
+.qr-amount-badge{display:inline-flex;align-items:center;gap:4px;background:rgba(255,255,255,0.15);border-radius:20px;padding:4px 10px;font-size:10px;font-weight:600;letter-spacing:0.5px;}
+.qr-amount-upi{font-size:10px;opacity:0.5;margin-top:6px;letter-spacing:0.3px;}
+.qr-wrapper{background:#fff;border:1.5px solid var(--border);border-radius:var(--radius);padding:20px;margin-bottom:14px;text-align:center;position:relative;}
+.qr-brand-row{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:16px;}
+.qr-brand-dot{width:28px;height:28px;border-radius:50%;background:var(--brown);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;}
+.qr-brand-name{font-family:'Playfair Display',serif;font-size:14px;font-weight:600;color:var(--brown);}
+.qr-img-frame{position:relative;display:inline-block;margin-bottom:14px;}
+.qr-corner{position:absolute;width:18px;height:18px;border-color:var(--brown);border-style:solid;}
+.qr-corner.tl{top:-2px;left:-2px;border-width:2.5px 0 0 2.5px;border-radius:3px 0 0 0;}
+.qr-corner.tr{top:-2px;right:-2px;border-width:2.5px 2.5px 0 0;border-radius:0 3px 0 0;}
+.qr-corner.bl{bottom:-2px;left:-2px;border-width:0 0 2.5px 2.5px;border-radius:0 0 0 3px;}
+.qr-corner.br{bottom:-2px;right:-2px;border-width:0 2.5px 2.5px 0;border-radius:0 0 3px 0;}
+.qr-img{width:200px;height:200px;border-radius:8px;display:block;object-fit:contain;}
+.qr-scan-label{font-size:11px;color:var(--text3);letter-spacing:0.5px;margin-bottom:4px;}
+.qr-upi-chip{display:inline-flex;align-items:center;gap:6px;background:var(--brown-dim);border:1px solid var(--brown-border);border-radius:20px;padding:5px 14px;font-size:12px;font-weight:600;color:var(--brown);letter-spacing:0.3px;}
+.qr-divider{display:flex;align-items:center;gap:10px;margin:14px 0;font-size:11px;color:var(--text3);letter-spacing:0.5px;}
+.qr-divider::before,.qr-divider::after{content:'';flex:1;height:1px;background:var(--border);}
+.qr-steps{display:flex;flex-direction:column;gap:8px;margin-bottom:16px;}
+.qr-step{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;background:var(--surface);border-radius:var(--radius-sm);}
+.qr-step-num{width:20px;height:20px;border-radius:50%;background:var(--brown);color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.qr-step-text{font-size:12.5px;color:var(--text2);line-height:1.5;}
+.qr-step-text strong{color:var(--text);font-weight:500;}
+.qr-done-btn{width:100%;background:var(--brown);color:#fff;border:none;border-radius:var(--radius-sm);padding:14px;font-size:14px;font-weight:600;font-family:'DM Sans',sans-serif;letter-spacing:0.5px;cursor:pointer;transition:all 0.2s;-webkit-tap-highlight-color:transparent;display:flex;align-items:center;justify-content:center;gap:8px;}
+.qr-done-btn:hover{background:var(--brown-mid);}
+.qr-done-btn:disabled{opacity:0.6;cursor:not-allowed;}
+.qr-done-btn .qr-btn-icon{font-size:16px;}
+.qr-security-row{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:12px;}
+.qr-security-item{display:flex;align-items:center;gap:4px;font-size:10px;color:var(--text3);}
 </style>
 </head>
 <body>
 
-<!-- ══ SPLASH SCREEN ══ -->
+<!-- ══ SPLASH ══ -->
 <div id="splash">
   <div class="splash-steam">
     <div class="steam-line"></div>
@@ -731,7 +355,6 @@ footer strong{color:var(--brown);font-weight:500;}
     <div class="splash-dot"></div>
   </div>
 </div>
-<!-- ══ END SPLASH ══ -->
 
 <header class="header">
   <h1>KAVA THE CAFFEINE HOUSE</h1>
@@ -750,13 +373,13 @@ footer strong{color:var(--brown);font-weight:500;}
 
 <div class="content" id="content"></div>
 
-<!-- TODAY'S SPECIAL FLOATING BUTTON -->
+<!-- TODAY'S SPECIAL FAB -->
 <button class="special-fab" onclick="openSpecial()" aria-label="Today's Special">
   <span class="special-fab-star">✦</span>
-  Today's Special
+  Summer's Special
 </button>
 
-<!-- TODAY'S SPECIAL BOTTOM SHEET -->
+<!-- TODAY'S SPECIAL OVERLAY -->
 <div class="special-overlay" id="specialOverlay" onclick="handleOverlayClick(event)">
   <div class="special-sheet" id="specialSheet">
     <div class="special-handle"></div>
@@ -764,8 +387,8 @@ footer strong{color:var(--brown);font-weight:500;}
       <div class="special-header-left">
         <div class="special-header-icon">✦</div>
         <div class="special-header-text">
-          <h2>Today's Special</h2>
-          <p>Handpicked by our team</p>
+          <h2>Summer's Special</h2>
+          <p>Cloud nine Coconut</p>
         </div>
       </div>
       <div class="special-close" onclick="closeSpecial()">✕</div>
@@ -777,13 +400,25 @@ footer strong{color:var(--brown);font-weight:500;}
   </div>
 </div>
 
-<!-- Toast Notification -->
+<!-- MEMBERSHIP OVERLAY -->
+<div class="membership-overlay" id="membershipOverlay" onclick="if(event.target===this)closeMembership()">
+  <div class="membership-sheet">
+    <div class="ms-handle"></div>
+    <div class="ms-header">
+      <h2>☕ Kava Membership</h2>
+      <div class="ms-close" onclick="closeMembership()">✕</div>
+    </div>
+    <div class="ms-body" id="ms-body"></div>
+  </div>
+</div>
+
+<!-- Toast -->
 <div class="toast" id="toast"></div>
 
 <footer>&#169; 2026 <strong>Kava The Caffeine House</strong> &nbsp;·&nbsp; Crafted with care, served with love</footer>
 
 <script>
-/* ══ SPLASH DISMISS ══ */
+/* ══ SPLASH ══ */
 window.addEventListener('load', function() {
   setTimeout(function() {
     var splash = document.getElementById('splash');
@@ -792,6 +427,7 @@ window.addEventListener('load', function() {
   }, 2600);
 });
 
+/* ══ MENU DATA ══ */
 const MENU = {
   coffee:{label:'Coffee',emoji:'☕',subsections:{
     'Brewed & Black':[
@@ -800,10 +436,10 @@ const MENU = {
       {name:'Iced Espresso',price:169,desc:'Chilled espresso shot poured over ice — bold and clean.'}
     ],
     'Slow Bar':[
-      {name:'V60 Pourover (Hot / Iced)',price:279,desc:'Precision brewed pour over coffee, highlighting the unique character of each bean.', tag:'bestseller'},
+      {name:'V60 Pourover (Hot / Iced)',price:279,desc:'Precision brewed pour over coffee, highlighting the unique character of each bean.',tag:'bestseller'},
       {name:'Aeropress (Hot / Iced)',price:279,desc:'Smooth, rich aeropress brew — full flavor with low acidity.'},
       {name:'French Press',price:279,desc:'Full-bodied traditional French press with rich, immersive texture.'},
-      {name:'Vietnamese Filter',price:239,desc:'Traditional Vietnamese drip coffee — strong, slow, and deeply satisfying.', tag:'bestseller'}
+      {name:'Vietnamese Filter',price:239,desc:'Traditional Vietnamese drip coffee — strong, slow, and deeply satisfying.',tag:'bestseller'}
     ],
     'Hot White Rituals':[
       {name:'Cortado',price:219,desc:'Espresso balanced with an equal part of warm, velvety milk.'},
@@ -816,18 +452,18 @@ const MENU = {
       {name:'Sea Salt Mocha',price:329,desc:'Chocolate espresso with a delicate sea salt finish that elevates every sip.',tag:'musttry'},
       {name:'French Vanilla Latte',price:259,desc:'Smooth, aromatic vanilla infused throughout a classic latte.',tag:'musttry'},
       {name:'Sea Salt Latte',price:259,desc:'A smooth latte finished with a whisper of sea salt.'},
-      {name:'Honey Spiced Latte',price:329,desc:'Aromatic warming spices blended with natural honey sweetness.', tag:'bestseller'},
+      {name:'Honey Spiced Latte',price:329,desc:'Aromatic warming spices blended with natural honey sweetness.',tag:'bestseller'},
       {name:'Salted Caramel Latte',price:299,desc:'Sweet caramel latte kissed with a pinch of sea salt.'},
-      {name:'Biscoff Latte',price:319,desc:'Caramelised cookie butter blended into a comforting, warming latte.', tag:'bestseller'}
+      {name:'Biscoff Latte',price:319,desc:'Caramelised cookie butter blended into a comforting, warming latte.',tag:'bestseller'}
     ],
     'Froth on Ice':[
-      {name:'Iced Americano',price:179,desc:'Cold espresso with water poured over ice — refreshing and sharp.', tag:'bestseller'},
+      {name:'Iced Americano',price:179,desc:'Cold espresso with water poured over ice — refreshing and sharp.',tag:'bestseller'},
       {name:'Iced Cortado',price:229,desc:'Cold espresso with a perfect cold milk balance over ice.'},
       {name:'Iced Latte',price:259,desc:'Smooth espresso with cold milk poured over ice.'},
       {name:'Iced Caramel Latte',price:299,desc:'Sweet caramel with espresso and cold milk over ice.',tag:'musttry'},
       {name:'Iced Mocha',price:289,desc:'Chocolate and espresso chilled to perfection.'},
       {name:'Iced Caramelized Jaggery Latte',price:299,desc:'Traditional jaggery sweetness meets modern cold coffee.'},
-      {name:'Iced Kava Special',price:239,desc:'Our signature iced coffee creation — a house favourite.', tag:'bestseller'},
+      {name:'Iced Kava Special',price:239,desc:'Our signature iced coffee creation — a house favourite.',tag:'bestseller'},
       {name:'Espresso Tonic',price:299,desc:'Bold espresso floated over sparkling tonic water.'},
       {name:'Espresso Ginger Ale',price:299,desc:'Espresso with a spicy ginger ale sparkle — surprisingly bright.'}
     ],
@@ -837,14 +473,14 @@ const MENU = {
       {name:'Lime-Lite',price:299,desc:'Sparkling lime refreshment — crisp and light.'},
       {name:'Modern Mojo',price:379,desc:'A contemporary twist on classic café flavors.'},
       {name:'Salted Caramel Paloma',price:339,desc:'Sweet and salty citrus delight — bold and complex.'},
-      {name:'Salted Cheese Vietnamese',price:299,desc:'Salted cheese foam crowned over Vietnamese-style cold coffee.', tag:'bestseller'},
-      {name:'Salted Coconut Vietnamese',price:299,desc:'Salted coconut cream layered over Vietnamese-style cold coffee.', tag:'bestseller'}
+      {name:'Salted Cheese Vietnamese',price:299,desc:'Salted cheese foam crowned over Vietnamese-style cold coffee.',tag:'bestseller'},
+      {name:'Salted Coconut Vietnamese',price:299,desc:'Salted coconut cream layered over Vietnamese-style cold coffee.',tag:'bestseller'}
     ]
   }},
   coldbrew:{label:'Cold Brew',emoji:'🧊',subsections:{
     'Slow-Steeped Signatures':[
-      {name:'Classic Cold Brew Melody',price:260,desc:'Our signature slow-steeped cold brew — smooth and rich with notes of dark chocolate, nuts, and caramel.', tag:'bestseller'},
-      {name:'Classic Cold Brew Whiskey Barrel',price:299,desc:'Cold brew aged with whiskey barrel notes for a bold, smoky finish.',addon:'Add Whiskey Barrel +₹55', tag:'bestseller'},
+      {name:'Classic Cold Brew Melody',price:260,desc:'Our signature slow-steeped cold brew — smooth and rich with notes of dark chocolate, nuts, and caramel.',tag:'bestseller'},
+      {name:'Classic Cold Brew Whiskey Barrel',price:299,desc:'Cold brew aged with whiskey barrel notes for a bold, smoky finish.',addon:'Add Whiskey Barrel +₹55',tag:'bestseller'},
       {name:'Cold Brew Tonic',price:299,desc:'Smooth cold brew floated over sparkling tonic water.'},
       {name:'Cold Brew Ginger Ale',price:299,desc:'Cold brew with a spicy ginger ale sparkle.'},
       {name:"Pankaj's Citrus Fire",price:299,desc:'A fiery citrus-forward cold brew creation crafted by our head barista Pankaj.',tag:'musttry'},
@@ -857,10 +493,10 @@ const MENU = {
     'The Green Chalice':[
       {name:'Matcha Latte',price:349,desc:'Ceremonial grade Japanese matcha whisked with steamed milk — earthy and calming.'},
       {name:'Iced Matcha Latte',price:369,desc:'Chilled ceremonial matcha with cold milk over ice.'},
-      {name:'Coconut Cloud Matcha',price:389,desc:'Matcha topped with a dreamy coconut milk foam.', tag:'bestseller'},
+      {name:'Coconut Cloud Matcha',price:389,desc:'Matcha topped with a dreamy coconut milk foam.',tag:'bestseller'},
       {name:'Blueberry Coconut Matcha',price:389,desc:'Wild blueberry sweetness meets tropical coconut and earthy matcha.',tag:'musttry'},
       {name:'Orange Matcha Tonic',price:379,desc:'Refreshing citrus with sparkling matcha tonic — bright and zingy.'},
-      {name:'Strawberry Matcha Latte',price:379,desc:'Sweet strawberries layered with earthy ceremonial matcha.', tag:'bestseller'},
+      {name:'Strawberry Matcha Latte',price:379,desc:'Sweet strawberries layered with earthy ceremonial matcha.',tag:'bestseller'},
       {name:'Lemonade Iced Matcha',price:369,desc:'Zesty lemonade meets vibrant green matcha over ice.'},
       {name:'Passionfruit Matcha Spritzer',price:389,desc:'Tropical passionfruit with sparkling matcha — exotic and refreshing.',tag:'musttry'},
       {name:'Mango Matcha',price:349,desc:'Tropical mango blended with smooth matcha for a refreshing, energizing treat.'}
@@ -868,7 +504,7 @@ const MENU = {
   }},
   shakes:{label:'Shakes',emoji:'🥤',subsections:{
     'The Frappe Bar':[
-      {name:'Classic Frappe',price:249,desc:'Traditional iced coffee frappe — smooth, cold, and energizing.', tag:'bestseller'},
+      {name:'Classic Frappe',price:249,desc:'Traditional iced coffee frappe — smooth, cold, and energizing.',tag:'bestseller'},
       {name:'Caramelized Frappe',price:279,desc:'Rich caramel blended with coffee for a sweet, silky frappe.'},
       {name:'Hazelnut Frappe',price:289,desc:'Nutty hazelnut meets iced coffee in a perfectly blended frappe.'},
       {name:'Espresso Brownie Frappe',price:390,desc:'Decadent chocolate brownie blended with espresso.',tag:'musttry'},
@@ -876,29 +512,29 @@ const MENU = {
       {name:'Mocha Frappe',price:299,desc:'Rich chocolate and coffee blended over ice.'}
     ],
     'The Creamy Canvas':[
-      {name:'Biscoff Cheesecake Shake',price:329,desc:'Caramelised cookie butter blended with creamy cheesecake goodness.', tag:'bestseller'},
+      {name:'Biscoff Cheesecake Shake',price:329,desc:'Caramelised cookie butter blended with creamy cheesecake goodness.',tag:'bestseller'},
       {name:'Oreo Cookie Crumble Shake',price:299,desc:'Classic cookies and cream shake — generously crumbled.'},
-      {name:'Nutella Cheesecake Shake',price:349,desc:'Hazelnut chocolate meets silky cheesecake in every sip.', tag:'bestseller'},
+      {name:'Nutella Cheesecake Shake',price:349,desc:'Hazelnut chocolate meets silky cheesecake in every sip.',tag:'bestseller'},
       {name:'Choco Brownie Shake',price:380,desc:'Rich chocolate brownies blended into a thick, indulgent shake.',tag:'musttry'},
-      {name:'Blueberry Cheesecake Shake',price:329,desc:'Fresh blueberries with creamy cheesecake — fruity and rich.', tag:'bestseller'},
+      {name:'Blueberry Cheesecake Shake',price:329,desc:'Fresh blueberries with creamy cheesecake — fruity and rich.',tag:'bestseller'},
       {name:'Ferrero Rocher Shake',price:369,desc:'Luxurious hazelnut chocolate — dessert in a glass.',tag:'musttry'},
       {name:'Double Chocolate Shake',price:299,desc:'Double the chocolate, double the bliss.'}
     ]
   }},
   refreshers:{label:'Refreshers',emoji:'🍋',subsections:{
     'The Chill Bar':[
-      {name:'Classic Mint Mojito',price:249,desc:'Fresh mint, lime, and sparkling soda — the perfect cooler.', tag:'bestseller'},
+      {name:'Classic Mint Mojito',price:249,desc:'Fresh mint, lime, and sparkling soda — the perfect cooler.',tag:'bestseller'},
       {name:'Cranberry Mojito',price:279,desc:'Tart cranberry with fresh mint and lime sparkle.'},
-      {name:'Virgin Sangria',price:309,desc:'Mixed fruit mocktail with sparkling notes and fruity depth.', tag:'bestseller'},
+      {name:'Virgin Sangria',price:309,desc:'Mixed fruit mocktail with sparkling notes and fruity depth.',tag:'bestseller'},
       {name:'Kimazzo',price:299,desc:'Our refreshing specialty house blend.',tag:'musttry'},
-      {name:'Berry Spritzer',price:299,desc:'Mixed berries with sparkling water — light and vibrant.', tag:'bestseller'},
+      {name:'Berry Spritzer',price:299,desc:'Mixed berries with sparkling water — light and vibrant.',tag:'bestseller'},
       {name:'Lemon Iced Tea',price:279,desc:'Classic citrus iced tea — simple and refreshing.'},
       {name:'Peach Iced Tea',price:289,desc:'Sweet, ripe peach infused into chilled tea.',tag:'musttry'}
     ]
   }},
   hotchoc:{label:'Hot Choc',emoji:'🍫',subsections:{
     'Sweet Winter Sips':[
-      {name:'Classic Hot Chocolate',price:269,desc:'Rich, velvety hot chocolate made with premium cocoa.', tag:'bestseller'},
+      {name:'Classic Hot Chocolate',price:269,desc:'Rich, velvety hot chocolate made with premium cocoa.',tag:'bestseller'},
       {name:'Hazelnut Hot Chocolate',price:319,desc:'Creamy hot chocolate swirled with hazelnut indulgence.'},
       {name:'Strawberry Hot Chocolate',price:319,desc:'Fruity strawberry meets warm velvety chocolate.',tag:'musttry'},
       {name:'Coconut Hot Chocolate',price:299,desc:'Tropical coconut notes in a warm, comforting chocolate.'}
@@ -906,10 +542,10 @@ const MENU = {
   }},
   starters:{label:'Starters',emoji:'🥗',subsections:{
     'Small Plates':[
-      {name:'Classic Tomato Bruschetta',price:379,desc:'Vine-ripened tomatoes and fresh basil pesto on toasted ciabatta.', tag:'bestseller'},
+      {name:'Classic Tomato Bruschetta',price:379,desc:'Vine-ripened tomatoes and fresh basil pesto on toasted ciabatta.',tag:'bestseller'},
       {name:'Peach & Cream Cheese Bruschetta',price:389,desc:'Sweet peaches with whipped cream cheese on grilled artisan bread.'},
-      {name:'Peri Peri Cottage Cheese',price:329,desc:'Spiced cottage cheese cubes with bold African peri peri marinade.', tag:'bestseller'},
-      {name:'Classic Hummus Platter',price:419,desc:'Creamy chickpea hummus drizzled with olive oil, served with warm pita bread.', tag:'bestseller'},
+      {name:'Peri Peri Cottage Cheese',price:329,desc:'Spiced cottage cheese cubes with bold African peri peri marinade.',tag:'bestseller'},
+      {name:'Classic Hummus Platter',price:419,desc:'Creamy chickpea hummus drizzled with olive oil, served with warm pita bread.',tag:'bestseller'},
       {name:'Vegetable Masa Harina Tacos',price:429,desc:'Authentic Mexican-style corn tacos with seasoned vegetables and condiments.'},
       {name:'Vietnamese Rice Paper Rolls',price:399,desc:'Fresh garden vegetables wrapped in delicate rice paper with dipping sauce.',tag:'musttry'},
       {name:'Cheese Garlic Bread',price:399,desc:'Toasted garlic bread loaded with generous melted cheese.'}
@@ -918,7 +554,7 @@ const MENU = {
   soups:{label:'Soups',emoji:'🍲',subsections:{
     'Warm & Nourishing':[
       {name:'Creamy Broccoli Soup',price:229,desc:'Velvety broccoli soup with a hint of cream and fresh herbs.'},
-      {name:'Potato & Leek Soup',price:199,desc:'Classic French-inspired soup with tender potatoes and sweet leeks.', tag:'bestseller'},
+      {name:'Potato & Leek Soup',price:199,desc:'Classic French-inspired soup with tender potatoes and sweet leeks.',tag:'bestseller'},
       {name:'Mushroom Cappuccino',price:199,desc:'Frothy mushroom essence topped with micro herbs — elegant and earthy.'},
       {name:'Roasted Pumpkin Soup',price:199,desc:'Autumn-inspired roasted pumpkin with warm aromatic spices.'},
       {name:'Sweet Corn Velouté',price:199,desc:'Silky sweet corn soup with a touch of butter — simple and comforting.'}
@@ -927,27 +563,27 @@ const MENU = {
   salads:{label:'Salads',emoji:'🥬',subsections:{
     'Fresh & Vibrant':[
       {name:'Mandarin Iceberg Salad',price:339,desc:'Crisp iceberg lettuce with mandarin segments and a bright citrus dressing.'},
-      {name:'Caprese Cottage Salad',price:439,desc:'Italian-style cottage cheese with vine tomatoes, fresh basil, and aged balsamic.', tag:'bestseller'},
+      {name:'Caprese Cottage Salad',price:439,desc:'Italian-style cottage cheese with vine tomatoes, fresh basil, and aged balsamic.',tag:'bestseller'},
       {name:'Som Tam (Thai Papaya Salad)',price:349,desc:'Shredded green papaya with Thai herbs, peanuts, and a tangy lime dressing.',tag:'musttry'}
     ]
   }},
   bowls:{label:'Bowls',emoji:'🍜',subsections:{
     'Global Flavors':[
       {name:'Italian Herb Rice Bowl',price:525,desc:'Herb-infused rice with romesco sauce and roasted Mediterranean vegetables.',tag:'musttry'},
-      {name:'Mexican Fiesta Bowl',price:549,desc:'Spiced kidney beans, saffron rice, salsa, guacamole, and Mexican condiments.', tag:'bestseller'},
-      {name:'Bangkok Red Curry Bowl',price:449,desc:'Aromatic Thai red curry with jasmine rice and seasonal vegetables.', tag:'bestseller'},
+      {name:'Mexican Fiesta Bowl',price:549,desc:'Spiced kidney beans, saffron rice, salsa, guacamole, and Mexican condiments.',tag:'bestseller'},
+      {name:'Bangkok Red Curry Bowl',price:449,desc:'Aromatic Thai red curry with jasmine rice and seasonal vegetables.',tag:'bestseller'},
       {name:'Thai Green Curry Bowl',price:449,desc:'Fragrant green curry with coconut milk, bamboo shoots, and fresh basil over rice.'}
     ]
   }},
   pasta:{label:'Pasta',emoji:'🍝',subsections:{
     'Artisan Italian':[
-      {name:'Aglio Olio Classic',price:369,desc:'Traditional garlic and olive oil pasta with red chili flakes and parsley.', tag:'bestseller'},
+      {name:'Aglio Olio Classic',price:369,desc:'Traditional garlic and olive oil pasta with red chili flakes and parsley.',tag:'bestseller'},
       {name:'Caramelised Onion Cream Pasta',price:499,desc:'Deeply sweet caramelised onions in a silky, rich cream sauce.'},
       {name:'Three Cheese Comfort Pasta',price:469,desc:'An indulgent blend of three premium cheeses in a creamy, velvety sauce.',tag:'musttry'},
-      {name:'Pesto Verde Italiano',price:519,desc:'Fresh basil pesto with toasted pine nuts and aged parmesan.', tag:'bestseller'},
+      {name:'Pesto Verde Italiano',price:519,desc:'Fresh basil pesto with toasted pine nuts and aged parmesan.',tag:'bestseller'},
       {name:'Arrabbiata Rosso',price:489,desc:'Fiery tomato sauce with garlic, red chilies, and fresh herbs.'},
       {name:'Béchamel Mornay Pasta',price:539,desc:'Classic French white sauce enriched with gruyere cheese — deeply comforting.'},
-      {name:"Fresh Ravioli – Chef's Signature",price:599,desc:"House-made ravioli with seasonal fillings and our chef's signature sauce.",addon:"Chef's special — ask for today's filling", tag:'bestseller'},
+      {name:"Fresh Ravioli – Chef's Signature",price:599,desc:"House-made ravioli with seasonal fillings and our chef's signature sauce.",addon:"Chef's special — ask for today's filling",tag:'bestseller'},
       {name:'Romesco Pasta',price:539,desc:'Fresh Roasted Sauce with a hint of chilli oil — experience the mediterranean soul in a plate.'}
     ]
   }},
@@ -964,92 +600,367 @@ const MENU = {
   }},
   sandwich:{label:'Sandwich',emoji:'🥪',subsections:{
     'Artisan Grills':[
-      {name:'Charcoal Grilled Sandwich',price:485,desc:'Smoky charcoal-grilled sandwich with fresh seasonal fillings.', tag:'bestseller'},
+      {name:'Charcoal Grilled Sandwich',price:485,desc:'Smoky charcoal-grilled sandwich with fresh seasonal fillings.',tag:'bestseller'},
       {name:'Paneer Corn Sandwich',price:475,desc:'Soft paneer and sweet corn in a golden toasted sandwich.'},
       {name:'Chilli Paneer Sandwich',price:485,desc:'Indo-Chinese chilli paneer tucked into a grilled sandwich.',tag:'musttry'},
       {name:'Mushroom Cheese Sandwich',price:445,desc:'Sautéed mushrooms with generous melted cheese on toasted bread.',tag:'musttry'},
-      {name:'Pesto Sandwich',price:485,desc:'Fresh basil pesto with seasonal vegetables and creamy mozzarella.', tag:'bestseller'},
+      {name:'Pesto Sandwich',price:485,desc:'Fresh basil pesto with seasonal vegetables and creamy mozzarella.',tag:'bestseller'},
       {name:'Loaded Veg Grill Sandwich',price:485,desc:'Garden vegetables piled high and grilled until golden.'},
-      {name:'Paneer Tikka Sandwich',price:495,desc:'Tandoori-spiced paneer tikka in toasted bread with chutneys.', tag:'bestseller'},
+      {name:'Paneer Tikka Sandwich',price:495,desc:'Tandoori-spiced paneer tikka in toasted bread with chutneys.',tag:'bestseller'},
       {name:'Veg Loaded Sandwich',price:489,desc:'Stacked with fresh vegetables and our signature house sauces.'},
       {name:'Veg Cheese Sandwich',price:449,desc:'Classic cheese and vegetables on toasted bread — a reliable favourite.'},
-      {name:'Avocado Sandwich',price:489,desc:'Creamy fresh avocado spread with seasonal toppings.', tag:'bestseller'}
+      {name:'Avocado Sandwich',price:489,desc:'Creamy fresh avocado spread with seasonal toppings.',tag:'bestseller'}
     ]
   }},
   asian:{label:'Asian',emoji:'🥢',subsections:{
     'Bold & Aromatic':[
       {name:'Hakka Noodles',price:485,desc:'Stir-fried Hakka noodles tossed with seasonal vegetables in savoury Asian sauces.'},
       {name:'Chilli Garlic Noodles',price:485,desc:'Wok-tossed noodles with spicy garlic and fresh chillies.',tag:'musttry'},
-      {name:'Kung Pao Paneer Rice',price:499,desc:'Wok-tossed paneer in a bold, spicy kung pao sauce served over steamed rice.', tag:'bestseller'},
+      {name:'Kung Pao Paneer Rice',price:499,desc:'Wok-tossed paneer in a bold, spicy kung pao sauce served over steamed rice.',tag:'bestseller'},
       {name:'Kung Pao Paneer Noodles',price:499,desc:'Wok-tossed paneer in spicy kung pao sauce tossed through noodles.'}
     ]
   }}
 };
 
 const TODAYS_SPECIALS = [
-  { section:'coffee', name:'Strawberry Foam Americano',   specialBadge:'today',   price:249, desc:'Bold espresso topped with silky strawberry foam — smooth, refreshing and perfectly balanced.' },
-  { section:'coffee', name:'Pistachio Foam Americano',    specialBadge:'today',   price:259, desc:'Rich americano crowned with creamy pistachio foam — nutty, smooth and indulgently refreshing.' },
-  { section:'coffee', name:'Pine Espresso',               specialBadge:'limited', price:229, desc:'A bold fusion of rich espresso and refreshing pine notes, delivering a crisp, earthy twist in every sip.' },
-  { section:'coldbrew', name:'Old Fashioned',             specialBadge:'',    price:319, desc:'Zesty orange with cold brew.' },
-  { section:'matcha', name:'Strawberry Matcha Latte',     specialBadge:'today' },
-  { section:'matcha', name:'Mango Matcha',                specialBadge:'limited' },
-  { section:'shakes', name:'Blueberry Cheesecake Shake',  specialBadge:'today',   note:'A rich and creamy blend of luscious blueberries and velvety cheesecake, creating a decadent, dessert-style shake in every sip.' },
-  { section:'shakes', name:'Oreo Cookie Crumble Shake',   specialBadge:'limited', note:'A thick, creamy shake loaded with crunchy Oreo crumbles, delivering a rich chocolatey indulgence in every sip.' },
-  { section:'pasta', name:"Fresh Ravioli – Chef's Signature", specialBadge:'chef', note:'Today\'s filling: Ricotta & Sundried Tomato.' },
-  { section:'pasta', name:'Three Cheese Comfort Pasta',   specialBadge:'chef',   note:'Extra indulgent today — freshly blended cheese mix.' },
-  { section:'bowls', name:'Mexican Fiesta Bowl',          specialBadge:'chef',   note:'Freshly made guacamole and house salsa.' }
+  {section:'coffee',name:'Strawberry Foam Americano',specialBadge:'today',price:249,desc:'Bold espresso topped with silky strawberry foam — smooth, refreshing and perfectly balanced.'},
+  {section:'coffee',name:'Pistachio Foam Americano',specialBadge:'today',price:259,desc:'Rich americano crowned with creamy pistachio foam — nutty, smooth and indulgently refreshing.'},
+  {section:'coffee',name:'Pine Espresso',specialBadge:'limited',price:229,desc:'A bold fusion of rich espresso and refreshing pine notes, delivering a crisp, earthy twist in every sip.'},
+  {section:'coldbrew',name:'Old Fashioned',specialBadge:'',price:319,desc:'Zesty orange with cold brew.'},
+  {section:'matcha',name:'Strawberry Matcha Latte',specialBadge:'today'},
+  {section:'matcha',name:'Mango Matcha',specialBadge:'limited'},
+  {section:'shakes',name:'Blueberry Cheesecake Shake',specialBadge:'today',note:'A rich and creamy blend of luscious blueberries and velvety cheesecake, creating a decadent, dessert-style shake in every sip.'},
+  {section:'shakes',name:'Oreo Cookie Crumble Shake',specialBadge:'limited',note:'A thick, creamy shake loaded with crunchy Oreo crumbles, delivering a rich chocolatey indulgence in every sip.'},
+  {section:'pasta',name:"Fresh Ravioli – Chef's Signature",specialBadge:'chef',note:'Today\'s filling: Ricotta & Sundried Tomato.'},
+  {section:'pasta',name:'Three Cheese Comfort Pasta',specialBadge:'chef',note:'Extra indulgent today — freshly blended cheese mix.'},
+  {section:'bowls',name:'Mexican Fiesta Bowl',specialBadge:'chef',note:'Freshly made guacamole and house salsa.'}
 ];
 
+/* ══ MEMBERSHIP DATA ══ */
+const MEMBERSHIP_PLANS = {
+  brew: {
+    id:'brew',
+    name:'Brew Club',
+    label:'Monthly',
+    price:500,
+    period:'month',
+    durationDays:30,
+    discount:10,
+    freeDrinksPerMonth:1,
+    perks:[
+      '10% off on all beverages',
+      '1 free coffee every month',
+      'Priority queue at the counter',
+      'Early access to Today\'s Specials',
+      'Member-only drink of the month'
+    ]
+  },
+  reserve: {
+    id:'reserve',
+    name:'Reserve Club',
+    label:'Annual · Best Value',
+    price:5000,
+    period:'year',
+    durationDays:365,
+    discount:20,
+    freeDrinksPerMonth:2,
+    perks:[
+      '20% off on all beverages',
+      '2 free drinks every month',
+      '1 complimentary food item per month',
+      'Exclusive Reserve menu access',
+      'Birthday surprise + free cake slice',
+      'Barista masterclass invite (once/year)',
+      'Gold priority at the counter',
+      'Bring a guest — they get 10% off too'
+    ]
+  }
+};
+
+/* ══ MEMBERSHIP HELPERS ══ */
+function getMembership() {
+  try {
+    const m = JSON.parse(localStorage.getItem('kava_membership') || 'null');
+    if (!m) return null;
+    if (new Date(m.expiresAt) < new Date()) {
+      localStorage.removeItem('kava_membership');
+      return null;
+    }
+    return m;
+  } catch(e) { return null; }
+}
+function saveMembership(planId, name, phone) {
+  const plan = MEMBERSHIP_PLANS[planId];
+  const now = new Date();
+  const exp = new Date(now.getTime() + plan.durationDays * 86400000);
+  localStorage.setItem('kava_membership', JSON.stringify({
+    planId, name, phone,
+    planName: plan.name,
+    discount: plan.discount,
+    freeDrinksPerMonth: plan.freeDrinksPerMonth,
+    joinedAt: now.toISOString(),
+    expiresAt: exp.toISOString()
+  }));
+}
+
+let selectedPlan = 'reserve';
+
+function openMembership() {
+  const m = getMembership();
+  m ? renderActiveCard(m) : renderMembershipPlans();
+  document.getElementById('membershipOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeMembership() {
+  document.getElementById('membershipOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function renderMembershipPlans() {
+  document.getElementById('ms-body').innerHTML = `
+    <p class="ms-intro">Join the Kava family and enjoy exclusive discounts, free drinks, and member-only perks on every visit.</p>
+    ${Object.values(MEMBERSHIP_PLANS).map(plan => `
+      <div class="ms-plan-card ${plan.id}${selectedPlan===plan.id?' selected':''}" onclick="selectPlan('${plan.id}')">
+        <div class="ms-plan-top">
+          <div class="ms-plan-name">${plan.name}</div>
+          <div class="ms-plan-badge ${plan.id==='reserve'?'value':'monthly'}">${plan.id==='reserve'?'Best Value':'Monthly'}</div>
+        </div>
+        <div class="ms-plan-price">₹${plan.price.toLocaleString('en-IN')} <small>/ ${plan.period}</small></div>
+        <div class="ms-plan-saving">${plan.id==='reserve'?'Save ₹1,000 vs monthly · Only ₹13.70/day':'Flexible · cancel anytime'}</div>
+        <div class="ms-plan-perks">${plan.perks.map(p=>`<div class="ms-perk">${p}</div>`).join('')}</div>
+        <button class="ms-select-btn">${selectedPlan===plan.id?'✓ Selected':'Select Plan'}</button>
+      </div>
+    `).join('')}
+    <div class="ms-payment-section">
+      <h3>Your Details</h3>
+      <input class="ms-input" id="ms-name" placeholder="Your full name" maxlength="50" />
+      <input class="ms-input" id="ms-phone" placeholder="Phone number" maxlength="15" type="tel" style="margin-bottom:0;" />
+      <div class="ms-order-summary">
+        <span>${MEMBERSHIP_PLANS[selectedPlan].name} · ${MEMBERSHIP_PLANS[selectedPlan].label}</span>
+        <strong>₹${MEMBERSHIP_PLANS[selectedPlan].price.toLocaleString('en-IN')}</strong>
+      </div>
+      <button class="ms-pay-btn" id="ms-pay-btn" onclick="goToQRPayment()">
+        Proceed to Pay — ₹${MEMBERSHIP_PLANS[selectedPlan].price.toLocaleString('en-IN')} &nbsp;→
+      </button>
+      <p class="ms-note">🔒 UPI · Pay via any app · Membership activated after confirmation</p>
+    </div>`;
+}
+
+function selectPlan(planId) {
+  selectedPlan = planId;
+  renderMembershipPlans();
+}
+
+function goToQRPayment() {
+  const name = (document.getElementById('ms-name').value || '').trim();
+  const phone = (document.getElementById('ms-phone').value || '').trim();
+  if (!name) { showToast(''); return; }
+  if (!phone || phone.length < 8) { showToast('Please enter a valid phone number'); return; }
+  const plan = MEMBERSHIP_PLANS[selectedPlan];
+  document.getElementById('ms-body').innerHTML = `
+    <div class="qr-screen">
+      <button class="qr-back-btn" onclick="renderMembershipPlans()">← Back</button>
+
+      <div class="qr-amount-card">
+        <div class="qr-amount-left">
+          <div class="qr-amount-label">Amount to pay</div>
+          <div class="qr-amount-plan">${plan.name} · ${plan.label}</div>
+          <div class="qr-amount-value">₹${plan.price.toLocaleString('en-IN')}</div>
+        </div>
+        <div class="qr-amount-right">
+          <div class="qr-amount-badge">☕ ${plan.id === 'reserve' ? 'Gold' : 'Member'}</div>
+          <div class="qr-amount-upi">Scan &amp; Pay via UPI</div>
+        </div>
+      </div>
+
+      <div class="qr-wrapper">
+        <div class="qr-brand-row">
+          <div class="qr-brand-dot">☕</div>
+          <div class="qr-brand-name">Kava The Caffeine House</div>
+        </div>
+        <div class="qr-img-frame">
+          <div class="qr-corner tl"></div>
+          <div class="qr-corner tr"></div>
+          <div class="qr-corner bl"></div>
+          <div class="qr-corner br"></div>
+          <!-- ↓ REPLACE src with your actual QR image path e.g. src="kava-qr.jpg" -->
+          <img class="qr-img" src="aviralya.jp" alt="Kava UPI QR Code"
+            onerror="this.style.background='var(--surface)';this.style.border='2px dashed var(--border2)';this.alt='Replace src with your QR image';" />
+        </div>
+        <div class="qr-scan-label">Scan with any UPI app</div>
+        <div class="qr-upi-chip">📱 PhonePe &nbsp;·&nbsp; GPay &nbsp;·&nbsp; Paytm &nbsp;·&nbsp; BHIM</div>
+      </div>
+
+      <div class="qr-divider">How to complete payment</div>
+
+      <div class="qr-steps">
+        <div class="qr-step">
+          <div class="qr-step-num">1</div>
+          <div class="qr-step-text">Open <strong>any UPI app</strong> on your phone — GPay, PhonePe, Paytm or BHIM</div>
+        </div>
+        <div class="qr-step">
+          <div class="qr-step-num">2</div>
+          <div class="qr-step-text">Tap <strong>Scan QR</strong> and point at the code above. Amount <strong>₹${plan.price.toLocaleString('en-IN')}</strong> will auto-fill</div>
+        </div>
+        <div class="qr-step">
+          <div class="qr-step-num">3</div>
+          <div class="qr-step-text">Complete payment and tap <strong>"I've Paid"</strong> below to activate your membership</div>
+        </div>
+      </div>
+
+      <button class="qr-done-btn" id="qr-done-btn" onclick="confirmQRPayment('${name.replace(/'/g,"\\'")}','${phone}')">
+        <span class="qr-btn-icon">✓</span> I've Paid — Activate My Membership
+      </button>
+
+      <div class="qr-security-row">
+        <div class="qr-security-item">🔒 Secure</div>
+        <div class="qr-security-item">· UPI Verified</div>
+        <div class="qr-security-item">· No card needed</div>
+      </div>
+    </div>`;
+}
+
+function confirmQRPayment(name, phone) {
+  const btn = document.getElementById('qr-done-btn');
+  btn.innerHTML = '<span class="qr-btn-icon">⏳</span> Activating your membership…';
+  btn.disabled = true;
+  setTimeout(() => {
+    saveMembership(selectedPlan, name, phone);
+    showMembershipSuccess(name, selectedPlan);
+    buildNav();
+    render();
+  }, 1400);
+}
+
+function processMembershipPayment() { goToQRPayment(); }
+
+function showMembershipSuccess(name, planId) {
+  const plan = MEMBERSHIP_PLANS[planId];
+  document.getElementById('ms-body').innerHTML = `
+    <div class="ms-success">
+      <div class="ms-success-icon">🎉</div>
+      <h3>Welcome to ${plan.name}, ${name.split(' ')[0]}!</h3>
+      <p>Your membership is now active.<br>
+      Enjoy <strong>${plan.discount}% off</strong> on every order${plan.id==='reserve'?' plus 2 free drinks every month and your complimentary food item':' and 1 free coffee every month'}.<br><br>
+      Show your member card at the counter to claim your perks!</p>
+      <button class="ms-success-close" onclick="closeMembership();render();">View My Member Card</button>
+    </div>`;
+}
+
+function renderActiveCard(m) {
+  const plan = MEMBERSHIP_PLANS[m.planId];
+  const exp = new Date(m.expiresAt);
+  const expStr = exp.toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'});
+  const daysLeft = Math.ceil((exp - new Date()) / 86400000);
+  document.getElementById('ms-body').innerHTML = `
+    <div class="ms-plan-card ${m.planId} selected" style="cursor:default;">
+      <div class="ms-plan-top">
+        <div class="ms-plan-name">${m.planName}</div>
+        <div class="ms-plan-badge value">${m.planId==='reserve'?'★ Gold':'✓'} Active</div>
+      </div>
+      <div style="font-size:16px;font-weight:600;margin-bottom:3px;">Hello, ${m.name.split(' ')[0]} 👋</div>
+      <div style="font-size:11px;opacity:0.6;margin-bottom:14px;">Member since ${new Date(m.joinedAt).toLocaleDateString('en-IN',{month:'long',year:'numeric'})} · ${daysLeft} day${daysLeft!==1?'s':''} remaining</div>
+      <div class="ms-plan-perks">${plan.perks.map(p=>`<div class="ms-perk">${p}</div>`).join('')}</div>
+      <div style="font-size:10px;opacity:0.45;margin-top:12px;">Expires: ${expStr}</div>
+    </div>
+    <div class="ms-active-perks">
+      <h3>Your Active Benefits</h3>
+      <div class="ms-active-perk-row">${plan.discount}% discount on all beverages — show this screen at counter</div>
+      <div class="ms-active-perk-row">${plan.freeDrinksPerMonth} free drink${plan.freeDrinksPerMonth>1?'s':''} per month — ask your barista</div>
+      ${m.planId==='reserve'?'<div class="ms-active-perk-row">1 complimentary food item per month</div>':''}
+      ${m.planId==='reserve'?'<div class="ms-active-perk-row">Gold priority at counter — walk up and mention your membership</div>':''}
+    </div>
+    <button class="ms-cancel-btn" onclick="cancelMembership()">Cancel membership</button>`;
+}
+
+function cancelMembership() {
+  if (!confirm('Cancel your Kava membership? Your perks stay active until expiry.')) return;
+  localStorage.removeItem('kava_membership');
+  closeMembership();
+  buildNav();
+  render();
+  showToast('Membership cancelled');
+}
+
+function memberCardHTML() {
+  const m = getMembership();
+  if (!m) {
+    return `<div class="member-card promo" onclick="openMembership()">
+      <div class="member-card-top">
+        <div class="member-card-brand">Kava Caffeine House</div>
+        <div style="font-size:10px;opacity:0.65;">Tap to join →</div>
+      </div>
+      <div class="member-card-name">Become a Member</div>
+      <div class="member-card-sub">Unlock discounts, free drinks & exclusive perks</div>
+      <div class="member-perks-row">
+        <div class="member-perk-chip">10–20% off</div>
+        <div class="member-perk-chip">Free drinks</div>
+        <div class="member-perk-chip">Priority access</div>
+      </div>
+    </div>`;
+  }
+  const plan = MEMBERSHIP_PLANS[m.planId];
+  const exp = new Date(m.expiresAt);
+  const daysLeft = Math.ceil((exp - new Date()) / 86400000);
+  const isGold = m.planId === 'reserve';
+  return `<div class="member-card ${m.planId}" onclick="openMembership()">
+    <div class="member-card-top">
+      <div class="member-card-brand">Kava Caffeine House</div>
+      <div class="member-verified-badge ${isGold?'gold-badge':''}">${isGold?'★ Gold Member':'✓ Member'}</div>
+    </div>
+    <div class="member-card-name">${m.planName}</div>
+    <div class="member-card-sub">${m.name} · ${daysLeft} day${daysLeft!==1?'s':''} left</div>
+    <div class="member-perks-row">
+      <div class="member-perk-chip">${plan.discount}% off drinks</div>
+      <div class="member-perk-chip">${plan.freeDrinksPerMonth} free/month</div>
+      ${isGold?'<div class="member-perk-chip">Gold priority</div>':''}
+    </div>
+    <div class="member-expiry">Tap to view full benefits & details</div>
+  </div>`;
+}
+
+/* ══ SPECIALS ══ */
 function findItem(sectionKey, itemName) {
   const sec = MENU[sectionKey];
   if (!sec) return null;
   const needle = itemName.trim().toLowerCase();
   for (const items of Object.values(sec.subsections)) {
     const found = items.find(i => i.name.trim().toLowerCase() === needle);
-    if (found) return { ...found, sectionLabel: sec.label, sectionEmoji: sec.emoji };
+    if (found) return {...found, sectionLabel:sec.label, sectionEmoji:sec.emoji};
   }
   return null;
 }
 
 function openSpecial() {
   const overlay = document.getElementById('specialOverlay');
-  const list    = document.getElementById('specialList');
+  const list = document.getElementById('specialList');
   const datePill = document.getElementById('specialDatePill');
   const now = new Date();
-  const dayStr = now.toLocaleDateString('en-IN', { weekday:'long', day:'numeric', month:'long', year:'numeric' });
-  datePill.innerHTML = `📅 ${dayStr}`;
+  datePill.innerHTML = `📅 ${now.toLocaleDateString('en-IN',{weekday:'long',day:'numeric',month:'long',year:'numeric'})}`;
   const grouped = {};
   TODAYS_SPECIALS.forEach(sp => {
     const found = findItem(sp.section, sp.name);
     const sec = MENU[sp.section];
     if (!sec) return;
     const item = found
-      ? { ...found }
-      : { name: sp.name, price: sp.price || '—', desc: sp.desc || '', tag: '', addon: '', sectionLabel: sec.label, sectionEmoji: sec.emoji };
-    const key = sp.section;
-    if (!grouped[key]) grouped[key] = { label: item.sectionLabel, emoji: item.sectionEmoji, items: [] };
-    grouped[key].items.push({ ...item, specialBadge: sp.specialBadge, note: sp.note || sp.desc || item.desc });
+      ? {...found}
+      : {name:sp.name,price:sp.price||'—',desc:sp.desc||'',tag:'',addon:'',sectionLabel:sec.label,sectionEmoji:sec.emoji};
+    if (!grouped[sp.section]) grouped[sp.section] = {label:item.sectionLabel,emoji:item.sectionEmoji,items:[]};
+    grouped[sp.section].items.push({...item,specialBadge:sp.specialBadge,note:sp.note||sp.desc||item.desc});
   });
   let html = '';
   Object.values(grouped).forEach(group => {
     html += `<div class="special-cat-label">${group.emoji} ${group.label}</div>`;
     group.items.forEach(item => {
-      const badgeLabel = item.specialBadge === 'chef' ? "✦ Chef's Pick" : item.specialBadge === 'limited' ? '⏳ Limited' : '★ Today Only';
-      const badgeClass = item.specialBadge === 'chef' ? 'badge-chef' : item.specialBadge === 'limited' ? 'badge-limited' : 'badge-today';
-      const tagBadge = item.tag === 'bestseller'
-        ? '<span class="best-icon">⭐ Bestseller</span>'
-        : item.tag === 'musttry'
-        ? '<span class="must-icon">🔥 MustTry</span>'
-        : '';
+      const badgeLabel = item.specialBadge==='chef'?"✦ Chef's Pick":item.specialBadge==='limited'?'⏳ Limited':'★ Today Only';
+      const badgeClass = item.specialBadge==='chef'?'badge-chef':item.specialBadge==='limited'?'badge-limited':'badge-today';
+      const tagBadge = item.tag==='bestseller'?'<span class="best-icon">⭐ Bestseller</span>':item.tag==='musttry'?'<span class="must-icon">🔥 MustTry</span>':'';
       html += `<div class="special-item">
         <div class="special-item-row">
           <div class="special-item-left">
-            <div class="special-item-name">
-              <span class="special-veg"></span>
-              ${item.name}${tagBadge}
-            </div>
-            <div class="special-item-desc">${item.note || item.desc}</div>
-            ${item.addon ? `<div class="addon-pill" style="margin-top:6px;">✦ ${item.addon}</div>` : ''}
+            <div class="special-item-name"><span class="special-veg"></span>${item.name}${tagBadge}</div>
+            <div class="special-item-desc">${item.note||item.desc}</div>
+            ${item.addon?`<div class="addon-pill" style="margin-top:6px;">✦ ${item.addon}</div>`:''}
           </div>
           <div class="special-item-right">
             <span class="special-item-price">₹${item.price}</span>
@@ -1068,27 +979,23 @@ function closeSpecial() {
   document.getElementById('specialOverlay').classList.remove('open');
   document.body.style.overflow = '';
 }
-
 function handleOverlayClick(e) {
   if (e.target === document.getElementById('specialOverlay')) closeSpecial();
 }
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeSpecial(); closeMembership(); } });
 
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeSpecial(); });
-
+/* ══ STATE ══ */
 let currentSection = 'coffee';
 let searchQuery = '';
 let expanded = new Set();
 
+/* ══ FAVOURITES ══ */
 function getFavs() {
-  try { return JSON.parse(localStorage.getItem('kava_favs') || '[]'); }
-  catch(e) { return []; }
+  try { return JSON.parse(localStorage.getItem('kava_favs') || '[]'); } catch(e) { return []; }
 }
-function saveFavs(arr) {
-  localStorage.setItem('kava_favs', JSON.stringify(arr));
-}
-function isFaved(name) {
-  return getFavs().some(f => f.name === name);
-}
+function saveFavs(arr) { localStorage.setItem('kava_favs', JSON.stringify(arr)); }
+function isFaved(name) { return getFavs().some(f => f.name === name); }
+
 function toggleFav(e, itemName, itemPrice, itemDesc, itemTag, itemAddon) {
   e.stopPropagation();
   let favs = getFavs();
@@ -1098,7 +1005,7 @@ function toggleFav(e, itemName, itemPrice, itemDesc, itemTag, itemAddon) {
     saveFavs(favs);
     showToast('Removed from favourites', true);
   } else {
-    favs.push({ name: itemName, price: itemPrice, desc: itemDesc, tag: itemTag || '', addon: itemAddon || '' });
+    favs.push({name:itemName,price:itemPrice,desc:itemDesc,tag:itemTag||'',addon:itemAddon||''});
     saveFavs(favs);
     showToast('❤️ Added to favourites!');
   }
@@ -1110,6 +1017,7 @@ function toggleFav(e, itemName, itemPrice, itemDesc, itemTag, itemAddon) {
   updateFavBanner();
   if (currentSection === 'favorites') render();
 }
+
 function clearAllFavs() {
   saveFavs([]);
   updateFavBadge();
@@ -1120,21 +1028,14 @@ function clearAllFavs() {
 function updateFavBadge() {
   const count = getFavs().length;
   const badge = document.getElementById('fav-badge');
-  if (badge) {
-    badge.textContent = count;
-    badge.style.display = count > 0 ? 'inline-flex' : 'none';
-  }
+  if (badge) { badge.textContent = count; badge.style.display = count > 0 ? 'inline-flex' : 'none'; }
 }
 function updateFavBanner() {
   const banner = document.getElementById('fav-quick-banner');
   if (!banner) return;
   const count = getFavs().length;
   const subEl = banner.querySelector('.fav-banner-sub');
-  if (subEl) {
-    subEl.innerHTML = count > 0
-      ? `<strong>${count} item${count !== 1 ? 's' : ''} saved</strong> — tap to view your list`
-      : 'Tap ♡ on any item to save your picks';
-  }
+  if (subEl) subEl.innerHTML = count > 0 ? `<strong>${count} item${count!==1?'s':''} saved</strong> — tap to view your list` : 'Tap ♡ on any item to save your picks';
 }
 
 let toastTimer;
@@ -1146,14 +1047,19 @@ function showToast(msg, isRed) {
   toastTimer = setTimeout(() => { t.className = 'toast'; }, 2200);
 }
 
+/* ══ NAV ══ */
 function buildNav() {
   const favCount = getFavs().length;
+  const m = getMembership();
+  const memBtn = `<button class="member-nav-btn${m?' active-member':''}" onclick="openMembership()">
+    <span class="n-emoji">${m?'★':'☕'}</span>${m?'My Card':'Join'}
+  </button>`;
   const favBtn = `<button class="nav-btn fav-nav-btn${currentSection==='favorites'?' active':''}" onclick="setSection('favorites')">
     <span class="n-emoji">❤️</span>Favourites
     <span class="fav-badge" id="fav-badge" style="display:${favCount>0?'inline-flex':'none'}">${favCount}</span>
   </button>`;
   document.getElementById('navScroll').innerHTML =
-    favBtn +
+    memBtn + favBtn +
     Object.entries(MENU).map(([k,v]) =>
       `<button class="nav-btn${k===currentSection?' active':''}" onclick="setSection('${k}')"><span class="n-emoji">${v.emoji}</span>${v.label}</button>`
     ).join('');
@@ -1165,7 +1071,7 @@ function setSection(key) {
   expanded = new Set();
   buildNav();
   render();
-  window.scrollTo({ top: document.querySelector('.sticky-top').offsetHeight, behavior:'smooth' });
+  window.scrollTo({top:document.querySelector('.sticky-top').offsetHeight,behavior:'smooth'});
 }
 
 function handleSearch(val) {
@@ -1196,6 +1102,8 @@ function itemHTML(item, id) {
   const isExp = expanded.has(id);
   const q = searchQuery;
   const faved = isFaved(item.name);
+  const m = getMembership();
+  const discountTag = m ? `<span class="member-discount-tag">${m.discount}% off</span>` : '';
   return `<div class="item-card${isExp?' expanded':''}" id="${id}" onclick="toggle('${id}')">
     <div class="item-row">
       <div class="item-left">
@@ -1207,6 +1115,7 @@ function itemHTML(item, id) {
           ${hl(item.name,q)}
           ${item.tag==='bestseller'?'<span class="best-icon">⭐ Bestseller</span>':''}
           ${item.tag==='musttry'?'<span class="must-icon">🔥 MustTry</span>':''}
+          ${discountTag}
         </span>
       </div>
       <div class="item-right"><span class="item-price">₹${item.price}</span><span class="chevron">▾</span></div>
@@ -1221,7 +1130,7 @@ function itemHTML(item, id) {
 function favBannerHTML() {
   const count = getFavs().length;
   const subText = count > 0
-    ? `<strong>${count} item${count !== 1 ? 's' : ''} saved</strong> — tap to view your list`
+    ? `<strong>${count} item${count!==1?'s':''} saved</strong> — tap to view your list`
     : 'Tap ♡ on any item to save your picks';
   return `<div class="fav-quick-banner" id="fav-quick-banner" onclick="setSection('favorites')">
     <div class="fav-quick-banner-left">
@@ -1235,27 +1144,21 @@ function favBannerHTML() {
   </div>`;
 }
 
+/* ══ RENDER ══ */
 function render() {
   const c = document.getElementById('content');
 
   if (currentSection === 'favorites' && !searchQuery) {
     const favs = getFavs();
     if (!favs.length) {
-      c.innerHTML = `
-        <div class="gap-lg"></div>
+      c.innerHTML = `<div class="gap-lg"></div>
         <div class="fav-section" style="margin:16px 12px;">
-          <div class="fav-section-head">
-            <h2>❤️ Your Favourites</h2>
-          </div>
-          <div class="fav-empty">
-            <span>🫶</span>
-            Tap ♡ on any item to save it here.<br>
-            <small style="color:var(--text3)">Your wishlist lives across visits!</small>
-          </div>
+          <div class="fav-section-head"><h2>❤️ Your Favourites</h2></div>
+          <div class="fav-empty"><span>🫶</span>Tap ♡ on any item to save it here.<br><small style="color:var(--text3)">Your wishlist lives across visits!</small></div>
         </div>`;
       return;
     }
-    let html = `<div class="gap-lg"></div>
+    c.innerHTML = `<div class="gap-lg"></div>
       <div class="fav-section">
         <div class="fav-section-head">
           <h2>❤️ Your Favourites</h2>
@@ -1265,11 +1168,10 @@ function render() {
           </div>
         </div>
         <div class="items-list" style="padding:0 10px;">
-          ${favs.map((item,i) => itemHTML(item, `fav-${i}`)).join('')}
+          ${favs.map((item,i) => itemHTML(item,`fav-${i}`)).join('')}
         </div>
         <div class="gap"></div>
       </div>`;
-    c.innerHTML = html;
     return;
   }
 
@@ -1281,15 +1183,12 @@ function render() {
       Object.entries(sv.subsections).forEach(([sub,items]) => {
         items.forEach((item,i) => {
           if (item.name.toLowerCase().includes(searchQuery) || item.desc.toLowerCase().includes(searchQuery)) {
-            const id = `s-${sk}-${i}-${sub.replace(/\W/g,'')}`;
-            secItems += itemHTML(item, id);
+            secItems += itemHTML(item,`s-${sk}-${i}-${sub.replace(/\W/g,'')}`);
             found++;
           }
         });
       });
-      if (secItems) {
-        html += `<div class="search-result-category">${sv.emoji} ${sv.label}</div><div class="items-list">${secItems}</div><div class="gap"></div>`;
-      }
+      if (secItems) html += `<div class="search-result-category">${sv.emoji} ${sv.label}</div><div class="items-list">${secItems}</div><div class="gap"></div>`;
     });
     if (!found) html = `<div class="no-results"><span>🔍</span>Nothing found for "<strong>${searchQuery}</strong>"<br><small style="color:var(--text3)">Try a different keyword</small></div>`;
     c.innerHTML = html;
@@ -1299,16 +1198,14 @@ function render() {
   const sec = MENU[currentSection];
   const total = Object.values(sec.subsections).reduce((a,b) => a+b.length, 0);
   let html = `<div class="gap-lg"></div>`;
+  html += memberCardHTML();
   html += favBannerHTML();
   html += `<div class="section-head"><h2>${sec.emoji} ${sec.label}</h2><span class="item-count">${total} items</span></div>`;
   const subs = Object.entries(sec.subsections);
   subs.forEach(([sub,items]) => {
     if (subs.length > 1) html += `<div class="subsec-label">${sub}</div>`;
     html += `<div class="items-list">`;
-    items.forEach((item,i) => {
-      const id = `${currentSection}-${sub.replace(/\W/g,'')}-${i}`;
-      html += itemHTML(item, id);
-    });
+    items.forEach((item,i) => { html += itemHTML(item,`${currentSection}-${sub.replace(/\W/g,'')}-${i}`); });
     html += `</div><div class="gap"></div>`;
   });
   c.innerHTML = html;

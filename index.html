@@ -295,44 +295,69 @@ footer strong{color:var(--brown);font-weight:500;}
 .ms-active-perk-row::before{content:'✓';color:var(--green);font-weight:700;font-size:11px;flex-shrink:0;}
 .ms-cancel-btn{display:block;margin:14px auto 0;font-size:11px;color:var(--text3);background:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;text-decoration:underline;padding:6px;}
 
-/* ══ QR PAYMENT SCREEN ══ */
-.qr-screen{animation:fd 0.3s ease;}
-.qr-back-btn{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--text3);background:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;padding:0 0 14px 0;-webkit-tap-highlight-color:transparent;transition:color 0.2s;}
-.qr-back-btn:hover{color:var(--brown);}
-.qr-amount-card{background:linear-gradient(135deg,#2a1f16 0%,#6b4226 60%,#b8835a 100%);border-radius:var(--radius);padding:16px 20px;margin-bottom:16px;color:#fff;display:flex;align-items:center;justify-content:space-between;}
-.qr-amount-left{}
-.qr-amount-label{font-size:10px;font-weight:500;letter-spacing:2px;text-transform:uppercase;opacity:0.6;margin-bottom:4px;}
-.qr-amount-plan{font-size:13px;font-weight:600;opacity:0.85;margin-bottom:2px;}
-.qr-amount-value{font-size:30px;font-weight:700;letter-spacing:-0.5px;line-height:1;}
-.qr-amount-right{text-align:right;}
-.qr-amount-badge{display:inline-flex;align-items:center;gap:4px;background:rgba(255,255,255,0.15);border-radius:20px;padding:4px 10px;font-size:10px;font-weight:600;letter-spacing:0.5px;}
-.qr-amount-upi{font-size:10px;opacity:0.5;margin-top:6px;letter-spacing:0.3px;}
-.qr-wrapper{background:#fff;border:1.5px solid var(--border);border-radius:var(--radius);padding:20px;margin-bottom:14px;text-align:center;position:relative;}
-.qr-brand-row{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:16px;}
-.qr-brand-dot{width:28px;height:28px;border-radius:50%;background:var(--brown);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;}
-.qr-brand-name{font-family:'Playfair Display',serif;font-size:14px;font-weight:600;color:var(--brown);}
-.qr-img-frame{position:relative;display:inline-block;margin-bottom:14px;}
-.qr-corner{position:absolute;width:18px;height:18px;border-color:var(--brown);border-style:solid;}
-.qr-corner.tl{top:-2px;left:-2px;border-width:2.5px 0 0 2.5px;border-radius:3px 0 0 0;}
-.qr-corner.tr{top:-2px;right:-2px;border-width:2.5px 2.5px 0 0;border-radius:0 3px 0 0;}
-.qr-corner.bl{bottom:-2px;left:-2px;border-width:0 0 2.5px 2.5px;border-radius:0 0 0 3px;}
-.qr-corner.br{bottom:-2px;right:-2px;border-width:0 2.5px 2.5px 0;border-radius:0 0 3px 0;}
-.qr-img{width:200px;height:200px;border-radius:8px;display:block;object-fit:contain;}
-.qr-scan-label{font-size:11px;color:var(--text3);letter-spacing:0.5px;margin-bottom:4px;}
-.qr-upi-chip{display:inline-flex;align-items:center;gap:6px;background:var(--brown-dim);border:1px solid var(--brown-border);border-radius:20px;padding:5px 14px;font-size:12px;font-weight:600;color:var(--brown);letter-spacing:0.3px;}
-.qr-divider{display:flex;align-items:center;gap:10px;margin:14px 0;font-size:11px;color:var(--text3);letter-spacing:0.5px;}
-.qr-divider::before,.qr-divider::after{content:'';flex:1;height:1px;background:var(--border);}
-.qr-steps{display:flex;flex-direction:column;gap:8px;margin-bottom:16px;}
-.qr-step{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;background:var(--surface);border-radius:var(--radius-sm);}
-.qr-step-num{width:20px;height:20px;border-radius:50%;background:var(--brown);color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
-.qr-step-text{font-size:12.5px;color:var(--text2);line-height:1.5;}
-.qr-step-text strong{color:var(--text);font-weight:500;}
-.qr-done-btn{width:100%;background:var(--brown);color:#fff;border:none;border-radius:var(--radius-sm);padding:14px;font-size:14px;font-weight:600;font-family:'DM Sans',sans-serif;letter-spacing:0.5px;cursor:pointer;transition:all 0.2s;-webkit-tap-highlight-color:transparent;display:flex;align-items:center;justify-content:center;gap:8px;}
-.qr-done-btn:hover{background:var(--brown-mid);}
-.qr-done-btn:disabled{opacity:0.6;cursor:not-allowed;}
-.qr-done-btn .qr-btn-icon{font-size:16px;}
-.qr-security-row{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:12px;}
-.qr-security-item{display:flex;align-items:center;gap:4px;font-size:10px;color:var(--text3);}
+/* ══ UPI PAYMENT SCREEN ══ */
+.upi-screen{animation:fd 0.3s ease;}
+.upi-back-btn{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--text3);background:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;padding:0 0 14px 0;-webkit-tap-highlight-color:transparent;transition:color 0.2s;}
+.upi-back-btn:hover{color:var(--brown);}
+
+/* Amount card */
+.upi-amount-card{background:linear-gradient(135deg,#2a1f16 0%,#6b4226 60%,#b8835a 100%);border-radius:var(--radius);padding:18px 20px;margin-bottom:20px;color:#fff;display:flex;align-items:center;justify-content:space-between;}
+.upi-amount-label{font-size:10px;font-weight:500;letter-spacing:2px;text-transform:uppercase;opacity:0.6;margin-bottom:4px;}
+.upi-amount-plan{font-size:13px;font-weight:600;opacity:0.85;margin-bottom:2px;}
+.upi-amount-value{font-size:32px;font-weight:700;letter-spacing:-0.5px;line-height:1;}
+.upi-amount-badge{display:inline-flex;align-items:center;gap:4px;background:rgba(255,255,255,0.15);border-radius:20px;padding:4px 12px;font-size:10px;font-weight:600;letter-spacing:0.5px;}
+
+/* ── UPI App Buttons ── */
+.upi-choose-label{font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--text3);text-align:center;margin-bottom:12px;}
+
+.upi-app-buttons{display:flex;gap:12px;margin-bottom:20px;}
+
+.upi-app-btn{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:18px 12px;border-radius:var(--radius);border:2px solid var(--border);background:#fff;cursor:pointer;transition:all 0.2s;-webkit-tap-highlight-color:transparent;font-family:'DM Sans',sans-serif;}
+.upi-app-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(107,66,38,0.15);}
+.upi-app-btn:active{transform:scale(0.97);}
+
+.upi-app-btn.phonepe{border-color:#6739b7;}
+.upi-app-btn.phonepe:hover{background:rgba(103,57,183,0.04);border-color:#5a2ea3;box-shadow:0 6px 20px rgba(103,57,183,0.2);}
+
+.upi-app-btn.paytm{border-color:#00b9f1;}
+.upi-app-btn.paytm:hover{background:rgba(0,185,241,0.04);border-color:#009fd4;box-shadow:0 6px 20px rgba(0,185,241,0.2);}
+
+.upi-app-btn-logo{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0;}
+.phonepe .upi-app-btn-logo{background:linear-gradient(135deg,#6739b7 0%,#8b5cf6 100%);}
+.paytm .upi-app-btn-logo{background:linear-gradient(135deg,#00b9f1 0%,#0070ba 100%);}
+
+.upi-app-btn-name{font-size:14px;font-weight:700;letter-spacing:0.2px;}
+.phonepe .upi-app-btn-name{color:#6739b7;}
+.paytm .upi-app-btn-name{color:#00b9f1;}
+
+.upi-app-btn-sub{font-size:10px;color:var(--text3);font-weight:400;letter-spacing:0.3px;}
+
+.upi-app-btn-arrow{font-size:18px;margin-top:2px;}
+.phonepe .upi-app-btn-arrow{color:#6739b7;}
+.paytm .upi-app-btn-arrow{color:#00b9f1;}
+
+/* Info box */
+.upi-info-box{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px 14px;margin-bottom:14px;}
+.upi-info-row{display:flex;align-items:flex-start;gap:9px;font-size:12px;color:var(--text2);line-height:1.55;padding:4px 0;}
+.upi-info-row-icon{font-size:14px;flex-shrink:0;margin-top:1px;}
+
+/* Divider */
+.upi-divider{display:flex;align-items:center;gap:10px;margin:4px 0 14px;font-size:11px;color:var(--text3);letter-spacing:0.5px;}
+.upi-divider::before,.upi-divider::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* Activate button — shown after payment */
+.upi-activate-btn{display:none;width:100%;background:linear-gradient(135deg,#2a7a4a 0%,#3d9c5e 100%);color:#fff;border:none;border-radius:var(--radius-sm);padding:16px;font-size:15px;font-weight:700;font-family:'DM Sans',sans-serif;letter-spacing:0.3px;cursor:pointer;transition:all 0.2s;-webkit-tap-highlight-color:transparent;align-items:center;justify-content:center;gap:10px;box-shadow:0 4px 18px rgba(40,130,80,0.3);animation:fd 0.3s ease;}
+.upi-activate-btn.visible{display:flex;}
+.upi-activate-btn:hover{filter:brightness(1.08);}
+.upi-activate-btn-icon{font-size:20px;line-height:1;}
+
+/* Paid confirm row */
+.upi-paid-confirm{display:none;flex-direction:column;align-items:center;gap:6px;padding:12px;background:rgba(74,140,92,0.08);border:1px solid rgba(74,140,92,0.25);border-radius:var(--radius-sm);margin-bottom:12px;animation:fd 0.3s ease;}
+.upi-paid-confirm.visible{display:flex;}
+.upi-paid-confirm p{font-size:12.5px;color:#2d7a47;font-weight:500;text-align:center;line-height:1.5;}
+
+.upi-security-row{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:14px;}
+.upi-security-item{display:flex;align-items:center;gap:4px;font-size:10px;color:var(--text3);}
 </style>
 </head>
 <body>
@@ -642,7 +667,7 @@ const MEMBERSHIP_PLANS = {
     id:'brew',
     name:'Brew Club',
     label:'Monthly',
-    price:1000,
+    price:500,
     period:'month',
     durationDays:30,
     discount:10,
@@ -659,7 +684,7 @@ const MEMBERSHIP_PLANS = {
     id:'reserve',
     name:'Reserve Club',
     label:'Annual · Best Value',
-    price:9000,
+    price:5000,
     period:'year',
     durationDays:365,
     discount:20,
@@ -675,6 +700,12 @@ const MEMBERSHIP_PLANS = {
       'Bring a guest — they get 10% off too'
     ]
   }
+};
+
+/* ══ UPI CONFIG ══ */
+const UPI_CONFIG = {
+  upiId: 'aviralyagroupllp272207663434@aubank',
+  payeeName: 'Kava The Caffeine House'
 };
 
 /* ══ MEMBERSHIP HELPERS ══ */
@@ -704,6 +735,7 @@ function saveMembership(planId, name, phone) {
 }
 
 let selectedPlan = 'reserve';
+let pendingPayment = null;
 
 function openMembership() {
   const m = getMembership();
@@ -714,6 +746,7 @@ function openMembership() {
 function closeMembership() {
   document.getElementById('membershipOverlay').classList.remove('open');
   document.body.style.overflow = '';
+  pendingPayment = null;
 }
 
 function renderMembershipPlans() {
@@ -739,10 +772,10 @@ function renderMembershipPlans() {
         <span>${MEMBERSHIP_PLANS[selectedPlan].name} · ${MEMBERSHIP_PLANS[selectedPlan].label}</span>
         <strong>₹${MEMBERSHIP_PLANS[selectedPlan].price.toLocaleString('en-IN')}</strong>
       </div>
-      <button class="ms-pay-btn" id="ms-pay-btn" onclick="goToQRPayment()">
+      <button class="ms-pay-btn" onclick="goToUPIPayment()">
         Proceed to Pay — ₹${MEMBERSHIP_PLANS[selectedPlan].price.toLocaleString('en-IN')} &nbsp;→
       </button>
-      <p class="ms-note">🔒 UPI · Pay via any app · Membership activated after confirmation</p>
+      <p class="ms-note">🔒 Secure UPI payment · PhonePe · Paytm</p>
     </div>`;
 }
 
@@ -751,88 +784,145 @@ function selectPlan(planId) {
   renderMembershipPlans();
 }
 
-function goToQRPayment() {
+/* ══ UPI DEEP LINKS ══ */
+function buildUPILink(plan) {
+  const note = encodeURIComponent('Kava ' + plan.name + ' Membership');
+  const name = encodeURIComponent(UPI_CONFIG.payeeName);
+  const upiId = encodeURIComponent(UPI_CONFIG.upiId);
+  return `upi://pay?pa=${upiId}&pn=${name}&am=${plan.price}&cu=INR&tn=${note}`;
+}
+
+function buildPhonePeLink(plan) {
+  const note = encodeURIComponent('Kava ' + plan.name + ' Membership');
+  const name = encodeURIComponent(UPI_CONFIG.payeeName);
+  const upiId = encodeURIComponent(UPI_CONFIG.upiId);
+  /* PhonePe specific deep link */
+  return `phonepe://pay?pa=${upiId}&pn=${name}&am=${plan.price}&cu=INR&tn=${note}`;
+}
+
+function buildPaytmLink(plan) {
+  const note = encodeURIComponent('Kava ' + plan.name + ' Membership');
+  const name = encodeURIComponent(UPI_CONFIG.payeeName);
+  const upiId = encodeURIComponent(UPI_CONFIG.upiId);
+  /* Paytm UPI deep link */
+  return `paytmmp://pay?pa=${upiId}&pn=${name}&am=${plan.price}&cu=INR&tn=${note}`;
+}
+
+function goToUPIPayment() {
   const name = (document.getElementById('ms-name').value || '').trim();
   const phone = (document.getElementById('ms-phone').value || '').trim();
-  if (!name) { showToast(''); return; }
+  if (!name) { showToast('Please enter your name'); return; }
   if (!phone || phone.length < 8) { showToast('Please enter a valid phone number'); return; }
+
+  pendingPayment = { name, phone, planId: selectedPlan };
   const plan = MEMBERSHIP_PLANS[selectedPlan];
+
   document.getElementById('ms-body').innerHTML = `
-    <div class="qr-screen">
-      <button class="qr-back-btn" onclick="renderMembershipPlans()">← Back</button>
+    <div class="upi-screen">
+      <button class="upi-back-btn" onclick="renderMembershipPlans()">← Back</button>
 
-      <div class="qr-amount-card">
-        <div class="qr-amount-left">
-          <div class="qr-amount-label">Amount to pay</div>
-          <div class="qr-amount-plan">${plan.name} · ${plan.label}</div>
-          <div class="qr-amount-value">₹${plan.price.toLocaleString('en-IN')}</div>
+      <div class="upi-amount-card">
+        <div>
+          <div class="upi-amount-label">Total Amount</div>
+          <div class="upi-amount-plan">${plan.name} · ${plan.label}</div>
+          <div class="upi-amount-value">₹${plan.price.toLocaleString('en-IN')}</div>
         </div>
-        <div class="qr-amount-right">
-          <div class="qr-amount-badge">☕ ${plan.id === 'reserve' ? 'Gold' : 'Member'}</div>
-          <div class="qr-amount-upi">Scan &amp; Pay via UPI</div>
+        <div class="upi-amount-badge">☕ ${plan.id === 'reserve' ? 'Gold Member' : 'Brew Member'}</div>
+      </div>
+
+      <p class="upi-choose-label">Choose your payment app</p>
+
+      <div class="upi-app-buttons">
+        <button class="upi-app-btn phonepe" onclick="payWithPhonePe()">
+          <div class="upi-app-btn-logo">📲</div>
+          <div class="upi-app-btn-name">PhonePe</div>
+          <div class="upi-app-btn-sub">Tap to open app</div>
+          <div class="upi-app-btn-arrow">→</div>
+        </button>
+        <button class="upi-app-btn paytm" onclick="payWithPaytm()">
+          <div class="upi-app-btn-logo">💙</div>
+          <div class="upi-app-btn-name">Paytm</div>
+          <div class="upi-app-btn-sub">Tap to open app</div>
+          <div class="upi-app-btn-arrow">→</div>
+        </button>
+      </div>
+
+      <div class="upi-info-box">
+        <div class="upi-info-row">
+          <span class="upi-info-row-icon">💡</span>
+          Tapping a button above will open your chosen UPI app with <strong>₹${plan.price.toLocaleString('en-IN')}</strong> pre-filled. Enter your UPI PIN to complete.
+        </div>
+        <div class="upi-info-row" style="border-top:1px solid var(--border);margin-top:6px;padding-top:8px;">
+          <span class="upi-info-row-icon">🔒</span>
+          Payment goes directly to Kava. No card details needed.
         </div>
       </div>
 
-      <div class="qr-wrapper">
-        <div class="qr-brand-row">
-          <div class="qr-brand-dot">☕</div>
-          <div class="qr-brand-name">Kava The Caffeine House</div>
-        </div>
-        <div class="qr-img-frame">
-          <div class="qr-corner tl"></div>
-          <div class="qr-corner tr"></div>
-          <div class="qr-corner bl"></div>
-          <div class="qr-corner br"></div>
-          <!-- ↓ REPLACE src with your actual QR image path e.g. src="kava-qr.jpg" -->
-          <img class="qr-img" src="aviralya.jpg" alt="Kava UPI QR Code"
-            onerror="this.style.background='var(--surface)';this.style.border='2px dashed var(--border2)';this.alt='Replace src with your QR image';" />
-        </div>
-        <div class="qr-scan-label">Scan with any UPI app</div>
-        <div class="qr-upi-chip">📱 PhonePe &nbsp;·&nbsp; GPay &nbsp;·&nbsp; Paytm &nbsp;·&nbsp; BHIM</div>
+      <div id="upi-paid-confirm" class="upi-paid-confirm">
+        <p>✅ Payment done? Tap the button below to activate your membership instantly.</p>
       </div>
 
-      <div class="qr-divider">How to complete payment</div>
+      <div class="upi-divider">After completing payment in your app</div>
 
-      <div class="qr-steps">
-        <div class="qr-step">
-          <div class="qr-step-num">1</div>
-          <div class="qr-step-text">Open <strong>any UPI app</strong> on your phone — GPay, PhonePe, Paytm or BHIM</div>
-        </div>
-        <div class="qr-step">
-          <div class="qr-step-num">2</div>
-          <div class="qr-step-text">Tap <strong>Scan QR</strong> and point at the code above. Amount <strong>₹${plan.price.toLocaleString('en-IN')}</strong> will auto-fill</div>
-        </div>
-        <div class="qr-step">
-          <div class="qr-step-num">3</div>
-          <div class="qr-step-text">Complete payment and tap <strong>"I've Paid"</strong> below to activate your membership</div>
-        </div>
-      </div>
-
-      <button class="qr-done-btn" id="qr-done-btn" onclick="confirmQRPayment('${name.replace(/'/g,"\\'")}','${phone}')">
-        <span class="qr-btn-icon">✓</span> I've Paid — Activate My Membership
+      <button class="upi-activate-btn" id="upi-activate-btn" onclick="activateMembership()">
+        <span class="upi-activate-btn-icon">🎉</span>
+        Activate My Membership
       </button>
 
-      <div class="qr-security-row">
-        <div class="qr-security-item">🔒 Secure</div>
-        <div class="qr-security-item">· UPI Verified</div>
-        <div class="qr-security-item">· No card needed</div>
+      <p class="ms-note" style="margin-top:12px;">Complete the UPI payment first, then tap Activate above</p>
+
+      <div class="upi-security-row">
+        <div class="upi-security-item">🔒 Secure</div>
+        <div class="upi-security-item">· UPI Verified</div>
+        <div class="upi-security-item">· No card needed</div>
       </div>
     </div>`;
 }
 
-function confirmQRPayment(name, phone) {
-  const btn = document.getElementById('qr-done-btn');
-  btn.innerHTML = '<span class="qr-btn-icon">⏳</span> Activating your membership…';
-  btn.disabled = true;
-  setTimeout(() => {
-    saveMembership(selectedPlan, name, phone);
-    showMembershipSuccess(name, selectedPlan);
-    buildNav();
-    render();
-  }, 1400);
+function payWithPhonePe() {
+  const plan = MEMBERSHIP_PLANS[pendingPayment.planId];
+  /* Try PhonePe deep link first, fallback to standard UPI */
+  const phonePeLink = buildPhonePeLink(plan);
+  triggerPaymentLink(phonePeLink, plan);
 }
 
-function processMembershipPayment() { goToQRPayment(); }
+function payWithPaytm() {
+  const plan = MEMBERSHIP_PLANS[pendingPayment.planId];
+  /* Try Paytm deep link first, fallback to standard UPI */
+  const paytmLink = buildPaytmLink(plan);
+  triggerPaymentLink(paytmLink, plan);
+}
+
+function triggerPaymentLink(link, plan) {
+  /* Open the deep link */
+  window.location.href = link;
+
+  /* After delay, show activate button in case user returns from payment app */
+  setTimeout(function() {
+    showActivateButton();
+  }, 2500);
+}
+
+function showActivateButton() {
+  const activateBtn = document.getElementById('upi-activate-btn');
+  const confirmBox = document.getElementById('upi-paid-confirm');
+  if (activateBtn) activateBtn.classList.add('visible');
+  if (confirmBox) confirmBox.classList.add('visible');
+}
+
+function activateMembership() {
+  if (!pendingPayment) return;
+  const btn = document.getElementById('upi-activate-btn');
+  btn.innerHTML = '<span class="upi-activate-btn-icon">⏳</span> Activating…';
+  btn.disabled = true;
+  setTimeout(function() {
+    saveMembership(pendingPayment.planId, pendingPayment.name, pendingPayment.phone);
+    showMembershipSuccess(pendingPayment.name, pendingPayment.planId);
+    pendingPayment = null;
+    buildNav();
+    render();
+  }, 900);
+}
 
 function showMembershipSuccess(name, planId) {
   const plan = MEMBERSHIP_PLANS[planId];
